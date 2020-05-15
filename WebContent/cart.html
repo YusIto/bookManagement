@@ -1,0 +1,32 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>商品ページ</title>
+<link rel="stylesheet" href="./cart.css" type="text/css">
+<!-- JavaScriptの読み込み -->
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="cart.js"></script>
+</head>
+<body>
+	<!--  ヘッダー -->
+	<div class="header">
+		<div class="site-name">myCart</div>
+		<div class="user-name" id="js-user-name"></div>
+	</div>
+	<!--  メインコンテンツ -->
+	<div class="content">
+		<!--  ページナビゲーション -->
+		<div class="nav">
+			ショッピングカート<br>
+			<a href="./itemList.html">商品検索に戻る</a>
+		</div>
+		<!--  商品情報一覧 -->
+		<div class="message" id="js-message"></div>
+		<div class="cart-list" id="js-cart-list">
+		</div>
+		<!--  購入ボタン -->
+		<button class="purchase-button" id="js-purchase-button">購入</button>
+	</div>
+</body>
+</html>

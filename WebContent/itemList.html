@@ -1,0 +1,54 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="utf-8" />
+<title>商品ページ</title>
+<link rel="stylesheet" href="./itemList.css" type="text/css">
+<!-- JavaScriptの読み込み -->
+<script type="text/javascript" src="jquery-1.10.2.js"></script>
+<script type="text/javascript" src="itemList.js"></script>
+</head>
+<body>
+	<!--  ヘッダー -->
+	<div class="header">
+		<a href="./cart.html" class="cart-icon"><img src="./images/cart.png"></a>
+		<div class="site-name">myCart</div>
+		<input type="text" placeholder="商品名" id="js-search-input"></input>
+		<button id="js-search-button">検索</button>
+
+		<div class="user-name" id="js-user-name"></div>
+
+	</div>
+	<!--  メインコンテンツ -->
+	<div class="content">
+		<!--  ページナビゲーション -->
+		<div class="nav">
+			商品検索
+		</div>
+		<!--  商品情報一覧 -->
+		<div class="item-list container" id="js-item-list">
+			<!-- 直接書いた場合
+			<div class="grid">
+				<div class="image" style="background-image: url(./images/apple.jpg)"></div>
+				<div class="itemName">
+					<a href="./itemDetail.html?itemCd=0001">国内産 ふじ りんご 1個</a>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="image" style="background-image: url(./images/mango.jpg)"></div>
+				<div class="itemName">
+					<a href="./itemDetail.html?itemCd=0002">輸入 アップルマンゴー 1個</a>
+				</div>
+			</div>
+			<div class="grid">
+				<div class="image" style="background-image: url(./images/melon.jpg)"></div>
+				<div class="itemName">
+					<a href="./itemDetail.html?itemCd=0003">静岡県産 サン・グリーンズ マスクメロン 1個</a>
+				</div>
+			</div>
+			 -->
+		</div>
+
+	</div>
+</body>
+</html>
