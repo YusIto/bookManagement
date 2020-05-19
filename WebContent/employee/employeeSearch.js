@@ -15,15 +15,14 @@ var searchBookInformation = function() {
 	console.log(requestQuery);
 
 	// サーバーにデータ送信
-	$
-			.ajax({
+	$.ajax({
 				type : 'GET',
 				dataType : 'json',
 				url : 'http://localhost:8080/bookManagement/EmployeeSerchServlet',
 				data : requestQuery,
 				success : function(json) {
 					console.log('返却値', json);
-					$('#js-search-result').remove();
+					$('#js-search-result').empty();
 
 					// ログイン情報確認
 					// if (json.result == "ok") {
@@ -47,11 +46,11 @@ var searchBookInformation = function() {
 							}
 						}
 						// 上記処理をHTMLに挿入
-						$('#js-search-resultx').append(searchResult);
+						$('#js-search-result').append(searchResult);
 						// 貸出ボタンが押された時
 						$('.book_rental').click(rental);
 					} else {
-						$('#js-search-resultx').append(json);
+						$('#js-search-result').append(json);
 					}
 
 					// } else {
