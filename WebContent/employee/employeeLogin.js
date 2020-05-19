@@ -11,7 +11,7 @@ function login() {
 	$.ajax({
 		type : 'POST',
 		dataType:'json',
-		url : 'http://localhost:8080/bookManagement/employeeLoginServlet',
+		url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
 		data : requestQuery,
 		success : function(json) {
 			// サーバーとの通信に成功した時の処理
@@ -59,7 +59,7 @@ function logoutAjax() {
 
 	$.ajax({
 		type : 'GET',
-		url : 'http://localhost:8080/bookManagement/employeeLoginServlet',
+		url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
 //		dataType : 'json',
 //		data : requestQuery,
 		success : function(json) {

@@ -1,4 +1,4 @@
-package employee;
+package manager;
 
 import java.io.IOException;
 import java.io.PrintWriter;
@@ -21,14 +21,14 @@ import com.fasterxml.jackson.databind.ObjectMapper;
 /**
  * Servlet implementation class employeeLoginServlet
  */
-@WebServlet("/EmployeeLoginServlet")
-public class EmployeeLoginServlet extends HttpServlet {
+@WebServlet("/ManegerLoginServlet")
+public class ManegerLoginServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
     /**
      * @see HttpServlet#HttpServlet()
      */
-    public EmployeeLoginServlet() {
+    public ManegerLoginServlet() {
         super();
         // TODO Auto-generated constructor stub
     }
