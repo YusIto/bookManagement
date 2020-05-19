@@ -65,10 +65,10 @@ public class EmployeeSerchServlet extends HttpServlet {
 		// 実行するSQL文
 		String sql = "select ID, TITLE, AUTHOR, GENRE, STATUS \n" + "from BOOKS \n" + "where 1=1 \n";
 		if (bookTitle != null) {
-			sql += "and TITLE = like '%"+bookTitle+"%' \n";
+			sql += "and TITLE like '%"+bookTitle+"%' \n";
 		}
 		if (bookGenre != null) {
-			sql += "and AUTHOR = like '%"+bookAuthor+"%' \n";
+			sql += "and AUTHOR like '%"+bookAuthor+"%' \n";
 		}
 		if (bookGenre != null) {
 			sql += "and GENRE  = '"+bookGenre+"' \n";

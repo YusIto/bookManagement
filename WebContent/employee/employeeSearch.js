@@ -25,10 +25,10 @@ var searchBookInformation = function() {
 
 			// ログイン情報確認
 			// if (json.result == "ok") {
-			for (var i = 0; i < json.length; i++) {
-				if (!json == null) {
+			if (json != "検索結果はありません") {
+				for (var i = 0; i < json.length; i++) {
 					$('js-serch-result').empty();
-					if (json[i].status.equals("貸出中")) {
+					if (json[i].status == "貸出可能") {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
 								+ '<td>'
 								+ json[i].title
@@ -67,9 +67,9 @@ var searchBookInformation = function() {
 					$('#js-search-result').append(searchResult);
 					// 貸出ボタンが押された時
 					$('.book_rental').click(rental);
-				}else{
-					$('#js-search-result').append(json);
 				}
+			} else {
+				$('#js-search-result').append(json);
 			}
 
 			// } else {
