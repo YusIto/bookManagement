@@ -111,10 +111,9 @@ var requestQuery = {
 
 
 		success : function(pw) {
-			console.log(pw);
-			console.log(pw.title);
-			console.log(pw.author);
-			console.log(pw.genre);
+			//console.log(pw);
+
+			console.log("通信成功");
 
 
 

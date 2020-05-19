@@ -4,16 +4,15 @@ import java.io.IOException;
 import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
-import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
 import javax.servlet.http.HttpServlet;
 import javax.servlet.http.HttpServletRequest;
 import javax.servlet.http.HttpServletResponse;
+
+import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
  * Servlet implementation class EmployeeRentalConfirmServlet
@@ -42,11 +41,11 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 
 
 
-		String title = request.getParameter("titleVal");
-		String author = request.getParameter("authorVal");
-		String genre = request.getParameter("genreVal");
-		String today = request.getParameter("todayVal");
-		String retrunDate = request.getParameter("retrunDateVal");
+		String title = request.getParameter("title");
+		String author = request.getParameter("author");
+		String genre = request.getParameter("genre");
+		String today = request.getParameter("today");
+		String retrunDate = request.getParameter("retrunDate");
 
 		System.out.println(title);
 		System.out.println(author);
@@ -71,19 +70,28 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 		String dbUser = "bmdb";
 		String dbPass = "bmdb";
 
-		// アクセスした人に応答するためのJSONを用意する
-		PrintWriter pw = response.getWriter();
 
 
 		// 実行するSQL文
-		String sql ="select \n" +
-					"bs.TITLE bt, \n" +
-					"bs.AUTHOR ba, \n" +
-					"bs.GENRE bg \n" +
-					"from \n" +
-					"BOOKS bs \n" +
-					"where 1 = 1 \n" +
-					"and bs.ID = '10001' \n";
+//		String sql ="insert into RENTAL \n" +
+//				"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
+//				"values('a','b','"+today+"','"+retrunDate+"')";
+//
+
+
+//		String sql ="insert into RENTAL \n" +
+//				"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
+//				"values('a','b','2020/02/02','2020/04/02')";
+
+
+		String sql ="insert into RENTAL \n" +
+				"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
+				"values('a','b','"+today+"','"+retrunDate+"')";
+
+
+
+
+		System.out.println(sql);
 
 		try (
 				// データベースへ接続します
@@ -92,29 +100,18 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 				// SQLの命令文を実行するための準備をおこないます
 				 Statement stmt = con.createStatement();
 //				PreparedStatement stmt = createPreparedStatement(con, userId, password);
-
+				) {
 				// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
-				ResultSet rs1 = stmt.executeQuery(sql);
+				int rs1 = stmt.executeUpdate(sql);
 
-		) {
+				// アクセスした人に応答するためのJSONを用意する
+				PrintWriter pw = response.getWriter();
 
-			// 返却データを作成
-			Map<String, String> responseData = new HashMap<>();
-			if (rs1.next()) {
-
-
-			}
-			//responseDataに何が入ったか確認
-			//System.out.println(responseData);
-		//	pw.append(new ObjectMapper().writeValueAsString());
+			pw.append(new ObjectMapper().writeValueAsString("貸出履歴に登録しました。"));
 
 		} catch (Exception e) {
 			throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
 		}
-
-
-
-
 
 	}
 
