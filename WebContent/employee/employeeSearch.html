@@ -35,21 +35,22 @@
 			<tr>
 				<th>ジャンル:</th>
 				<td><select id="genre">
-						<option value="business">ビジネス</option>
-						<option value="tech">技術</option>
-						<option value="other">その他</option>
+						<option value="ビジネス">ビジネス</option>
+						<option value="技術">技術</option>
+						<option value="その他">その他</option>
 				</select></td>
 			</tr>
 			<tr>
 				<th>貸出ステータス:</th>
 				<td><select id="book_status">
-						<option value="available">貸出可能</option>
-						<option value="not_available">貸出中</option>
+						<option value="貸出可能">貸出可能</option>
+						<option value="貸出中">貸出中</option>
 				</select></td>
 			</tr>
 		</table>
 	</div>
 	<button id="js-button-search">検索</button>
-	<div></div>
+	<div>
+	<table id="js-search-result"></table></div>
 </body>
 </html>

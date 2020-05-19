@@ -47,6 +47,8 @@ public class EmployeeSerchServlet extends HttpServlet {
 		String bookAuthor = request.getParameter("bookAuthor");
 		String bookGenre = request.getParameter("bookGenre");
 		String bookStatus = request.getParameter("bookStatus");
+		System.out.println(bookTitle);
+		System.out.println(bookStatus);
 
 		// JDBCドライバの準備
 		try {
@@ -66,7 +68,7 @@ public class EmployeeSerchServlet extends HttpServlet {
 			sql += "and TITLE = like '%"+bookTitle+"%' \n";
 		}
 		if (bookGenre != null) {
-			sql += "and AUTHOR = like '%"+bookGenre+"%' \n";
+			sql += "and AUTHOR = like '%"+bookAuthor+"%' \n";
 		}
 		if (bookGenre != null) {
 			sql += "and GENRE  = '"+bookGenre+"' \n";
@@ -74,6 +76,7 @@ public class EmployeeSerchServlet extends HttpServlet {
 		if (bookStatus != null) {
 			sql += "and STATUS = '"+bookStatus+"' \n";
 		}
+		System.out.println(sql);
 
 		// データを格納するリスト
 		List<Book> list = new ArrayList<>();
