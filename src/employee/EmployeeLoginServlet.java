@@ -38,7 +38,15 @@ public class EmployeeLoginServlet extends HttpServlet {
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+
+		//文字化け
+		response.setContentType("text/html;charset=UTF-8");
+
+		//セッションを使います
+		HttpSession session = request.getSession(true);
+
+		session.removeAttribute("id");
+		session.removeAttribute("name");
 	}
 
 	/**
@@ -81,8 +89,8 @@ public class EmployeeLoginServlet extends HttpServlet {
 		// 実行するSQL文
 		String sql ="Select ID, PASSWORD, NAME from EMPLOYEES \n" +
 				"where 1=1 \n" +
-				" and ID = 000001 \n" +
-				" and PASSWORD =1234 ";
+				" and ID = "+ Id +" \n" +
+				" and PASSWORD ="+ password +" \n";
 
 		// DBへ接続してSQLを実行
 		try (
