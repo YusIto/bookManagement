@@ -46,7 +46,6 @@ public class ManegerLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 
 		session.removeAttribute("id");
-		session.removeAttribute("name");
 	}
 
 	/**
@@ -75,10 +74,10 @@ public class ManegerLoginServlet extends HttpServlet {
 		String dbPass = "bmdb";
 
 		// 入力されたempIDとパスワードを取得
-		String Id = request.getParameter("id");
+		String id = request.getParameter("id");
 		String password = request.getParameter("password");
 
-		System.out.println("idのリクエスト.ゲットパラメータは" + Id);
+		System.out.println("idのリクエスト.ゲットパラメータは" + id);
 		System.out.println("passwordのリクエスト.ゲットパラメータは" + password);
 
 
@@ -87,10 +86,10 @@ public class ManegerLoginServlet extends HttpServlet {
 
 
 		// 実行するSQL文
-		String sql ="Select ID, PASSWORD, NAME from EMPLOYEES \n" +
+		String sql ="select ID, PASSWORD from MANAGER \n" +
 				"where 1=1 \n" +
-				" and ID = "+ Id +" \n" +
-				" and PASSWORD ="+ password +" \n";
+				" and ID = '"+ id +"' \n" +
+				" and PASSWORD = '"+ password +"'\n";
 
 		// DBへ接続してSQLを実行
 		try (
@@ -117,12 +116,10 @@ public class ManegerLoginServlet extends HttpServlet {
 				// ユーザーコードとユーザー名（画面でユーザー名を表示したいため）
 				responseData.put("id", rs1.getString("ID"));
 				responseData.put("password", rs1.getString("PASSWORD"));
-				responseData.put("name", rs1.getString("NAME"));
 
 				// ユーザー情報をセッションに保存
 				HttpSession session = request.getSession();
 				session.setAttribute("id", rs1.getString("ID"));
-				session.setAttribute("name", rs1.getString("NAME"));
 
 			} else {
 				responseData.put("result", "ng");
