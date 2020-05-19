@@ -5,6 +5,8 @@
 $(document).ready(function () {
 	//編集ボタンクリック時、edit_button関数利用
 	$("#js-return").click(returnSearch);
+	$("#js-confirmation").click(confirmation);
+
 });
 
 
@@ -22,6 +24,11 @@ document.getElementById("view_time").innerHTML = y+"/"+m+"/"+d;
 var returnSearch = function (){
 	console.log("戻るを押しました。");
 }
+
+var confirmation = function (){
+	console.log("確定を押しました。");
+}
+
 
 
 
