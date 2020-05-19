@@ -84,7 +84,7 @@ public class EmployeeLoginServlet extends HttpServlet {
 					"ROLE  \n" +
 					"from MS_SYAIN \n" +
 					"where 1 = 1 \n" +
-					"and EMP_ID = '"+empId +"' \n" +
+					"and EMP_ID = '"+Id +"' \n" +
 					"and PASSWORD = '"+password +"'" ;
 
 		// DBへ接続してSQLを実行

@@ -3,15 +3,15 @@
 function login() {
 	// 入力されたユーザーIDとパスワード
 	var requestQuery = {
-		empId : $('#js-login-id').val()
-		,password:$('#js-login-pass').val()
+		 id : $('#js-login-id').val()
+		,password : $('#js-login-pass').val()
 	};
 	console.log(requestQuery)
 	// サーバーからデータを取得する
 	$.ajax({
 		type : 'POST',
 		dataType:'json',
-		url : 'http://localhost:8080/myCart/LoginServlet',
+		url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
 		data : requestQuery,
 		success : function(json) {
 			// サーバーとの通信に成功した時の処理
@@ -32,15 +32,15 @@ function login() {
 
 			if(json.result === "ok"){
 				// ユーザー名をローカルストレージに保存
-				localStorage.setItem('empId',json.empId);
-				localStorage.setItem('password',json.password);
-				localStorage.setItem('role',json.role)
+				localStorage.setItem('id',json.id);
+//				localStorage.setItem('password',json.password);
+//				localStorage.setItem('role',json.role);
 
 				console.log(json)
 				// 画面遷移
-				location.href='./employeeList.html';
+				location.href='.employee/employeeSearch.html';
 			}else{
-				alert('IDかパスワードが間違っています');
+				alert('ログインに失敗しました');
 			}
 			/** localStorage01 実装ここまで part1 **/
 		},
