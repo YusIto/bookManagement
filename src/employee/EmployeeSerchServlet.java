@@ -47,7 +47,15 @@ public class EmployeeSerchServlet extends HttpServlet {
 		String bookAuthor = request.getParameter("bookAuthor");
 		String bookGenre = request.getParameter("bookGenre");
 		String bookStatus = request.getParameter("bookStatus");
+//
+//		String bookTitle = "";
+//		String bookAuthor = "";
+//		String bookGenre = "技術";
+//		String bookStatus = "貸出可能";
+
 		System.out.println(bookTitle);
+		System.out.println(bookStatus);
+		System.out.println(bookAuthor);
 		System.out.println(bookStatus);
 
 		// JDBCドライバの準備
@@ -64,18 +72,19 @@ public class EmployeeSerchServlet extends HttpServlet {
 		String pass = "bmdb";
 		// 実行するSQL文
 		String sql = "select ID, TITLE, AUTHOR, GENRE, STATUS from BOOKS where 1=1 \n";
-		if (bookTitle != null) {
+		if (bookTitle != "") {
 			sql += "and TITLE like '%"+bookTitle+"%' \n";
 		}
-		if (bookAuthor != null) {
+		if(bookAuthor != "") {
 			sql += "and AUTHOR like '%"+bookAuthor+"%' \n";
 		}
-		if (bookGenre != null) {
+		if(bookGenre != "") {
 			sql += "and GENRE  = '"+bookGenre+"' \n";
 		}
-		if (bookStatus != null) {
+		if(bookStatus != "") {
 			sql += "and STATUS = '"+bookStatus+"' \n";
 		}
+
 		System.out.println(sql);
 
 		// データを格納するリスト
