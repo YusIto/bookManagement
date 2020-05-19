@@ -22,12 +22,12 @@ var searchBookInformation = function() {
 		data : requestQuery,
 		success : function(json) {
 			console.log('返却値', json);
+			$('js-search-result').remove();
 
 			// ログイン情報確認
 			// if (json.result == "ok") {
 			if (json != "検索結果はありません") {
 				for (var i = 0; i < json.length; i++) {
-					$('js-serch-result').empty();
 					if (json[i].status == "貸出可能") {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
 								+ '<td>'
@@ -117,7 +117,7 @@ var book = function() {
 // 貸出ボタンが押された時
 var rental = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='
+	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='+bookId;
 			+ bookId;
 	location.href = url;
 }
