@@ -86,7 +86,9 @@ var confirmation = function (){
 console.log(todayVal);
 
  var retrunDateVal = $('#js-retrun-date').val();
- console.log(retrunDateVal);
+ var retrunDate1 = retrunDateVal.replace('-','/')
+ var retrunDate = retrunDate1.replace('-','/');
+ console.log(retrunDate);
 
 
 var requestQuery = {
