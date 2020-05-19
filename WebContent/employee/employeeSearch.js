@@ -27,6 +27,7 @@ var searchBookInformation = function() {
 			// if (json.result == "ok") {
 			for (var i = 0; i < json.length; i++) {
 				if (!json == null) {
+					$('js-serch-result').empty();
 					if (json[i].status.equals("貸出中")) {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
 								+ '<td>'
