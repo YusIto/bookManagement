@@ -22,12 +22,13 @@ var searchBookInformation = function() {
 		data : requestQuery,
 		success : function(json) {
 			console.log('返却値', json);
+			$('js-search-result').remove();
 
 			// ログイン情報確認
 			// if (json.result == "ok") {
-			for (var i = 0; i < json.length; i++) {
-				if (!json == null) {
-					if (json[i].status.equals("貸出中")) {
+			if (json != "検索結果はありません") {
+				for (var i = 0; i < json.length; i++) {
+					if (json[i].status == "貸出可能") {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
 								+ '<td>'
 								+ json[i].title
@@ -66,9 +67,9 @@ var searchBookInformation = function() {
 					$('#js-search-result').append(searchResult);
 					// 貸出ボタンが押された時
 					$('.book_rental').click(rental);
-				}else{
-					$('#js-search-result').append(json);
 				}
+			} else {
+				$('#js-search-result').append(json);
 			}
 
 			// } else {
@@ -116,8 +117,7 @@ var book = function() {
 // 貸出ボタンが押された時
 var rental = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='
-			+ bookId;
+	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='+bookId;
 	location.href = url;
 }
 
