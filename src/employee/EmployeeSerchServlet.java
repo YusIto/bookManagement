@@ -67,8 +67,8 @@ public class EmployeeSerchServlet extends HttpServlet {
 		if (bookTitle != null) {
 			sql += "and TITLE like '%"+bookTitle+"%' \n";
 		}
-		if (bookGenre != null) {
-			sql += "and AUTHOR = like '%"+bookAuthor+"%' \n";
+		if (bookAuthor != null) {
+			sql += "and AUTHOR like '%"+bookAuthor+"%' \n";
 		}
 		if (bookGenre != null) {
 			sql += "and GENRE  = '"+bookGenre+"' \n";
