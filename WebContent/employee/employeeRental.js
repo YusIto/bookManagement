@@ -21,13 +21,18 @@ document.getElementById("view_time").innerHTML = y+"/"+m+"/"+d;
 
 }
 
+var confirmation = function (){
+	console.log("確定を押しました。");
+	
+}
+
+
+
 var returnSearch = function (){
 	console.log("戻るを押しました。");
 }
 
-var confirmation = function (){
-	console.log("確定を押しました。");
-}
+
 
 
 
