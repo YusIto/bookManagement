@@ -13,6 +13,7 @@ var searchBookInformation = function() {
 	};
 	// リクエストクエリの確認
 	console.log(requestQuery);
+	$('#js-search-result').empty();
 
 	// サーバーにデータ送信
 	$.ajax({
@@ -22,7 +23,7 @@ var searchBookInformation = function() {
 		data : requestQuery,
 		success : function(json) {
 			console.log('返却値', json);
-			$('js-search-result').remove();
+
 
 			// ログイン情報確認
 			// if (json.result == "ok") {
