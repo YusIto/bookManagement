@@ -63,16 +63,16 @@ public class EmployeeSerchServlet extends HttpServlet {
 		// 実行するSQL文
 		String sql = "select ID, TITLE, AUTHOR, GENRE, STATUS \n" + "from BOOKS \n" + "where 1=1 \n";
 		if (bookTitle != null) {
-			sql += "and TITLE = 'bookTitle' \n";
+			sql += "and TITLE = like '%"+bookTitle+"%' \n";
 		}
 		if (bookGenre != null) {
-			sql += "and AUTHOR = 'bookGenre' \n";
+			sql += "and AUTHOR = like '%"+bookGenre+"%' \n";
 		}
 		if (bookGenre != null) {
-			sql += "and GENRE  = 'bookGenre' \n";
+			sql += "and GENRE  = '"+bookGenre+"' \n";
 		}
 		if (bookStatus != null) {
-			sql += "and STATUS = 'bookStatus' \n";
+			sql += "and STATUS = '"+bookStatus+"' \n";
 		}
 
 		// データを格納するリスト
