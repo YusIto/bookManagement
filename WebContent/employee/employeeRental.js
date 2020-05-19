@@ -6,6 +6,28 @@ $(document).ready(function () {
 	//編集ボタンクリック時、edit_button関数利用
 	$("#js-return").click(returnSearch);
 	$("#js-confirmation").click(confirmation);
+	
+	
+	$.ajax({
+		Type : 'GET',
+		url : '/bookManagement/',//サーブレットを確認
+		dataType : 'json',
+		data : requestQuery,
+		success : function(pw) {
+			console.log(pw);
+
+			
+
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			// サーバーとの通信に失敗した時の処理
+			alert('データの通信に失敗しました');
+			console.log(errorThrown)
+		}
+	});
+	
+	
+	
 
 });
 
