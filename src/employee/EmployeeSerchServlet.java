@@ -43,11 +43,19 @@ public class EmployeeSerchServlet extends HttpServlet {
 		response.setContentType("text/html; charset=UTF-8");
 
 		// JSから取得したデータをString型の変数として定義
-		String bookTitle = request.getParameter("bookTitle");
-		String bookAuthor = request.getParameter("bookAuthor");
-		String bookGenre = request.getParameter("bookGenre");
-		String bookStatus = request.getParameter("bookStatus");
+//		String bookTitle = request.getParameter("bookTitle");
+//		String bookAuthor = request.getParameter("bookAuthor");
+//		String bookGenre = request.getParameter("bookGenre");
+//		String bookStatus = request.getParameter("bookStatus");
+
+		String bookTitle = "";
+		String bookAuthor = "";
+		String bookGenre = "技術";
+		String bookStatus = "bookStatus";
+
 		System.out.println(bookTitle);
+		System.out.println(bookStatus);
+		System.out.println(bookAuthor);
 		System.out.println(bookStatus);
 
 		// JDBCドライバの準備
