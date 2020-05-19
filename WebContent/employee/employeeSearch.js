@@ -30,38 +30,23 @@ var searchBookInformation = function() {
 				for (var i = 0; i < json.length; i++) {
 					if (json[i].status == "貸出可能") {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
-								+ '<td>'
-								+ json[i].title
-								+ '</td>'
-								+ '<th>著者名'
-								+ '</th>'
-								+ '<td>'
-								+ json[i].author
-								+ '<td>'
-								+ '<th>ジャンル'
-								+ '</th>'
-								+ '<td>'
-								+ json[i].genre
-								+ '</td>'
-								+ '<th>ステータス</th>'
-								+ '<td>'
-								+ json[i].status
-								+ '</td>'
-								+ '<th></th>'
-								+ '<td>'
+								+ '<th>著者名' + '</th>' + '<th>ジャンル' + '</th>'
+								+ '<th>ステータス' + '</th>' + '<th>' + '</th>'
+								+ '</tr>' + '<tr>' + '<td>' + json[i].title
+								+ '</td>' + '<td>' + json[i].author + '</td>'
+								+ '<td>' + json[i].genre + '</td>' + '<td>'
+								+ json[i].status + '</td>' + '<td>'
 								+ '<button class="book_rental" value="'
-								+ json[i].bookId
-								+ '">貸出 '
-								+ '</button>'
+								+ json[i].bookId + '>貸出' + '</button>'
 								+ '</td>';
 					} else {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
-								+ '<td>' + json[i].title + '</td>' + '<th>著者名'
-								+ '</th>' + '<td>' + json[i].author + '<td>'
-								+ '<th>ジャンル' + '</th>' + '<td>' + json[i].genre
-								+ '</td>' + '<th>ステータス</th>' + '<td>'
-								+ json[i].status + '</td>' + '<th></th>'
-								+ '<td>' + '</td>';
+								+ '<th>著者名' + '</th>' + '<th>ジャンル' + '</th>'
+								+ '<th>ステータス</th>' + '<th></th>' + '<td>'
+								+ json[i].title + '</td>' + '<td>'
+								+ json[i].author + '<td>' + '<td>'
+								+ json[i].genre + '</td>' + '<td>'
+								+ json[i].status + '</td>' + '<td>' + '</td>';
 					}
 					// 上記処理をHTMLに挿入
 					$('#js-search-result').append(searchResult);
