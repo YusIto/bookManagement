@@ -79,13 +79,10 @@ public class EmployeeLoginServlet extends HttpServlet {
 
 
 		// 実行するSQL文
-		String sql ="select EMP_ID, \n" +
-					"PASSWORD, \n" +
-					"ROLE  \n" +
-					"from MS_SYAIN \n" +
-					"where 1 = 1 \n" +
-					"and EMP_ID = '"+Id +"' \n" +
-					"and PASSWORD = '"+password +"'" ;
+		String sql ="Select ID, PASSWORD, NAME from EMPLOYEES \n" +
+				"where 1=1 \n" +
+				" and ID = 000001 \n" +
+				" and PASSWORD =1234 ";
 
 		// DBへ接続してSQLを実行
 		try (
@@ -110,14 +107,14 @@ public class EmployeeLoginServlet extends HttpServlet {
 				// ログインの結果
 				responseData.put("result", "ok");
 				// ユーザーコードとユーザー名（画面でユーザー名を表示したいため）
-				responseData.put("empId", rs1.getString("EMP_ID"));
+				responseData.put("id", rs1.getString("ID"));
 				responseData.put("password", rs1.getString("PASSWORD"));
-				responseData.put("role", rs1.getString("ROLE"));
+				responseData.put("name", rs1.getString("NAME"));
 
 				// ユーザー情報をセッションに保存
 				HttpSession session = request.getSession();
-				session.setAttribute("id", rs1.getString("EMP_ID"));
-				session.setAttribute("role", rs1.getString("ROLE"));
+				session.setAttribute("id", rs1.getString("ID"));
+				session.setAttribute("name", rs1.getString("NAME"));
 
 			} else {
 				responseData.put("result", "ng");

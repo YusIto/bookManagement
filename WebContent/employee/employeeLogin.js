@@ -11,7 +11,7 @@ function login() {
 	$.ajax({
 		type : 'POST',
 		dataType:'json',
-		url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
+		url : 'http://localhost:8080/bookManagement/employeeLoginServlet',
 		data : requestQuery,
 		success : function(json) {
 			// サーバーとの通信に成功した時の処理
@@ -33,12 +33,13 @@ function login() {
 			if(json.result === "ok"){
 				// ユーザー名をローカルストレージに保存
 				localStorage.setItem('id',json.id);
+				localStorage.setItem('name',json.name);
 //				localStorage.setItem('password',json.password);
 //				localStorage.setItem('role',json.role);
 
-				console.log(json)
+				console.log(localStorage)
 				// 画面遷移
-				location.href='.employee/employeeSearch.html';
+//				location.href='.employee/employeeSearch.html';
 			}else{
 				alert('ログインに失敗しました');
 			}
