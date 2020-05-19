@@ -1,0 +1,53 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>蔵書一覧</title>
+<!-- JavaScriptの読み込み -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="employeeSearch.js"></script>
+</head>
+<body>
+	<div>
+		<h1>蔵書一覧</h1>
+	</div>
+	<div>
+		<button>ログアウト</button>
+	</div>
+	<div>
+		<button>借りている本一覧</button>
+	</div>
+	<div>
+		<!-- 検索表示 -->
+		<table>
+			<tr>
+				<th>タイトル:</th>
+				<td><input type="text" id="js-add-inputtitle"></input></td>
+			</tr>
+			<tr>
+				<th>著者名:</th>
+				<td><input type="text" id="js-add-inputauthor"></input></td>
+			</tr>
+			<tr>
+				<th>ジャンル:</th>
+				<td><select id="genre">
+						<option value="business">ビジネス</option>
+						<option value="tech">技術</option>
+						<option value="other">その他</option>
+				</select></td>
+			</tr>
+			<tr>
+				<th>貸出ステータス:</th>
+				<td><select id="book_status">
+						<option value="available">貸出可能</option>
+						<option value="not_available">貸出中</option>
+				</select></td>
+			</tr>
+		</table>
+	</div>
+	<button id="js-add-search">検索</button>
+	<div></div>
+</body>
+</html>
