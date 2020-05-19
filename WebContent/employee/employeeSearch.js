@@ -24,7 +24,6 @@ var searchBookInformation = function() {
 		success : function(json) {
 			console.log('返却値', json);
 
-
 			// ログイン情報確認
 			// if (json.result == "ok") {
 			if (json != "検索結果はありません") {
@@ -90,22 +89,21 @@ var searchBookInformation = function() {
 
 // ログアウト
 var logout = function() {
-	$
-			.ajax({
-				type : 'GET',
-				url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
-				success : function(json) {
-					// サーバーとの通信に成功した時の処理
-					// 確認のために返却値を出力
-					console.log('返却値', json);
-					window.location.href = "http://localhost:8080/bookManagement/employee/employeeLogin.html";
-				},
-				error : function(XMLHttpRequest, textStatus, errorThrown) {
-					// サーバーとの通信に失敗した時の処理
-					alert('データの通信に失敗しました');
-					console.log(errorThrown)
-				}
-			});
+	$ajax({
+		type : 'GET',
+		url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
+		success : function(json) {
+			// サーバーとの通信に成功した時の処理
+			// 確認のために返却値を出力
+			console.log('返却値', json);
+			window.location.href = "http://localhost:8080/bookManagement/employee/employeeLogin.html";
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			// サーバーとの通信に失敗した時の処理
+			alert('データの通信に失敗しました');
+			console.log(errorThrown)
+		}
+	});
 
 }
 
@@ -118,7 +116,8 @@ var book = function() {
 // 貸出ボタンが押された時
 var rental = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='+bookId;
+	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='
+			+ bookId;
 	location.href = url;
 }
 
