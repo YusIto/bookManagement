@@ -63,12 +63,11 @@ public class EmployeeSerchServlet extends HttpServlet {
 		String user = "bmdb";
 		String pass = "bmdb";
 		// 実行するSQL文
-		String sql = "select ID, TITLE, AUTHOR, GENRE, STATUS \n" + "from BOOKS \n" + "where 1=1 \n";
+		String sql = "select ID, TITLE, AUTHOR, GENRE, STATUS from BOOKS where 1=1 \n";
 		if (bookTitle != null) {
-			sql += "and TITLE like '%Java%' \n";
+			sql += "and TITLE like '%"+bookTitle+"%' \n";
 		}
 		if (bookGenre != null) {
-
 			sql += "and AUTHOR = like '%"+bookAuthor+"%' \n";
 		}
 		if (bookGenre != null) {
