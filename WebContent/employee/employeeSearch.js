@@ -118,7 +118,6 @@ var book = function() {
 var rental = function() {
 	var bookId = document.activeElement.value;
 	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='+bookId;
-			+ bookId;
 	location.href = url;
 }
 
