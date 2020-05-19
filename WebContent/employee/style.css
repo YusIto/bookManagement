@@ -1,0 +1,54 @@
+charset "utf-8";
+
+/****** 共通 */
+
+/* 全タグへ適用 */
+* {
+	/* 外部余白 */
+	margin: 0;
+	/* 内部余白 */
+	padding: 0;
+	/* フォント */
+	font-family: "sans-serif";
+}
+
+/****** 基礎 */
+
+.title{
+	font-size: 24px;
+}
+
+#table {
+	/* 外部余白 */
+	margin-top: 5px;
+	margin-left: 10px;
+}
+/****** テーブル */
+table {
+	/* 枠線 */
+	border-collapse: collapse;
+	border-right: 1px solid #999;
+}
+
+table th {
+	/* 内部余白 */
+	padding: 10px;
+	/* 枠線 */
+	border-top: 1px solid #fff;
+	/* 文字色 */
+	color: #fff;
+	/* 文字表示 */
+	text-align: left;
+	vertical-align: top;
+	/* 背景色 */
+	background-color: #555;
+}
+
+table td {
+	/* 内部余白 */
+	padding: 6px;
+	/* 枠線 */
+	border: 1px solid #999;
+	/* 背景色 */
+	background-color: #fff;
+}
