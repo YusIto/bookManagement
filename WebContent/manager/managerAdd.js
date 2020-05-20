@@ -3,7 +3,17 @@ function add() {
 	var jsid = $('#js-input-id').val()
 	var jstitle = $('#js-input-title').val()
 	var jsauthor = $('#js-input-author').val()
-	var jsgenre = $('genre').val()
+
+	// formのselectを指定、ここではgenreのところ
+	var selectgenre = document.form1.genre1;
+	// // 値(数値)を取得
+	const num = selectgenre.selectedIndex;
+	console.log(num)
+	//	// 値(数値)から値(value値)を取得
+	const jsgenre = selectgenre.options[num].value;
+	console.log(jsgenre)
+
+
 	var jsbuyer = $('#js-input-buyer').val()
 
 //現在の時刻から入力するファンクションを利用したいが現在実装できないので手入力
@@ -33,10 +43,12 @@ function add() {
 			console.log('返却値', json);
 			// 登録完了のアラート
 			alert('登録が完了しました');
+			// 2秒後に画面遷移
+			setTimeout("location.href='.maneger/manegerAdd.html';", 2000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
-			alert('データの通信に失敗しました');
+			alert('入力した内容が登録出来ませんでした。');
 			console.log(errorThrown)
 		}
 

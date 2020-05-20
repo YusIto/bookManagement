@@ -67,7 +67,7 @@ public class ManagerAddServlet extends HttpServlet {
 
 		String sql = "insert into BOOKS \n"
 					+" (ID, PURCHASED_DATE, TITLE, AUTHOR, GENRE, BUYER, STATUS) \n"
-					+" values ('10012', '2020-05-20', 'sampletitle', 'author', 'genre', 'buyer', '貸出可能') \n";
+					+" values ('"+ id +"', '"+ purchaseDate +"', '"+ title +"', '"+ author +"', '"+ genre +"', '"+ buyer +"', '貸出可能') \n";
 		//確認
 		System.out.println(sql);
 
