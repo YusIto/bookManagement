@@ -16,45 +16,41 @@ var searchBookInformation = function() {
 	$('#js-search-result').empty();
 
 	// サーバーにデータ送信
-	$.ajax({
+	$ajax({
 		type : 'GET',
 		dataType : 'json',
 		url : 'http://localhost:8080/bookManagement/EmployeeSerchServlet',
 		data : requestQuery,
 		success : function(json) {
 			console.log('返却値', json);
+			$('#js-search-result').empty();
 
 			// ログイン情報確認
 			// if (json.result == "ok") {
-			if (json != "検索結果はありません") {
+			if (json !== "検索結果はありません") {
+				var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th></tr></thead>';
 				for (var i = 0; i < json.length; i++) {
 					if (json[i].status == "貸出可能") {
-						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
-								+ '<th>著者名' + '</th>' + '<th>ジャンル' + '</th>'
-								+ '<th>ステータス' + '</th>' + '<th>' + '</th>'
-								+ '</tr>' + '<tr>' + '<td>' + json[i].title
-								+ '</td>' + '<td>' + json[i].author + '</td>'
-								+ '<td>' + json[i].genre + '</td>' + '<td>'
+						searchResult += '<tr><td>' + json[i].title + '</td>'
+								+ '<td>' + json[i].author + '</td>' + '<td>'
+								+ json[i].genre + '</td>' + '<td>'
 								+ json[i].status + '</td>' + '<td>'
 								+ '<button class="book_rental" value="'
-								+ json[i].bookId + '>貸出' + '</button>'
-								+ '</td>';
+								+ json[i].bookId + '">貸出</button></td>';
 					} else {
-						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
-								+ '<th>著者名' + '</th>' + '<th>ジャンル' + '</th>'
-								+ '<th>ステータス</th>' + '<th></th>' + '</tr>'+'<td>'
-								+ json[i].title + '</td>' + '<td>'
-								+ json[i].author + '<td>' + '<td>'
+						searchResult += '<tr><td>' + json[i].title + '</td>'
+								+ '<td>' + json[i].author + '<td>' + '<td>'
 								+ json[i].genre + '</td>' + '<td>'
 								+ json[i].status + '</td>' + '<td>' + '</td>';
 					}
-					// 上記処理をHTMLに挿入
-					$('#js-search-result').append(searchResult);
-					// 貸出ボタンが押された時
-					$('.book_rental').click(rental);
 				}
+				// 上記処理をHTMLに挿入
+				$('#js-search-result').append(searchResult);
+				// 貸出ボタンが押された時
+				$('.book_rental').click(rental);
 			} else {
 				$('#js-search-result').append(json);
+
 			}
 
 			// } else {
