@@ -79,8 +79,7 @@ $(document).ready(function() {
 	editPage();
 	$('#js-add-button').click(edit);
 	$('#js-delete-button').click(deleteBook);
-	$('#js-input-id').val('a');
-	console.log("aa");
+
 });
 
 
@@ -103,24 +102,26 @@ function editPage(){
 
 	$.ajax({
 		type : "GET",
-		url : "http://localhost:8080/bookManagement/ManagerDeleteServlet",
+		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
 		data : rq,
 		datatype : 'json',
 
 		success : function(json) {
 
+			console.log(json);
+			console.log(json.id);
+
+
+			console.log("aa");
 
 			for (var i = 0;i<json.size();i++){
 				var element = json[i];
+				$('#js-input-id').val(element.id);
 			}
-
-
-
-
 
 			console.log('返却値', json);
 			// 登録完了のアラート
-			alert('蔵書削除が完了しました');
+			alert('蔵書登録が完了しました');
 			// 2秒後に画面遷移
 			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
 
