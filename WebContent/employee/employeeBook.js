@@ -10,7 +10,6 @@ function executeAjax () {
 
 
 
-
 		$.ajax({
 			type : 'GET',
 			url : 'http://localhost:8080/bookManagement/EmployeeBookServlet',
@@ -28,11 +27,18 @@ function executeAjax () {
 					console.log(element.returnDate);
 					console.log(element.id);
 
+					var a = element.returnDate;
+					console.log(a.substring(0,11));
+					var b =a.substring(0,11)
+					var returnDate = b.replace('-','/');
+					var returnDate2 = returnDate.replace('-','/');
+					console.log(returnDate2);
+
 					var record = '<tr>'
 						+ '<td>' + element.title + '</td>'
 						+ '<td>' + element.author + '</td>'
 						+ '<td>' + element.genre + '</td>'
-						+ '<td>' + element.returnDate + '</td>'
+						+ '<td>' + returnDate2 + '</td>'
 						+ '<td><button value='+element.id+' onclick = "returnBook(this)">返却</button></td>'
 						+ '</tr>';
 
@@ -42,8 +48,6 @@ function executeAjax () {
 					}
 			}
 		});
-
-
 }
 
 $(document).ready(function () {
@@ -64,41 +68,20 @@ var returnBook = function(i){
 	console.log("deleteEmpのなか"+i);
 	console.log("deleteEmpのなかf"+ returnBookValue);
 
+	var rq = {BookID:returnBookValue};
 
-//	$.ajax({
-//		type : 'GET',
-//		url : 'http://localhost:8080/bookManagement/EmployeeBookServlet',
-//		dataType : 'json',
-//
-//		success : function(json) {
-//			console.log(json);
-//
-//
-//
-//
-//			for (var i = 0; i < json.length; i++) {
-//
-//				var element = json[i];
-//				console.log(element.title);
-//				console.log(element.author);
-//				console.log(element.genre);
-//				console.log(element.returnDate);
-//				console.log(element.id);
-//
-//				var record = '<tr>'
-//					+ '<td>' + element.title + '</td>'
-//					+ '<td>' + element.author + '</td>'
-//					+ '<td>' + element.genre + '</td>'
-//					+ '<td>' + element.returnDate + '</td>'
-//					+ '<td><button value='+element.id+' onclick = returnBook(this)>返却</button></td>'
-//					+ '</tr>';
-//
-//				$('#table_data').append(record);
-//
-//
-//				}
-//		}
-//	});
+ $.ajax({
+		type : 'GET',
+		url : 'http://localhost:8080/bookManagement/EmployeeBookReturnServlet',
+		dataType : 'json',
+		data:rq,
+
+		success : function(json) {
+			console.log('返却完了');
+
+
+		}
+	});
 
 
 
