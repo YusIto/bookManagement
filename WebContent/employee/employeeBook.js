@@ -2,11 +2,6 @@
 function executeAjax () {
 	'use strict';
 
-	// ?以降のパラメータを取得
-	// 今回で言うとhttp://localhost:8080/wt1/hobby.html?q=0001でいう0001が取得される
-//	var parameter  = location.search.substring( 1, location.search.length );
-//	parameter = decodeURIComponent( parameter );
-//	parameter = parameter.split('=')[1];
 
 
 
@@ -27,8 +22,10 @@ function executeAjax () {
 					console.log(element.returnDate);
 					console.log(element.id);
 
-					var a = element.returnDate;
-					console.log(a.substring(0,11));
+					var returnDate = element.returnDate;
+					console.log(returnDate.substring(0,11));
+
+
 					var b =a.substring(0,11)
 					var returnDate = b.replace('-','/');
 					var returnDate2 = returnDate.replace('-','/');
