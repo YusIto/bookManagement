@@ -42,7 +42,7 @@ var searchBookInformation = function() {
 					} else {
 						var searchResult = '<tr>' + '<th>タイトル' + '</th>'
 								+ '<th>著者名' + '</th>' + '<th>ジャンル' + '</th>'
-								+ '<th>ステータス</th>' + '<th></th>' + '<td>'
+								+ '<th>ステータス</th>' + '<th></th>' + '</tr>'+'<td>'
 								+ json[i].title + '</td>' + '<td>'
 								+ json[i].author + '<td>' + '<td>'
 								+ json[i].genre + '</td>' + '<td>'
