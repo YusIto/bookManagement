@@ -16,7 +16,7 @@ var searchBookInformation = function() {
 	$('#js-search-result').empty();
 
 	// サーバーにデータ送信
-	$ajax({
+	$.ajax({
 		type : 'GET',
 		dataType : 'json',
 		url : 'http://localhost:8080/bookManagement/EmployeeSerchServlet',
@@ -24,12 +24,29 @@ var searchBookInformation = function() {
 		success : function(json) {
 			console.log('返却値', json);
 			$('#js-search-result').empty();
-
+			//?以降のURLを取得、Ex ?page=1&title=java&author=未来太郎&genre=ビジネス&status=貸出可能
+			var url = location.search;
+			console.log(url);
+			//?を取り除く
+			var remove = url.substring(1);
+			console.log(remove);
+			//エンコードされたURLをデコードする
+			var encode = encodeURI(remove);
+			var decode = decodeURI(remove);
+			console.log(decode);
+			//&で区切り、配列に検索要素を格納する
+			var search = decode.split('&');
+			console.log(search);
+			//配列からページの値を取得
+			var page = search[0];
+			console.log(page);
+			// page = 1;
+			var start = (page-1)*10;
 			// ログイン情報確認
 			// if (json.result == "ok") {
 			if (json !== "検索結果はありません") {
 				var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th></tr></thead>';
-				for (var i = 0; i < json.length; i++) {
+				for (var i = start; i < start+10 && i < json.length; i++) {
 					if (json[i].status == "貸出可能") {
 						searchResult += '<tr><td>' + json[i].title + '</td>'
 								+ '<td>' + json[i].author + '</td>' + '<td>'
@@ -39,7 +56,7 @@ var searchBookInformation = function() {
 								+ json[i].bookId + '">貸出</button></td>';
 					} else {
 						searchResult += '<tr><td>' + json[i].title + '</td>'
-								+ '<td>' + json[i].author + '<td>' + '<td>'
+								+ '<td>' + json[i].author + '</td>' + '<td>'
 								+ json[i].genre + '</td>' + '<td>'
 								+ json[i].status + '</td>' + '<td>' + '</td>';
 					}
@@ -70,7 +87,7 @@ var searchBookInformation = function() {
 
 // ログアウト
 var logout = function() {
-	$ajax({
+	$.ajax({
 		type : 'GET',
 		url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
 		success : function(json) {
