@@ -32,13 +32,13 @@ var loadByAjax = function(requestQuery, page) {
 									+ '</td>' + '<td>' + json[i].genre
 									+ '</td>' + '<td>' + json[i].status
 									+ '</td>' + '<td>'
-									+ '<button class="book_rental" value="'
+									+ '<button class="book_edit" value="'
 									+ json[i].bookId + '">蔵書編集</button></td>';
 						}
 						// 上記処理をHTMLに挿入
 						$('#js-search-result').append(searchResult);
 						// 貸出ボタンが押された時
-						$('.book_rental').click(rental);
+						$('.book_edit').click(bookEdit);
 					} else {
 						$('#js-search-result').append(json);
 					}
@@ -88,12 +88,12 @@ var logout = function() {
 	$
 			.ajax({
 				type : 'GET',
-				url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
+				url : 'http://localhost:8080/bookManagement/ManegerLoginServlet',
 				success : function(json) {
 					// サーバーとの通信に成功した時の処理
 					// 確認のために返却値を出力
 					console.log('返却値', json);
-					window.location.href = "http://localhost:8080/bookManagement/employee/employeeLogin.html";
+					window.location.href = "http://localhost:8080/bookManagement/manager/managerLogin.html";
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
 					// サーバーとの通信に失敗した時の処理
@@ -105,15 +105,15 @@ var logout = function() {
 }
 
 // 蔵書登録への遷移
-var addBook = function() {
-	var url = '';
+var bookAdd = function() {
+	var url = 'http://localhost:8080/bookManagement/manager/managerAdd.html';
 	location.href = url;
 }
 
 // 蔵書編集ボタンが押された時
-var editBook = function() {
+var bookEdit = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='
+	var url = 'http://localhost:8080/bookManagement/manager/managerEdit.html?bookId='+bookId;
 			+ bookId;
 	location.href = url;
 }
@@ -164,7 +164,7 @@ var loadTable = function() {
 // 次へボタン
 var moveToNextPage = function() {
 
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page='
+	var url = 'http://localhost:8080/bookManagement/manager/managerSearch.html?page='
 			+ (page + 1);
 	url += '&title=' + title;
 	url += '&author=' + author;
@@ -175,7 +175,7 @@ var moveToNextPage = function() {
 
 // 前へボタン
 var moveToPreviousPage = function() {
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page='
+	var url = 'http://localhost:8080/bookManagement/manager/managerSearch.html?page='
 			+ (page - 1);
 	url += '&title=' + title;
 	url += '&author=' + author;
@@ -192,7 +192,7 @@ $(document).ready(function() {
 	loadTable();
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);
-	$('#js-button-book').click(book);
+	$('#js-button-book').click(bookAdd);
 	$('#js-next-button').click(moveToNextPage);
 	$('#js-previous-button').click(moveToPreviousPage);
 });
