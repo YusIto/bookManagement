@@ -66,14 +66,14 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 
 		String sqlInsert ="insert into RENTAL \n" +
 						"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
-				"values('a','b','"+today+"','"+retrunDate+"')";
+				"values('0000001','10001','"+today+"','"+retrunDate+"')";
 
 		System.out.println(sqlInsert);
 
 		String sqlUpdate = "update BOOKS \n" +
 							"set BOOKS.STATUS = '貸出中' \n" +
 							"where 1 = 1 \n" +
-							"and BOOKS.ID = '30005' \n";
+							"and BOOKS.ID = '10001' \n";
 
 		try (
 				// データベースへ接続します
