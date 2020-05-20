@@ -4,20 +4,18 @@ function executeAjax () {
 
 	// ?以降のパラメータを取得
 	// 今回で言うとhttp://localhost:8080/wt1/hobby.html?q=0001でいう0001が取得される
-	var parameter  = location.search.substring( 1, location.search.length );
-	parameter = decodeURIComponent( parameter );
-	parameter = parameter.split('=')[1];
+//	var parameter  = location.search.substring( 1, location.search.length );
+//	parameter = decodeURIComponent( parameter );
+//	parameter = parameter.split('=')[1];
 
 
-	var requestQuery = {
-			syainId : parameter
-		};
+
 
 		$.ajax({
 			type : 'GET',
-			url : '/wt2/api/hobby',
+			url : 'bookManagement/EmployeeBookServlet',
 			dataType : 'json',
-			data : requestQuery,
+			//data : requestQuery,
 			success : function(json) {
 
 				var syainName = json[0].syainName;
@@ -49,5 +47,11 @@ $(document).ready(function () {
 
 	// 更新ボタンにイベント設定
 	$('#searchBtn').bind('click',executeAjax);
+	$('#js-return').click(retrunButton);
 
 });
+
+
+var retrunButton = function(){
+	console.log("戻るを押しました。");
+}

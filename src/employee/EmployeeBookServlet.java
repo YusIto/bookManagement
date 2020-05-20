@@ -32,7 +32,7 @@ public class EmployeeBookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
-		String syainId = request.getParameter("syainId");
+
 
 		String sql ="Select BOOKS.TITLE, BOOKS.AUTHOR, BOOKS.GENRE, RENTAL.RETURN_DATE from BOOKS, RENTAL, EMPLOYEES \n" +
 				"where 1=1 \n" +
