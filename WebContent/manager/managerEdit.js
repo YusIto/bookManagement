@@ -76,11 +76,70 @@ function edit() {
 
 
 $(document).ready(function() {
-
+	editPage();
 	$('#js-add-button').click(edit);
 	$('#js-delete-button').click(deleteBook);
-
+	$('#js-input-id').val('a');
+	console.log("aa");
 });
+
+
+function getParam(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+function editPage(){
+	console.log("常に表示");
+	var param = location.search;
+	var id = getParam('id');
+	var rq = {id:id};
+	console.log(rq);
+
+	$.ajax({
+		type : "GET",
+		url : "http://localhost:8080/bookManagement/ManagerDeleteServlet",
+		data : rq,
+		datatype : 'json',
+
+		success : function(json) {
+
+
+			for (var i = 0;i<json.size();i++){
+				var element = json[i];
+			}
+
+
+
+
+
+			console.log('返却値', json);
+			// 登録完了のアラート
+			alert('蔵書削除が完了しました');
+			// 2秒後に画面遷移
+			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+
+
+
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			// サーバーとの通信に失敗したときの処理
+			alert('入力した内容が登録出来ませんでした。');
+			console.log(errorThrown)
+		}
+
+	});
+
+}
+
+
+
+
 
 
 function deleteBook(){
