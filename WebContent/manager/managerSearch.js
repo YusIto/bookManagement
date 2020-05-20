@@ -113,8 +113,9 @@ var bookAdd = function() {
 // 蔵書編集ボタンが押された時
 var bookEdit = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/manager/managerEdit.html?bookId='+bookId;
+	var url = 'http://localhost:8080/bookManagement/manager/managerEdit.html?bookId='
 			+ bookId;
+
 	location.href = url;
 }
 
