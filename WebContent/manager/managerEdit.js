@@ -77,5 +77,43 @@ function edit() {
 
 $(document).ready(function() {
 
-	$('#js-add-button').click(add)
+	$('#js-add-button').click(edit);
+	$('#js-delete-button').click(deleteBook);
+
 });
+
+
+function deleteBook(){
+	console.log("削除ボタンを押しました。");
+	var jsid = $('#js-input-id').val()
+
+	var rq = {id:jsid};
+
+	console.log(rq);
+
+	$.ajax({
+		type : "POST",
+		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
+		data : rq,
+		datatype : 'json',
+		success : function(json) {
+
+			// サーバーとの通信に成功した時の処理
+			// 確認のために返却値を出力
+			console.log('返却値', json);
+			// 登録完了のアラート
+			alert('編集が完了しました');
+			// 2秒後に画面遷移
+			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+		},
+		error : function(XMLHttpRequest, textStatus, errorThrown) {
+			// サーバーとの通信に失敗したときの処理
+			alert('入力した内容が登録出来ませんでした。');
+			console.log(errorThrown)
+		}
+
+	});
+
+
+
+}
