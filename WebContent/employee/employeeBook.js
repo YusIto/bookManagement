@@ -19,9 +19,6 @@ function executeAjax () {
 			success : function(json) {
 				console.log(json);
 
-
-
-
 				for (var i = 0; i < json.length; i++) {
 
 					var element = json[i];
@@ -36,7 +33,7 @@ function executeAjax () {
 						+ '<td>' + element.author + '</td>'
 						+ '<td>' + element.genre + '</td>'
 						+ '<td>' + element.returnDate + '</td>'
-						+ '<td><button value='+element.id+' onclick = returnBook(this)>返却</button></td>'
+						+ '<td><button value='+element.id+' onclick = "returnBook(this)">返却</button></td>'
 						+ '</tr>';
 
 					$('#table_data').append(record);
@@ -61,8 +58,50 @@ $(document).ready(function () {
 
 });
 
-var returnBook = function(){
+var returnBook = function(i){
 	console.log("返却ボタンを押しました。");
+	var returnBookValue =$(i).val();
+	console.log("deleteEmpのなか"+i);
+	console.log("deleteEmpのなかf"+ returnBookValue);
+
+
+//	$.ajax({
+//		type : 'GET',
+//		url : 'http://localhost:8080/bookManagement/EmployeeBookServlet',
+//		dataType : 'json',
+//
+//		success : function(json) {
+//			console.log(json);
+//
+//
+//
+//
+//			for (var i = 0; i < json.length; i++) {
+//
+//				var element = json[i];
+//				console.log(element.title);
+//				console.log(element.author);
+//				console.log(element.genre);
+//				console.log(element.returnDate);
+//				console.log(element.id);
+//
+//				var record = '<tr>'
+//					+ '<td>' + element.title + '</td>'
+//					+ '<td>' + element.author + '</td>'
+//					+ '<td>' + element.genre + '</td>'
+//					+ '<td>' + element.returnDate + '</td>'
+//					+ '<td><button value='+element.id+' onclick = returnBook(this)>返却</button></td>'
+//					+ '</tr>';
+//
+//				$('#table_data').append(record);
+//
+//
+//				}
+//		}
+//	});
+
+
+
 }
 
 
@@ -70,4 +109,5 @@ var returnBook = function(){
 
 var retrunButton = function(){
 	console.log("戻るを押しました。");
+
 }
