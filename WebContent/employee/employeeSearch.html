@@ -3,7 +3,7 @@
 <head>
 <meta charset="UTF-8">
 <title>蔵書一覧</title>
-<link rel="stylesheet" href="employee/style.css" type="text/css">
+<link rel="stylesheet" href="./style.css" type="text/css">
 <!-- JavaScriptの読み込み -->
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
 	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
@@ -12,19 +12,19 @@
 </head>
 <body>
 	<header>
-		<div>
+		<div class="title">
 			<h1>蔵書一覧</h1>
 		</div>
-		<div>
+		<div class="logout-btn">
 			<button id="js-button-logout">ログアウト</button>
 		</div>
 	</header>
-	<div>
+	<div class="renting-books-btn">
 		<button id="js-button-book">借りている本一覧</button>
 	</div>
-	<div>
+	<div  class="search">
 		<!-- 検索表示 -->
-		<table>
+		<table class="search-table">
 			<tr>
 				<th>タイトル:</th>
 				<td><input type="text" id="js-add-inputtitle"></input></td>
