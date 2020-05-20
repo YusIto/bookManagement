@@ -92,8 +92,8 @@ function deleteBook(){
 	console.log(rq);
 
 	$.ajax({
-		type : "POST",
-		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
+		type : "GET",
+		url : "http://localhost:8080/bookManagement/ManagerDeleteServlet",
 		data : rq,
 		datatype : 'json',
 		success : function(json) {
@@ -102,7 +102,7 @@ function deleteBook(){
 			// 確認のために返却値を出力
 			console.log('返却値', json);
 			// 登録完了のアラート
-			alert('編集が完了しました');
+			alert('蔵書削除が完了しました');
 			// 2秒後に画面遷移
 			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
 		},
