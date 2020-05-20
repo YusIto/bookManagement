@@ -22,20 +22,22 @@ function executeAjax () {
 					console.log(element.returnDate);
 					console.log(element.id);
 
-					var returnDate = element.returnDate;
-					console.log(returnDate.substring(0,11));
+					var returnDate1 = element.returnDate;
+
+					console.log(returnDate1.substring(0,11));
+
+					var returnDate3=returnDate1.substring(0,11)
+					var returnDate2 = returnDate3.replace('-','/');
+					var returnDate = returnDate2.replace('-','/');
+					console.log(returnDate);
 
 
-					var b =a.substring(0,11)
-					var returnDate = b.replace('-','/');
-					var returnDate2 = returnDate.replace('-','/');
-					console.log(returnDate2);
 
 					var record = '<tr>'
 						+ '<td>' + element.title + '</td>'
 						+ '<td>' + element.author + '</td>'
 						+ '<td>' + element.genre + '</td>'
-						+ '<td>' + returnDate2 + '</td>'
+						+ '<td>' + returnDate + '</td>'
 						+ '<td><button value='+element.id+' onclick = "returnBook(this)">返却</button></td>'
 						+ '</tr>';
 
