@@ -1,10 +1,15 @@
+//画面ロード
 var loadByAjax = function(requestQuery, page) {
 	// 前回の検索結果を空にする
 	$('#js-search-result').empty();
-
+	$('#js-next-button').css('visibility', 'visible');
+	if (page == 1) {
+		$('#js-previous-button').css('visibility', 'hidden');
+	} else {
+		$('#js-previous-button').css('visibility', 'visible');
+	}
 	// サーバーにデータ送信
-	$
-			.ajax({
+	$.ajax({
 				type : 'GET',
 				dataType : 'json',
 				url : 'http://localhost:8080/bookManagement/EmployeeSerchServlet',
@@ -43,7 +48,6 @@ var loadByAjax = function(requestQuery, page) {
 						$('.book_rental').click(rental);
 					} else {
 						$('#js-search-result').append(json);
-
 					}
 
 					// } else {
@@ -59,29 +63,36 @@ var loadByAjax = function(requestQuery, page) {
 				}
 			})
 }
+//URLになる変数宣言
+var page;
+var title;
+var author;
+var genre;
+var status;
+//検索結果
 var searchBookInformation = function() {
 	// 打ち込まれたデータの取得
-	var bookTitle = $('#js-add-inputtitle').val();
-	var bookAuthor = $('#js-add-inputauthor').val();
-	var bookGenre = $('#genre').val();
-	var bookStatus = $('#book_status').val();
+	page = 1;
+	title = $('#js-add-inputtitle').val();
+	author = $('#js-add-inputauthor').val();
+	genre = $('#genre').val();
+	status = $('#book_status').val();
 
 	var requestQuery = {
-		bookTitle : bookTitle,
-		bookAuthor : bookAuthor,
-		bookGenre : bookGenre,
-		bookStatus : bookStatus
+		bookTitle : title,
+		bookAuthor : author,
+		bookGenre : genre,
+		bookStatus : status
 	};
 	// リクエストクエリの確認
 	console.log(requestQuery);
 
-	loadByAjax(requestQuery, 1)
+	loadByAjax(requestQuery, 1);
 }
 
 // ログアウト
 var logout = function() {
-	$
-			.ajax({
+	$.ajax({
 				type : 'GET',
 				url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
 				success : function(json) {
@@ -113,9 +124,9 @@ var rental = function() {
 	location.href = url;
 }
 
+//URLから値を取得
 var loadTable = function() {
-	// ?以降のURL(=リクエストパラメータ)を取得。ex)
-	// ?page=1&title=java&author=未来太郎&genre=ビジネス&status=貸出可能
+	// ?以降のURL(=リクエストパラメータ)を取得。ex)?page=1&title=java&author=未来太郎&genre=ビジネス&status=貸出可能
 	var url = location.search;
 	console.log(url);
 	if (url.length >= 1) {
@@ -131,19 +142,20 @@ var loadTable = function() {
 		console.log(search);
 		// 配列からページの値を取得
 		var arrayPage = search[0];
-		var page = arrayPage.split('=')[1];
+		page = arrayPage.split('=')[1];
+		page = parseInt(page);
 		// 配列からタイトルの値を取得
 		var arrayTitle = search[1];
-		var title = arrayTitle.slice(6);
+		title = arrayTitle.split('=')[1];
 		// 配列から著者名の値を取得
 		var arrayAuthor = search[2];
-		var author = arrayAuthor.slice(7);
+		author = arrayAuthor.split('=')[1];
 		// 配列からジャンルの値を取得
 		var arrayGenre = search[3];
-		var genre = arrayGenre.slice(6);
+		genre = arrayGenre.split('=')[1];
 		// 配列からステータスの値を取得
 		var arrayStatus = search[4];
-		var status = arrayStatus.slice(7);
+		status = arrayStatus.split('=')[1];
 		// 配列から取り出した値の確認
 		var requestQuery = {
 			bookTitle : title,
@@ -155,10 +167,29 @@ var loadTable = function() {
 	}
 }
 
-var pageMove = function() {
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page=2&title=&author=&genre=%E6%8A%80%E8%A1%93&status=%E8%B2%B8%E5%87%BA%E5%8F%AF%E8%83%BD'
+//次へボタン
+var moveToNextPage = function() {
+
+	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page='
+			+ (page + 1);
+	url += '&title=' + title;
+	url += '&author=' + author;
+	url += '&genre=' + genre;
+	url += '&status=' + status;
 	location.href = url;
 }
+
+//前へボタン
+var moveToPreviousPage = function() {
+	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page='
+			+ (page - 1);
+	url += '&title=' + title;
+	url += '&author=' + author;
+	url += '&genre=' + genre;
+	url += '&status=' + status;
+	location.href = url;
+}
+
 $(document).ready(function() {
 	'use strict';
 
@@ -168,5 +199,6 @@ $(document).ready(function() {
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);
 	$('#js-button-book').click(book);
-	$('#js-next-button').click(pageMove);
+	$('#js-next-button').click(moveToNextPage);
+	$('#js-previous-button').click(moveToPreviousPage);
 });
