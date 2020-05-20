@@ -6,7 +6,9 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
+import java.util.ArrayList;
 import java.util.HashMap;
+import java.util.List;
 import java.util.Map;
 
 import javax.servlet.ServletException;
@@ -87,21 +89,23 @@ public class EmployeeBookServlet extends HttpServlet {
 				) {
 
 					// 返却データを作成
+					List<Book>BookList = new ArrayList<>();
+
 					Map<String, String> responseData = new HashMap<>();
 					while (rs1.next()) {
 						Book b1 = new Book();
-						b1.setTitle(rs1.getString("ddi"));
-						b1.setAuthor(rs1.getString("ddi"));
-						b1.setGenre(rs1.getString("ddi"));
-						b1.se(rs1.getString("ddi"));
+						b1.setTitle(rs1.getString("TITLE"));
+						b1.setAuthor(rs1.getString("AUTHOR"));
+						b1.setGenre(rs1.getString("GENRE"));
+						b1.setReturnDate(rs1.getString("RETURN_DATE"));
+
+						BookList.add(b1);
 
 
 					}
 
-
-					//responseDataに何が入ったか確認
-					System.out.println(responseData);
-					pw.append(new ObjectMapper().writeValueAsString(responseData));
+					System.out.println(BookList);
+					pw.append(new ObjectMapper().writeValueAsString(BookList));
 
 				} catch (Exception e) {
 					throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);

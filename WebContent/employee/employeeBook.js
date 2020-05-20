@@ -13,26 +13,36 @@ function executeAjax () {
 
 		$.ajax({
 			type : 'GET',
-			url : 'bookManagement/EmployeeBookServlet',
+			url : 'http://localhost:8080/bookManagement/EmployeeBookServlet',
 			dataType : 'json',
-			//data : requestQuery,
-			success : function(json) {
 
-				var syainName = json[0].syainName;
-				document.getElementById("title_name").innerHTML = syainName + "さんの趣味一覧です！";
+			success : function(json) {
+				console.log(json);
+
+
+
 
 				for (var i = 0; i < json.length; i++) {
 
 					var element = json[i];
+					console.log(element.title);
+					console.log(element.author);
+					console.log(element.genre);
+					console.log(element.returnDate);
+					console.log(element.id);
 
 					var record = '<tr>'
-						+ '<td>' + element.no + '</td>'
-						+ '<td>' + element.hobbyCategory + '</td>'
-						+ '<td>' + element.hobby + '</td>'
+						+ '<td>' + element.title + '</td>'
+						+ '<td>' + element.author + '</td>'
+						+ '<td>' + element.genre + '</td>'
+						+ '<td>' + element.returnDate + '</td>'
+						+ '<td><button value='+element.id+' onclick = returnBook(this)>返却</button></td>'
 						+ '</tr>';
 
-					$('#table_data').append(record)
-				}
+					$('#table_data').append(record);
+
+
+					}
 			}
 		});
 
@@ -50,6 +60,12 @@ $(document).ready(function () {
 	$('#js-return').click(retrunButton);
 
 });
+
+var returnBook = function(){
+	console.log("返却ボタンを押しました。");
+}
+
+
 
 
 var retrunButton = function(){
