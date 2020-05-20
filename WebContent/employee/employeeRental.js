@@ -28,7 +28,7 @@ $(document).ready(function () {
 			// $('#hobbyTable').append('<tr>'+'<td>'+pwhobby.hobbyCategory+'</td>'+'</tr>');
 		 	// $('#hobbyTable').append('<td>'+pwhobby.hobby+'</td>'+'</tr>');
 				//$('#hobbyTable').append('<td>'+i+1+'</td>');
-				$('#rentalTable').append('<tr>'+'<td id = "js-title" >'+pw.title+'</td>'+'<td id = "js-author">'+pw.author+'</td>'+ '<td id = "js-genre">'+pw.genre+'</td>'+ '</tr>');
+				$('#rentalTable').append('<tr>'+'<td id = "js-title" >'+pw.title+'</td>'+'<td id = "js-author">'+pw.author+'</td>'+ '<td id = "js-genre">'+pw.genre+'</td>'+'<td><input id="js-today"></input></td>'+'<td><input id="js-retrun-date" type ="date" ></input>'+'</tr>');
 				//$('#rentalTable').append('<tr>'+'<td ><input id = "js-title" value = "'+pw.title+'">'+pw.title+'</td>'+'<td><input id = "js-author" value = "'+pw.author+'">'+pw.author+'</td>'+ '<td><input id = "js-genre" value = "'+pw.genre+'">'+pw.genre+'</td>'+ '</tr>');
 
 				//$('#hobbyTable').append('<tr>'+'</tr>');
