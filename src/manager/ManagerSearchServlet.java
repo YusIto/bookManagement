@@ -49,11 +49,6 @@ public class ManagerSearchServlet extends HttpServlet {
 		String bookAuthor = request.getParameter("bookAuthor");
 		String bookGenre = request.getParameter("bookGenre");
 		String bookStatus = request.getParameter("bookStatus");
-		//
-		// String bookTitle = "";
-		// String bookAuthor = "";
-		// String bookGenre = "技術";
-		// String bookStatus = "貸出可能";
 
 		System.out.println(bookTitle);
 		System.out.println(bookStatus);
@@ -65,7 +60,7 @@ public class ManagerSearchServlet extends HttpServlet {
 			// JDBCドライバのロード
 			Class.forName("oracle.jdbc.driver.OracleDriver");
 		} catch (ClassNotFoundException e) {
-			// ドライバが設定されていない場合はエラーになります
+			// ドライバが設定されていない場合はエラーになる
 			throw new RuntimeException(String.format("JDBCドライバのロードに失敗しました。詳細:[%s]", e.getMessage()), e);
 		}
 		// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定
@@ -95,22 +90,20 @@ public class ManagerSearchServlet extends HttpServlet {
 		// アクセスした人に応答するためのJSONを用意する
 		PrintWriter pw = response.getWriter();
 
-		// エラーが発生するかもしれない処理はtry-catchで囲みます
-		// この場合はDBサーバへの接続に失敗する可能性があります
 		try (
-				// データベースへ接続します
+				// データベースへ接続
 				Connection con = DriverManager.getConnection(url, user, pass);
-				// SQLの命令文を実行するための準備をおこないます
+				// SQLの命令文を実行するための準備
 				Statement stmt = con.createStatement();
-				// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
+				// SQLの命令文を実行し、その結果をResultSet型のrsに代入
 				ResultSet rs1 = stmt.executeQuery(sql);) {
+
 			// SQL実行後の処理内容
 
+			// ログイン確認
 			HttpSession session = request.getSession();
 			// セッションからユーザーコードを取得
 			String status = (String) session.getAttribute("login");
-			// セッションにユーザーが保存されてない(ログインしてない)、もしく䛿画面から送られてくるユーザー
-			// コードと違う場合䛿エラー
 
 			// //ログイン機能実装時追加
 			// if (status == null) { // ログインしていない場合䛾処理
@@ -136,10 +129,13 @@ public class ManagerSearchServlet extends HttpServlet {
 				// JSONで出力する
 				pw.append(new ObjectMapper().writeValueAsString(list));
 			}
-			// }
-		} catch (Exception e) {
-			throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細:[%s]", e.getMessage()), e);
-		}
+//		}
+	}catch(
+
+	Exception e)
+	{
+		throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細:[%s]", e.getMessage()), e);
+	}
 	}
 
 	/**
