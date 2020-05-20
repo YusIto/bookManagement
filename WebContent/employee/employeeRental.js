@@ -3,40 +3,23 @@
  */
 
 $(document).ready(function () {
-	//編集ボタンクリック時、edit_button関数利用
+	//ボタンクリック時、関数利用
 	$("#js-return").click(returnSearch);
 	$("#js-confirmation").click(confirmation);
 
-
+   //初期表示
 	$.ajax({
 		Type : 'GET',
-		url : '/bookManagement/EmployeeRentalServlet',//サーブレットを確認
+		url : '/bookManagement/EmployeeRentalServlet',
 		dataType : 'json',
-		//data : requestQuery,
+
 		success : function(pw) {
 			console.log(pw);
 			console.log(pw.title);
 			console.log(pw.author);
 			console.log(pw.genre);
 
-//			var edit ='<td><input type="button"value="'+pwDepartment.departmentId+'" class = "js-edit-button" onclick = "editDepartment(this)" >編集</input></td>'
-//			var del= ' <td><input type="button" value="'+pwDepartment.departmentId+'" class = "js-delete-button" onclick = "deleteDepartment(this)"  >削除</input></td>'
-//			$('#DepartmentTable').append('<tr>'+'<td>'+pwDepartment.departmentId+'</td>'+'<td>'+pwDepartment.departname+'</td>'+edit +del+'</tr>');
-//
-
-
-			// $('#hobbyTable').append('<tr>'+'<td>'+pwhobby.hobbyCategory+'</td>'+'</tr>');
-		 	// $('#hobbyTable').append('<td>'+pwhobby.hobby+'</td>'+'</tr>');
-				//$('#hobbyTable').append('<td>'+i+1+'</td>');
-				$('#rentalTable').append('<tr>'+'<td id = "js-title" >'+pw.title+'</td>'+'<td id = "js-author">'+pw.author+'</td>'+ '<td id = "js-genre">'+pw.genre+'</td>'+'<td><input id="js-today"></input></td>'+'<td><input id="js-retrun-date" type ="date" ></input>'+'</tr>');
-				//$('#rentalTable').append('<tr>'+'<td ><input id = "js-title" value = "'+pw.title+'">'+pw.title+'</td>'+'<td><input id = "js-author" value = "'+pw.author+'">'+pw.author+'</td>'+ '<td><input id = "js-genre" value = "'+pw.genre+'">'+pw.genre+'</td>'+ '</tr>');
-
-				//$('#hobbyTable').append('<tr>'+'</tr>');
-
-
-
-
-
+			$('#rentalTable').append('<tr>'+'<td id = "js-title" >'+pw.title+'</td>'+'<td id = "js-author">'+pw.author+'</td>'+ '<td id = "js-genre">'+pw.genre+'</td></tr>');
 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -46,23 +29,9 @@ $(document).ready(function () {
 		}
 	});
 
-
-
-
 });
 
-
-//window.onload = function(){
-//var dateObj = new Date();
-//var y = dateObj.getFullYear();
-//var m = dateObj.getMonth() + 1;
-//var d = dateObj.getDate();
-//var yb = "日月火水木金土".charAt(dateObj.getDay());
-//document.getElementById("view_time").innerHTML = y+"/"+m+"/"+d;
-//
-//}
-
-
+//日付表示
 window.onload = function () {
     var today = new Date();
     today.setDate(today.getDate());
@@ -72,6 +41,7 @@ window.onload = function () {
     document.getElementById("js-today").value=yyyy+'/'+mm+'/'+dd;
 }
 
+//確定ボタン
 var confirmation = function (){
 	console.log("確定を押しました。");
 
@@ -99,24 +69,16 @@ var requestQuery = {
 		retrunDate:retrunDateVal
 }
 
-
-
-
+//確定ボタン後にデータ送信
  $.ajax({
 		Type : 'GET',
-		url : '/bookManagement/EmployeeRentalConfirmServlet',//サーブレットを確認
+		url : '/bookManagement/EmployeeRentalConfirmServlet',
 		dataType : 'json',
 		data : requestQuery,
 
-
-
 		success : function(pw) {
-			//console.log(pw);
 
 			console.log("通信成功");
-
-
-
 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -126,15 +88,9 @@ var requestQuery = {
 		}
 	});
 
-
-
-
-
-
 }
 
-
-
+//戻るボタン
 var returnSearch = function (){
 	console.log("戻るを押しました。");
 }

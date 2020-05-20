@@ -6,8 +6,6 @@ import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
-import java.util.HashMap;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,16 +34,12 @@ public class EmployeeRentalServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-
-		//文字化け
+				//文字化け防止
 				response.setContentType("text/html;charset=UTF-8");
 
 				employeeRental er1 = new employeeRental();
 				// JDBCドライバの準備
 				try {
-
 					// JDBCドライバのロード
 					Class.forName("oracle.jdbc.driver.OracleDriver");
 
@@ -82,16 +76,14 @@ public class EmployeeRentalServlet extends HttpServlet {
 
 						// SQLの命令文を実行するための準備をおこないます
 						 Statement stmt = con.createStatement();
-//						PreparedStatement stmt = createPreparedStatement(con, userId, password);
 
-						// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
+						// SQLの命令文を実行し、その結果をResultSet型のrs1に代入します
 						ResultSet rs1 = stmt.executeQuery(sql);
 
 				) {
 
 					// 返却データを作成
-					Map<String, String> responseData = new HashMap<>();
-					if (rs1.next()) {
+				if (rs1.next()) {
 						er1.setTitle(rs1.getString("bt"));
 						er1.setAuthor(rs1.getString("ba"));
 						er1.setGenre(rs1.getString("bg"));
@@ -99,8 +91,7 @@ public class EmployeeRentalServlet extends HttpServlet {
 						System.out.println(er1.getTitle());
 
 					}
-					//responseDataに何が入ったか確認
-					//System.out.println(responseData);
+
 					pw.append(new ObjectMapper().writeValueAsString(er1));
 
 				} catch (Exception e) {
@@ -108,14 +99,6 @@ public class EmployeeRentalServlet extends HttpServlet {
 				}
 
 			}
-
-
-
-
-
-
-
-
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse response)

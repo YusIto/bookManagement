@@ -33,13 +33,8 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 	 * @see HttpServlet#doGet(HttpServletRequest request, HttpServletResponse response)
 	 */
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
-		// TODO Auto-generated method stub
-		//response.getWriter().append("Served at: ").append(request.getContextPath());
-
 		//文字化け
 		response.setContentType("text/html;charset=UTF-8");
-
-
 
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
@@ -51,8 +46,6 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 		System.out.println(author);
 		System.out.println(today);
 		System.out.println(retrunDate);
-
-
 
 
 		try {
@@ -71,27 +64,16 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 		String dbPass = "bmdb";
 
 
-
-		// 実行するSQL文
-//		String sql ="insert into RENTAL \n" +
-//				"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
-//				"values('a','b','"+today+"','"+retrunDate+"')";
-//
-
-
-//		String sql ="insert into RENTAL \n" +
-//				"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
-//				"values('a','b','2020/02/02','2020/04/02')";
-
-
-		String sql ="insert into RENTAL \n" +
-				"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
+		String sqlInsert ="insert into RENTAL \n" +
+						"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
 				"values('a','b','"+today+"','"+retrunDate+"')";
 
+		System.out.println(sqlInsert);
 
-
-
-		System.out.println(sql);
+		String sqlUpdate = "update BOOKS \n" +
+							"set BOOKS.STATUS = '貸出中' \n" +
+							"where 1 = 1 \n" +
+							"and BOOKS.ID = '30005' \n";
 
 		try (
 				// データベースへ接続します
@@ -99,20 +81,19 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 
 				// SQLの命令文を実行するための準備をおこないます
 				 Statement stmt = con.createStatement();
-//				PreparedStatement stmt = createPreparedStatement(con, userId, password);
 				) {
-				// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
-				int rs1 = stmt.executeUpdate(sql);
+				// SQLの命令文を実行し、その結果をResultSet型のrs1に代入します
+				int rs1 = stmt.executeUpdate(sqlInsert);
+				int rs2 = stmt.executeUpdate(sqlUpdate);
 
 				// アクセスした人に応答するためのJSONを用意する
 				PrintWriter pw = response.getWriter();
 
-			pw.append(new ObjectMapper().writeValueAsString("貸出履歴に登録しました。"));
+			pw.append(new ObjectMapper().writeValueAsString("貸出履歴に登録とステータスを変更しました。"));
 
 		} catch (Exception e) {
 			throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
 		}
-
 	}
 
 	/**
