@@ -102,6 +102,7 @@ header {
 
 .result-table td:nth-child(1) {
 	word-wrap: break-word;
+	width: 60%;
 }
 
 /*
