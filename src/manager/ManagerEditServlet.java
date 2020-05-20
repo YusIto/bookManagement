@@ -80,7 +80,7 @@ public class ManagerEditServlet extends HttpServlet {
 				book.setStatus(rs1.getString("STATUS"));
 
 			//book確認
-				System.out.println("bookの中身は"book);
+				System.out.println("bookの中身は"+ book);
 			}
 		} catch (Exception e) {
 			throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
