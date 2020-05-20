@@ -5,10 +5,9 @@ import java.io.PrintWriter;
 import java.sql.Connection;
 import java.sql.DriverManager;
 import java.sql.ResultSet;
-import java.sql.SQLException;
 import java.sql.Statement;
-import java.util.ArrayList;
-import java.util.List;
+import java.util.HashMap;
+import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -32,49 +31,83 @@ public class EmployeeBookServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 
+		//文字化け
+				response.setContentType("text/html;charset=UTF-8");
 
 
-		String sql ="Select BOOKS.TITLE, BOOKS.AUTHOR, BOOKS.GENRE, RENTAL.RETURN_DATE from BOOKS, RENTAL, EMPLOYEES \n" +
-				"where 1=1 \n" +
-				" and BOOKS.ID =RENTAL.BOOK_ID \n" +
-				" and EMPLOYEES.ID = RENTAL.EMPLOYEE_ID \n" +
-				" and BOOKS.ID ='10001' \n" +
-				" and EMPLOYEES.ID = '0000001' \n" +
-				" and BOOKS.STATUS ='貸出可能' \n";
 
-		try (
-				// データベースへ接続します
-				Connection con = DriverManager.getConnection("jdbc:oracle:thin:@localhost:1521:XE", "wt2", "wt2");
+		// JDBCドライバの準備
+				try {
 
-				// SQLの命令文を実行するための準備をおこないます
-				Statement stmt = con.createStatement();
+					// JDBCドライバのロード
+					Class.forName("oracle.jdbc.driver.OracleDriver");
 
-				// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
-				ResultSet rs = stmt.executeQuery(sql);
+				} catch (ClassNotFoundException e) {
+					// ドライバが設定されていない場合はエラーになります
+					throw new RuntimeException(String.format("JDBCドライバのロードに失敗しました。詳細:[%s]", e.getMessage()), e);
+				}
 
-		) {
-			List<Book> list = new ArrayList<>();
+				// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定
+				String dbUrl = "jdbc:log4jdbc:oracle:thin:@localhost:1521:XE";
+				String dbUser = "bmdb";
+				String dbPass = "bmdb";
 
-			while (rs.next()) {
-				Book book = new Book();
+				// アクセスした人に応答するためのJSONを用意する
+				PrintWriter pw = response.getWriter();
 
-				book.setTitle(rs.getString("TI"));
-				hobby.setHobbyCategory(rs.getString("CATEGORY_NAME"));
-				hobby.setHobby(rs.getString("HOBBY_NAME"));
-				hobby.setSyainName(rs.getString("SYAINNAME"));
 
-				list.add(hobby);
+				String sql ="select \n" +
+						"BOOKS.TITLE, \n" +
+						"BOOKS.AUTHOR, \n" +
+						"BOOKS.GENRE, \n" +
+						"RENTAL.RETURN_DATE \n" +
+						"from  \n" +
+						"EMPLOYEES, \n" +
+						"BOOKS, \n" +
+						"RENTAL \n" +
+						"where 1=1 \n" +
+						"and EMPLOYEES.ID = '0000001' \n" +
+						"and BOOKS.STATUS = '貸出中' \n" +
+						"and EMPLOYEES.ID = RENTAL.EMPLOYEE_ID \n" +
+						"and BOOKS.ID = RENTAL.BOOK_ID \n";
+
+
+				// DBへ接続してSQLを実行
+				try (
+						// データベースへ接続します
+						Connection con = DriverManager.getConnection(dbUrl, dbUser, dbPass);
+
+						// SQLの命令文を実行するための準備をおこないます
+						 Statement stmt = con.createStatement();
+//						PreparedStatement stmt = createPreparedStatement(con, userId, password);
+
+						// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
+						ResultSet rs1 = stmt.executeQuery(sql);
+
+				) {
+
+					// 返却データを作成
+					Map<String, String> responseData = new HashMap<>();
+					while (rs1.next()) {
+						Book b1 = new Book();
+						b1.setTitle(rs1.getString("ddi"));
+						b1.setAuthor(rs1.getString("ddi"));
+						b1.setGenre(rs1.getString("ddi"));
+						b1.se(rs1.getString("ddi"));
+
+
+					}
+
+
+					//responseDataに何が入ったか確認
+					System.out.println(responseData);
+					pw.append(new ObjectMapper().writeValueAsString(responseData));
+
+				} catch (Exception e) {
+					throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
+				}
+
 			}
-
-			PrintWriter w = response.getWriter();
-			w.write(new ObjectMapper().writeValueAsString(list));
-
-		} catch (SQLException e) {
-			throw new RuntimeException(e);
-		}
-
-		// -- ここまで --
-	}
 
 	/**
 	 * @see HttpServlet#doPost(HttpServletRequest request, HttpServletResponse
