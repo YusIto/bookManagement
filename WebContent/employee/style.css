@@ -56,6 +56,19 @@ header {
 	width: 100%;
 	height: 100px;
 }
+
+.search-table th{
+	text-align: right;
+	width: 100%;
+	height: 100%;
+}
+
+.search-table td{
+	text-align: right;
+	width: 80%;
+	height: 100%;
+}
+
 /*
 #table {
 	外部余白
