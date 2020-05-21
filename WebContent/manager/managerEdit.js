@@ -99,13 +99,13 @@ function editPage(){//editPage関数
 			console.log(element.status);
 
 
-			var  purchasedDate = element.purchasedDate;
+//			var  purchasedDate = element.purchasedDate;
+//
+//			var purchasedDate3=purchasedDate.substring(0,11)
+//			var purchasedDate2 = purchasedDate3.replace('-','/');
+//			var purchasedDate = purchasedDate2.replace('-','/');
 
-			var purchasedDate3=purchasedDate.substring(0,11)
-			var purchasedDate2 = purchasedDate3.replace('-','/');
-			var purchasedDate = purchasedDate2.replace('-','/');
-
-			console.log("日付"+ purchasedDate);
+			//console.log("日付"+ purchasedDate);
 
 
 			$('#js-input-id').val(element.id);
@@ -113,7 +113,7 @@ function editPage(){//editPage関数
 			$('#js-input-author').val(element.author);
 			$('#genre').val(element.genre);
 			$('#js-input-buyer').val(element.buyer);
-			$('#js-input-purchasedate').val(purchasedDate);
+			$('#js-input-purchasedate').val(element.purchasedDate);
 			$('#status').val(element.status);
 
 		},
@@ -130,6 +130,7 @@ function editPage(){//editPage関数
 function deleteBook(){//deleteBook関数
 	console.log("削除ボタンを押しました。");
 	var jsId = $('#js-input-id').val()
+
 
 	var rq = {id:jsId};
 

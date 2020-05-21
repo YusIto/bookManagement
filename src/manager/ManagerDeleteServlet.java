@@ -60,7 +60,7 @@ public class ManagerDeleteServlet extends HttpServlet {
 				// SQLの命令文を実行するための準備をおこないます
 				Statement stmt = con.createStatement();) {
 			// SQLの命令文を実行
-			stmt.executeQuery("delete from BOOKS where ID ='"+ id +"'; \n");
+			stmt.executeUpdate("delete from BOOKS where ID ='"+ id +"'; \n");
 
 			// アクセスした人に応答するためのJSONを用意する
 			PrintWriter pw = response.getWriter();

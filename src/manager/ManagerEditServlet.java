@@ -49,7 +49,7 @@ public class ManagerEditServlet extends HttpServlet {
 		// 実行するSQL文
 		String sql ="select ID, TITLE, AUTHOR, GENRE, BUYER, PURCHASED_DATE, STATUS from BOOKS  \n" +
 				"where ID='"+ id +"' \n";
-		
+
 
 		Book book = new Book();
 
@@ -145,7 +145,7 @@ public class ManagerEditServlet extends HttpServlet {
 				// SQLの命令文を実行するための準備をおこないます
 				Statement stmt = con.createStatement();) {
 			// SQLの命令文を実行
-				stmt.executeQuery(sql);
+				stmt.executeUpdate(sql);
 
 			// アクセスした人に応答するためのJSONを用意する
 			PrintWriter pw = response.getWriter();

@@ -33,7 +33,7 @@ function add() {
 	console.log(requestQuery)
 	$.ajax({
 		type : "POST",
-		url : "http://localhost:8080/bookManagement/ManagerAddServlet",
+		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
 		data : requestQuery,
 		datatype : 'json',
 		success : function(json) {
@@ -44,8 +44,7 @@ function add() {
 			// 登録完了のアラート
 			alert('登録が完了しました');
 			// 2秒後に画面遷移
-			//setTimeout("location.href='.maneger/managerSearch.html';", 2000);
-			location.href='.maneger/managerSearch.html';
+			setTimeout("location.href='.maneger/managerSearch.html';", 2000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
