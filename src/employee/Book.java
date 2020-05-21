@@ -1,6 +1,8 @@
 package employee;
+
 public class Book {
 	public Book(){
+
 	}
 	//Bookクラスの要素
 	private String id;
@@ -63,3 +65,6 @@ public class Book {
 		this.returnDate = returnDate;
 	}
 }
+
+
+

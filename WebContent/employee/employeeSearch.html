@@ -1,0 +1,69 @@
+<!DOCTYPE html>
+<html>
+<head>
+<meta charset="UTF-8">
+<title>蔵書一覧</title>
+<link rel="stylesheet" href="./style.css" type="text/css">
+<!-- JavaScriptの読み込み -->
+<script src="https://code.jquery.com/jquery-1.12.4.min.js"
+	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
+	crossorigin="anonymous"></script>
+<script type="text/javascript" src="employeeSearch.js"></script>
+</head>
+<body>
+	<header>
+		<div class="title">
+			<h1>蔵書一覧</h1>
+		</div>
+		<div class="logout-btn">
+			<button id="js-button-logout">ログアウト</button>
+		</div>
+	</header>
+	<div class="renting-books-btn">
+		<button id="js-button-book">借りている本一覧</button>
+	</div>
+	<div class="search">
+		<!-- 検索表示 -->
+		<table class="search-table">
+			<tr>
+				<th>タイトル:</th>
+				<td><input type="text" id="js-add-inputtitle"></input></td>
+			</tr>
+			<tr>
+				<th>著者名:</th>
+				<td><input type="text" id="js-add-inputauthor"></input></td>
+			</tr>
+			<tr>
+				<th>ジャンル:</th>
+				<td><select id="genre">
+						<option value="">未選択</option>
+						<option value="ビジネス">ビジネス</option>
+						<option value="技術">技術</option>
+						<option value="その他">その他</option>
+				</select></td>
+			</tr>
+			<tr>
+				<th>貸出ステータス:</th>
+				<td><select id="book_status">
+						<option value="">未選択</option>
+						<option value="貸出可能">貸出可能</option>
+						<option value="貸出中">貸出中</option>
+				</select></td>
+			</tr>
+		</table>
+	</div>
+<!-- 	<div class="search-btn"> -->
+		<button class="search-btn" id="js-button-search">検索</button>
+<!-- 	</div> -->
+	<div class="table">
+		<table class="result-table" id="js-search-result"></table>
+	</div>
+	<div>
+		<button id="js-previous-button" style="visibility: hidden">前へ</button>
+	</div>
+	<div>
+		<button id="js-next-button" style="visibility: hidden">次へ</button>
+	</div>
+
+</body>
+</html>
