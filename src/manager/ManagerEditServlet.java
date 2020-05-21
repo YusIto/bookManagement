@@ -121,6 +121,9 @@ public class ManagerEditServlet extends HttpServlet {
 
 		String status = request.getParameter("status");
 
+		String oldId = request.getParameter("oldId");
+
+
 		// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
 		// ※SQLのログを出力するため変数urlの値は基本的な形式から少し変更を加えています。
 		// そのためシステム構築2で使い回すときは注意下さい！
@@ -132,7 +135,7 @@ public class ManagerEditServlet extends HttpServlet {
 
 		String sql ="update BOOKS set \n" +
 				" ID ='"+ id +"', PURCHASED_DATE ='"+ purchaseDate +"', BUYER='"+ buyer +"', TITLE='"+ title +"', AUTHOR='"+ author +"', GENRE='"+ genre +"', STATUS='"+ status +"' \n" +
-				" where ID ='"+ id +"' \n" ;
+				" where ID ='"+ oldId +"' \n" ;
 		//確認
 		System.out.println(sql);
 

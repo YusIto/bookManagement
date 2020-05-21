@@ -29,6 +29,15 @@ function edit() {//edit関数
 
 	var jsStatus = $('#status').val();
 
+	//旧IDをURLから取得
+
+	var parameter = location.search.substring(1, location.search.length);
+	parameter = decodeURIComponent(parameter);
+	parameter = parameter.split('=')[1];
+	console.log("旧ID"+parameter);
+
+
+
 	var requestQuery = {
 		id : jsId,
 		purchaseDate : jsPurchaseDate,
@@ -36,7 +45,8 @@ function edit() {//edit関数
 		author : jsAuthor,
 		genre : jsGenre,
 		buyer : jsBuyer,
-		status:jsStatus
+		status:jsStatus,
+		oldId:parameter
 	}
 
 	// コンソールでrequestQueryを確認
