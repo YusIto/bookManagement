@@ -54,7 +54,7 @@ function edit() {//edit関数
 			// 登録完了のアラート
 			alert('編集が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+			setTimeout("location.href='managerSearch.html';", 2000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
@@ -151,7 +151,7 @@ function deleteBook(){//deleteBook関数
 			// 登録完了のアラート
 			alert('蔵書削除が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+			setTimeout("location.href='managerSearch.html';", 2000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
