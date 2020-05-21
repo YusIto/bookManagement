@@ -39,12 +39,6 @@ header {
 	margin: 10px
 }
 
-.renting-books-btn {
-	display: inline-block;
-	float: right;
-	margin: 10px;
-}
-
 /* ログイン画面 */
 .login{
 	padding-top: 5%;
@@ -68,6 +62,7 @@ header {
 	float: center;
 	margin: 5% 0% 1% 18%;
 	word-break: keep-all;
+	border-spacing: 5px;
 	width: 60%;
 	font-size: 16px;
 }
@@ -104,8 +99,8 @@ header {
 
 /* 検索結果 */
 /* 検索結果 div */
-.result {
-	padding: 5% 5% 5% 5%;
+.table {
+	padding: 0 10% 3% 10%;
 	height: 100%;
 }
 
@@ -172,8 +167,59 @@ header {
 .result-table tr td:nth-child(6) {
 	text-align: center;
 }
-/* 貸出画面 */
-.rental{
-	padding: 5% 5% 5% 5%;
-	height: 100%;
+
+/* ページング */
+.page{
+	padding: 0 40% 5% 40%;
+}
+
+.next-btn{
+	display: inline-block;
+	float: left;
+	width: 50px;
+}
+
+.back-btn{
+	display: inline-block;
+	float: right;
+	width: 50px;
+}
+
+/* 一覧ページに戻るボタン */
+.return-btn{
+	display: inline-block;
+	float: left;
+	margin-left: 10%;
+	width: 80px;
+}
+
+/* 蔵書編集ボタン */
+.edit-btn{
+	display: inline-block;
+	float: right;
+	margin-right:10%;
+	width: 80px;
+}
+
+/* 蔵書削除ボタン */
+.delete-btn{
+	margin-bottom: 3%;
+	margin-left: 10%;
+	width: 80px;
+}
+
+/* 蔵書登録フォームへ遷移するボタン */
+.book-btn{
+	display: inline-block;
+	float: right;
+	margin: 1%;
+	width: 80px;
+}
+
+/* 蔵書登録確定 */
+.add-btn{
+	display: inline-block;
+	float: right;
+	margin-right:10%;
+	width: 80px;
 }

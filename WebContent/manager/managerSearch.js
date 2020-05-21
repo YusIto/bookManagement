@@ -25,7 +25,7 @@ var loadByAjax = function(requestQuery, page) {
 					// ログイン情報確認
 					// if (json.result == "ok") {
 					if (json !== "検索結果はありません") {
-						var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th></tr></thead>';
+						var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th><th></th></tr></thead>';
 						for (var i = start; i < start + 10 && i < json.length; i++) {
 							searchResult += '<tr><td>' + json[i].title
 									+ '</td>' + '<td>' + json[i].author
