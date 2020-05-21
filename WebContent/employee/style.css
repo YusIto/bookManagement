@@ -163,6 +163,14 @@ header {
 	text-align: center;
 }
 
+/* 貸出日付[貸出ページ] */
+.result-table tr td:nth-child(5) {
+	text-align: center;
+}
+
+.result-table tr td:nth-child(6) {
+	text-align: center;
+}
 /* 貸出画面 */
 .renatal{
 	padding: 5%;
