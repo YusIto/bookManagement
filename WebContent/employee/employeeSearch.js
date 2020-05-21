@@ -94,7 +94,7 @@ var searchBookInformation = function() {
 var logout = function() {
 	$.ajax({
 				type : 'GET',
-				url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
+				url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
 				success : function(json) {
 					// サーバーとの通信に成功した時の処理
 					// 確認のために返却値を出力
@@ -112,7 +112,7 @@ var logout = function() {
 
 // 借りている本一覧ページへの遷移
 var book = function() {
-	var url = '';
+	var url = 'http://localhost:8080/bookManagement/employee/employeeBook.html';
 	location.href = url;
 }
 
@@ -196,9 +196,11 @@ $(document).ready(function() {
 	// 初期表示用
 
 	loadTable();
+	var employeeId = localStorage.getItem('id');
+	console.log(employeeId);
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);
-	$('#js-button-book').click(book);
 	$('#js-next-button').click(moveToNextPage);
+	$('#js-button-book').click(book);
 	$('#js-previous-button').click(moveToPreviousPage);
 });
