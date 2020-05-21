@@ -56,23 +56,6 @@ function edit() {
 
 }
 
-//function getTodaysDate() {
-//
-//	var today = new Date();
-//
-//	var todaydate;
-//
-//	var Year = today.getFullYear();
-//	var Month = today.getMonth() + 1;
-//	var Date = today.getDate();
-//
-//	todaydate = Year + "-" + Month + "-" + Date;
-//
-//	console.log(purcgaseDate);
-//
-//	return todaydate;
-//}
-//日付表示
 
 
 $(document).ready(function() {
@@ -80,37 +63,9 @@ $(document).ready(function() {
 	$('#js-add-button').click(edit);
 	$('#js-delete-button').click(deleteBook);
 	$('#js-input-id').val();
-	console.log();
 
 });
 
-
-//function GetQueryString() {
-//    if (1 < document.location.search.length) {
-//        // 最初の1文字 (?記号) を除いた文字列を取得する
-//        console.log(document.location.search);
-//    	var query = document.location.search.substring(1);
-//        console.log(query);
-//        // クエリの区切り記号 (&) で文字列を配列に分割する
-//        var parameters = query.split('&');
-//        console.log(parameters);
-//        var result = new Object();
-//        //for (var i = 0; i < parameters.length; i++) {
-//            // パラメータ名とパラメータ値に分割する
-//            var element = parameters[0].split('=');
-//            console.log('elementは'+element);
-//            var paramName = decodeURIComponent(element[0]);
-//            console.log('element[0]は'+paramName);
-//            var paramValue = decodeURIComponent(element[1]);
-//            console.log('element[1]は'+paramValue);
-//            // パラメータ名をキーとして連想配列に追加する
-//            result[paramName] = paramValue;
-//        //}
-//        //result = {id: "EMP0001", name: "tanaka",age:"10"}
-//        return result;
-//    }
-//    return null;
-//}
 
 function editPage(){
 	console.log("常に表示");
@@ -138,20 +93,30 @@ function editPage(){
 			console.log("elementは"+element);
 
 			console.log(element.id);
+			console.log(element.title);
+			console.log(element.author);
+			console.log(element.genre);
+			console.log(element.buyer);
+			console.log(element.purchasedDate);
+			console.log(element.status);
 
 
-			//$('#js-input-id').val(element.id);
+			var  purchasedDate = element.purchasedDate;
 
-			for(var i in element){
-				cosnole.log(i);
-			}
+			var purchasedDate3=purchasedDate.substring(0,11)
+			var purchasedDate2 = purchasedDate3.replace('-','/');
+			var purchasedDate = purchasedDate2.replace('-','/');
 
-			// 登録完了のアラート
-			alert('蔵書登録が完了しました');
-			// 2秒後に画面遷移
-			//setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+			console.log("日付"+ purchasedDate);
 
 
+			$('#js-input-id').val(element.id);
+			$('#js-input-title').val(element.title);
+			$('#js-input-author').val(element.author);
+			$('#genre').val(element.genre);
+			$('#js-input-buyer').val(element.buyer);
+			$('#js-input-purchasedate').val(purchasedDate);
+			$('#status').val(element.status);
 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
