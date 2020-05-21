@@ -1,3 +1,5 @@
+
+
 // AjaxでJSONを取得する
 function executeAjax () {
 	'use strict';
