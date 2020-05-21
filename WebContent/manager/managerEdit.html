@@ -9,15 +9,17 @@
 
 <title>蔵書編集</title>
 </head>
-
-
-
-
 <body>
 
-	<h1 class="title">蔵書編集</h1>
-	
-	<form name= "form1">
+	<header>
+		<div class="title">
+			<h1>蔵書編集</h1>
+		</div>
+	</header>
+
+
+
+	<form name="form1">
 		<p>
 			ID:<input type="text" id="js-input-id"></input>
 		</p>
@@ -44,30 +46,30 @@
 		</p>
 
 		<p>
-			ステータス:<select id = "status">
-				<option value = "貸出可能">貸出可能</option>
-				<option value = "貸出中">貸出中</option>
+			ステータス:<select id="status">
+				<option value="貸出可能">貸出可能</option>
+				<option value="貸出中">貸出中</option>
 			</select>
 		</p>
 
-		
-		
+
+
 		<p>
 			<input type="button" id="js-add-button" value="登録">
 		</p>
 	</form>
 
-		
-		
-		<p>
-				<input type="button" id="js-delete-button" value="蔵書削除">
-		</p>
 
-<footer>
-<p>
- <!-- managerSearch.htmlへ遷移 -->
-  <button onclick="location.href='./managerSearch.html'">戻る</button>
-</p>
-</footer>
+
+	<p>
+		<input type="button" id="js-delete-button" value="蔵書削除">
+	</p>
+
+	<footer>
+		<p>
+			<!-- managerSearch.htmlへ遷移 -->
+			<button onclick="location.href='./managerSearch.html'">戻る</button>
+		</p>
+	</footer>
 </body>
 </html>

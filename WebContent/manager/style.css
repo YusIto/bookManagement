@@ -1,4 +1,4 @@
-charset "utf-8";
+@CHARSET "UTF-8";
 
 /****** 共通 */
 
@@ -13,42 +13,167 @@ charset "utf-8";
 }
 
 /****** 基礎 */
-
-.title{
-	font-size: 24px;
+body {
+	/* 背景色 */
+	background-color: #f9eed3;
 }
 
-#table {
-	/* 外部余白 */
-	margin-top: 5px;
-	margin-left: 10px;
-}
-/****** テーブル */
-table {
-	/* 枠線 */
-	border-collapse: collapse;
-	border-right: 1px solid #999;
+/* ヘッダー */
+header {
+	background-color: #668b8a;
+	height: 100px;
+	align-items: flex-start;
 }
 
-table th {
-	/* 内部余白 */
-	padding: 10px;
-	/* 枠線 */
-	border-top: 1px solid #fff;
-	/* 文字色 */
-	color: #fff;
-	/* 文字表示 */
+.title {
+	display: inline-block;
+	color: brack;
+	text-size: 32px;
 	text-align: left;
-	vertical-align: top;
-	/* 背景色 */
-	background-color: #555;
+	width: 50%;
 }
 
-table td {
-	/* 内部余白 */
-	padding: 6px;
-	/* 枠線 */
-	border: 1px solid #999;
-	/* 背景色 */
-	background-color: #fff;
+.logout-btn {
+	display: inline-block;
+	float: right;
+	margin: 10px
+}
+
+.renting-books-btn {
+	display: inline-block;
+	float: right;
+	margin: 10px;
+}
+
+/* ログイン画面 */
+.login{
+	padding-top: 5%;
+	width: 100%;
+}
+
+.login-btn{
+	margin-top: 5%;
+	margin-left: 45%;
+	width: 100px;
+}
+
+/* 条件入力欄 */
+.search {
+	width: 100%;
+	height: 20%;
+}
+
+/* 入力欄 テーブル */
+.input-table {
+	float: center;
+	margin: 5% 0% 1% 18%;
+	word-break: keep-all;
+	width: 60%;
+	font-size: 16px;
+}
+
+/* 検索条件入力欄 <th> */
+.input-table th {
+	text-align: right;
+	word-break: keep-all;
+	width: 10%;
+	height: 100%;
+}
+
+/* 検索条件入力欄 <td> */
+.input-table td {
+	text-align: left;
+	width: 50%;
+	height: 100%;
+}
+
+/* 入力 */
+.input-table input {
+	text-align: left;
+	mergin-left:1px;
+	width: 100%;
+	height: 100%;
+}
+
+/* 検索ボタン */
+.search-btn{
+	margin-left: 45%;
+	margin-bottom:5%;
+	width: 100px;
+}
+
+/* 検索結果 */
+/* 検索結果 div */
+.result {
+	padding: 5% 5% 5% 5%;
+	height: 100%;
+}
+
+/* 検索結果テーブル全体 */
+.result-table {
+	background-color: #f9eed3;
+	border-spacing: 0px;
+	word-break: keep-all;
+	margin-left: 0 10% 0 10%;
+	width: 100%;
+	height: 100%;
+}
+
+/* <th> */
+.result-table th {
+	background-color: #a47c64;
+	border-bottom: 1px solid #f9eed3;
+	width: 40%;
+	height: 20px;
+	padding: 10px 5px 10px 5px;
+}
+
+/* 奇数行 */
+.result-table tr:nth-child(odd) td {
+	background-color: #f9eed3;
+	border-bottom: 1px solid #f9eed3;
+	padding: 10px 5px 10px 5px;
+}
+
+/* 偶数行 */
+.result-table tr:nth-child(even) td {
+	border-bottom: 1px solid #f9eed3;
+	background-color: #9fb083;
+	padding: 10px 5px 10px 5px;
+}
+
+/* 各列の幅を設定 */
+/* タイトル */
+.result-table tr td:nth-child(1) {
+	text-align: left;
+	width: 75%;
+}
+
+/* 著者 */
+.result-table tr td:nth-child(2) {
+	text-align: center;
+}
+
+/* ジャンル */
+.result-table tr td:nth-child(3) {
+	text-align: center;
+}
+
+/* ステータス */
+.result-table tr td:nth-child(4) {
+	text-align: center;
+}
+
+/* 貸出日付[貸出ページ] */
+.result-table tr td:nth-child(5) {
+	text-align: center;
+}
+
+.result-table tr td:nth-child(6) {
+	text-align: center;
+}
+/* 貸出画面 */
+.rental{
+	padding: 5% 5% 5% 5%;
+	height: 100%;
 }
