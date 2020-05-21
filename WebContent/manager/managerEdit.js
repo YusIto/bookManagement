@@ -85,61 +85,67 @@ $(document).ready(function() {
 });
 
 
-function GetQueryString() {
-    if (1 < document.location.search.length) {
-        // 最初の1文字 (?記号) を除いた文字列を取得する
-        console.log(document.location.search);
-    	var query = document.location.search.substring(1);
-        console.log(query);
-        // クエリの区切り記号 (&) で文字列を配列に分割する
-        var parameters = query.split('&');
-        console.log(parameters);
-        var result = new Object();
-        //for (var i = 0; i < parameters.length; i++) {
-            // パラメータ名とパラメータ値に分割する
-            var element = parameters[0].split('=');
-            console.log('elementは'+element);
-            var paramName = decodeURIComponent(element[0]);
-            console.log('element[0]は'+paramName);
-            var paramValue = decodeURIComponent(element[1]);
-            console.log('element[1]は'+paramValue);
-            // パラメータ名をキーとして連想配列に追加する
-            result[paramName] = paramValue;
-        //}
-        //result = {id: "EMP0001", name: "tanaka",age:"10"}
-        return result;
-    }
-    return null;
-}
+//function GetQueryString() {
+//    if (1 < document.location.search.length) {
+//        // 最初の1文字 (?記号) を除いた文字列を取得する
+//        console.log(document.location.search);
+//    	var query = document.location.search.substring(1);
+//        console.log(query);
+//        // クエリの区切り記号 (&) で文字列を配列に分割する
+//        var parameters = query.split('&');
+//        console.log(parameters);
+//        var result = new Object();
+//        //for (var i = 0; i < parameters.length; i++) {
+//            // パラメータ名とパラメータ値に分割する
+//            var element = parameters[0].split('=');
+//            console.log('elementは'+element);
+//            var paramName = decodeURIComponent(element[0]);
+//            console.log('element[0]は'+paramName);
+//            var paramValue = decodeURIComponent(element[1]);
+//            console.log('element[1]は'+paramValue);
+//            // パラメータ名をキーとして連想配列に追加する
+//            result[paramName] = paramValue;
+//        //}
+//        //result = {id: "EMP0001", name: "tanaka",age:"10"}
+//        return result;
+//    }
+//    return null;
+//}
 
 function editPage(){
 	console.log("常に表示");
 
-	var urlId = GetQueryString() ;
+	var id = location.search.substring(1, location.search.length);
+	id = decodeURIComponent(id);
+	id = id.split('=')[1];
+
 	console.log(id);
 	//var id = 10001;
-	var rq = {id:urlId};
+	var rq = {id:id};
 	console.log(rq);
 
 	$.ajax({
 		type : "GET",
 		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
 		data : rq,
-		datatype : 'json',
 
+		dataType : 'json',
 		success : function(json) {
+			console.log('返却値', json);
 
-			console.log(json);
+			var element  = json;
 
-			console.log("aa");
+			console.log("elementは"+element);
 
-			for (var i = 0;i<json.length;i++){
-				var element = json[0];
-				//$('#js-input-id').val(element.id);
-				console.log(element);
+			console.log(element.id);
+
+
+			//$('#js-input-id').val(element.id);
+
+			for(var i in element){
+				cosnole.log(i);
 			}
 
-			console.log('返却値', json);
 			// 登録完了のアラート
 			alert('蔵書登録が完了しました');
 			// 2秒後に画面遷移
