@@ -47,7 +47,7 @@ public class ManagerEditServlet extends HttpServlet {
 		String pass = "bmdb";
 
 		// 実行するSQL文
-		String sql ="select ID, TITLE, AUTHOR, GENRE, BUYER, PURCHASED_DATE from BOOKS  \n" +
+		String sql ="select ID, TITLE, AUTHOR, GENRE, BUYER, PURCHASED_DATE, STATUS from BOOKS  \n" +
 				"where ID='"+ id +"' \n";
 		;
 
