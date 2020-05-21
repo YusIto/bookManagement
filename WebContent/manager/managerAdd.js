@@ -44,7 +44,8 @@ function add() {
 			// 登録完了のアラート
 			alert('登録が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='.maneger/manegerAdd.html';", 2000);
+			//setTimeout("location.href='.maneger/managerSearch.html';", 2000);
+			location.href='.maneger/managerSearch.html';
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理

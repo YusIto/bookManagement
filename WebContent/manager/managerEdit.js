@@ -1,4 +1,12 @@
-function edit() {
+$(document).ready(function() {
+	editPage();//初期表示
+	$('#js-add-button').click(edit);//編集ボタン
+	$('#js-delete-button').click(deleteBook);//削除ボタン
+});
+
+
+
+function edit() {//edit関数
 
 	var jsid = $('#js-input-id').val()
 	var jstitle = $('#js-input-title').val()
@@ -12,7 +20,6 @@ function edit() {
 	//	// 値(数値)から値(value値)を取得
 	const jsgenre = selectgenre.options[num].value;
 	console.log(jsgenre)
-
 
 	var jsbuyer = $('#js-input-buyer').val()
 
@@ -29,6 +36,7 @@ function edit() {
 		genre : jsgenre,
 		buyer : jsbuyer
 	}
+
 	// コンソールでrequestQueryを確認
 	console.log(requestQuery)
 	$.ajax({
@@ -54,20 +62,11 @@ function edit() {
 
 	});
 
-}
+}//edit関数の最後
 
 
 
-$(document).ready(function() {
-	editPage();
-	$('#js-add-button').click(edit);
-	$('#js-delete-button').click(deleteBook);
-	$('#js-input-id').val();
-
-});
-
-
-function editPage(){
+function editPage(){//editPage関数
 	console.log("常に表示");
 
 	var id = location.search.substring(1, location.search.length);
@@ -75,7 +74,6 @@ function editPage(){
 	id = id.split('=')[1];
 
 	console.log(id);
-	//var id = 10001;
 	var rq = {id:id};
 	console.log(rq);
 
@@ -126,11 +124,10 @@ function editPage(){
 		}
 
 	});
+}//editPage関数
 
-}
 
-
-function deleteBook(){
+function deleteBook(){//deleteBook関数
 	console.log("削除ボタンを押しました。");
 	var jsId = $('#js-input-id').val()
 
@@ -158,9 +155,5 @@ function deleteBook(){
 			alert('入力した内容が登録出来ませんでした。');
 			console.log(errorThrown)
 		}
-
 	});
-
-
-
-}
+}//deleteBook関数の最後
