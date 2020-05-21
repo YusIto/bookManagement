@@ -101,21 +101,24 @@ function editPage(){//editPage関数
 			console.log(element.status);
 
 
-//			var  purchasedDate = element.purchasedDate;
-//
-//			var purchasedDate3=purchasedDate.substring(0,11)
-//			var purchasedDate2 = purchasedDate3.replace('-','/');
-//			var purchasedDate = purchasedDate2.replace('-','/');
-
-			//console.log("日付"+ purchasedDate);
-
+			var  purchasedDate = element.purchasedDate;
 
 			$('#js-input-id').val(element.id);
 			$('#js-input-title').val(element.title);
 			$('#js-input-author').val(element.author);
 			$('#genre').val(element.genre);
 			$('#js-input-buyer').val(element.buyer);
-			$('#js-input-purchasedate').val(element.purchasedDate);
+
+
+			//purchasedDateがnull出ないとき、yyyy/mm/ddで表示
+			if(purchasedDate!=null){
+				var purchasedDate3=purchasedDate.substring(0,11)
+				var purchasedDate2 = purchasedDate3.replace('-','/');
+				var purchasedDate = purchasedDate2.replace('-','/');
+				console.log("日付"+ purchasedDate);
+				$('#js-input-purchasedate').val(purchasedDate);
+			}
+
 			$('#status').val(element.status);
 
 		},
