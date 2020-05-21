@@ -12,6 +12,7 @@ public class Book {
 	private String author;
 	private String genre;
 	private String status;
+	private String returnDate;
 
 	//getter setter
 	public String getId() {
@@ -57,4 +58,13 @@ public class Book {
 		this.status = status;
 	}
 
+	public String getReturnDate() {
+		return returnDate;
+	}
+	public void setReturnDate(String returnDate) {
+		this.returnDate = returnDate;
+	}
 }
+
+
+
