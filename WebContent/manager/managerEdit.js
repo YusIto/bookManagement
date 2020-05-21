@@ -79,6 +79,8 @@ $(document).ready(function() {
 	editPage();
 	$('#js-add-button').click(edit);
 	$('#js-delete-button').click(deleteBook);
+	$('#js-input-id').val();
+	console.log();
 
 });
 

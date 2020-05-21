@@ -1,6 +1,7 @@
 package employee;
 
 public class Book {
+
 	public Book(){
 
 	}
@@ -54,10 +55,10 @@ public class Book {
 	public String getStatus() {
 		return status;
 	}
+
 	public void setStatus(String status) {
 		this.status = status;
 	}
-
 	public String getReturnDate() {
 		return returnDate;
 	}
@@ -65,6 +66,3 @@ public class Book {
 		this.returnDate = returnDate;
 	}
 }
-
-
-
