@@ -45,25 +45,34 @@ header {
 	margin: 10px;
 }
 
-/* 検索条件入力欄 */
-/* 検索条件入力欄 div */
+/* ログイン画面 */
+.login{
+	padding-top: 5%;
+	width: 100%;
+}
+
+.login-btn{
+	margin-top: 5%;
+	margin-left: 45%;
+	width: 100px;
+}
+
+/* 条件入力欄 */
 .search {
-/* 	position: relative; */
 	width: 100%;
 	height: 20%;
 }
 
-/* 検索条件入力欄 テーブル */
-.search-table {
+/* 入力欄 テーブル */
+.input-table {
 	float: center;
 	margin: 5% 0% 1% 18%;
 	width: 60%;
-	height: 30%;
 	font-size: 16px;
 }
 
 /* 検索条件入力欄 <th> */
-.search-table th {
+.input-table th {
 	text-align: right;
 	word-break: keep-all;
 	width: 10%;
@@ -71,14 +80,14 @@ header {
 }
 
 /* 検索条件入力欄 <td> */
-.search-table td {
+.input-table td {
 	text-align: left;
 	width: 50%;
 	height: 100%;
 }
 
 /* 入力 */
-.search-table input {
+.input-table input {
 	text-align: left;
 	mergin-left:1px;
 	width: 100%;
@@ -86,16 +95,13 @@ header {
 }
 
 /* 検索ボタン */
-.search-div{
-	width: 100%;
-	margin: 0% 45% 5% 45%;
-}
-
 .search-btn{
+	margin-left: 45%;
+	margin-bottom:5%;
 	width: 100px;
-
 }
 
+/* 検索結果 */
 /* 検索結果 div */
 .result {
 	width: 90%;
@@ -155,4 +161,10 @@ header {
 /* ステータス */
 .result-table tr td:nth-child(4) {
 	text-align: center;
+}
+
+/* 貸出画面 */
+.renatal{
+	padding: 5%;
+	width: 100%;
 }

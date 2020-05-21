@@ -2,35 +2,38 @@
 <html>
 <head>
 <meta charset="UTF-8">
-<title>Insert title here</title>
+<title>貸出</title>
+<link rel="stylesheet" href="./style.css" type="text/css">
 <script type="text/javascript" src="jquery-1.10.2.js"></script>
 <script type="text/javascript" src="employeeRental.js"></script>
 </head>
 <body>
+	<header>
+		<div class="title">
+			<h1>貸出</h1>
+		</div>
+	</header>
+	<div class="rental">
+		<table class="result-table" id="rentalTable">
+			<tr>
+				<th>タイトル</th>
+				<th>著者名</th>
+				<th>ジャンル</th>
+				<th>貸出日付</th>
+				<th>返却予定日</th>
+			</tr>
 
+			<tr>
 
-<h1>貸出</h1>
-<table id = "rentalTable" >
-<tr>
-	<th>タイトル</th>
-	<th>著者名</th>
-	<th>ジャンル</th>
-	<th>貸出日付</th>
-	<th>返却予定日</th>
-</tr>
+				<td><input id="js-today"></input></td>
 
-<tr>
-	<td></td>
-	<td></td>
-	<td></td>
-	<td><input id="js-today"></input></td>
+				<td><input id="js-retrun-date" type="date"></input>
+			</tr>
+		</table>
+	</div>
 
-	<td><input id="js-retrun-date" type ="date" ></input>
-</tr>
-</table>
-
-<button id = "js-confirmation">確定</button>
-<button id = "js-return">戻る</button>
+	<button id="js-confirmation">確定</button>
+	<button id="js-return">戻る</button>
 
 
 </body>
