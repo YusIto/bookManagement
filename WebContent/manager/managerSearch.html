@@ -8,7 +8,7 @@
 <script src="https://code.jquery.com/jquery-1.12.4.min.js"
 	integrity="sha256-ZosEbRLbNQzLpnKIkEdrPv7lOy9C27hHQ+Xp8a4MxAQ="
 	crossorigin="anonymous"></script>
-<script type="text/javascript" src="employeeSearch.js"></script>
+<script type="text/javascript" src="managerSearch.js"></script>
 </head>
 <body>
 	<header>
@@ -20,11 +20,11 @@
 		</div>
 	</header>
 	<div class="renting-books-btn">
-		<input type="button" value="借りている本一覧" onclick="book();"></input>
+		<button id="js-button-book">蔵書登録</button>
 	</div>
 	<div class="search">
 		<!-- 検索表示 -->
-		<table class="input-table">
+		<table class="search-table">
 			<tr>
 				<th>タイトル:</th>
 				<td><input type="text" id="js-add-inputtitle"></input></td>
@@ -52,7 +52,9 @@
 			</tr>
 		</table>
 	</div>
+<!-- 	<div class="search-btn"> -->
 		<button class="search-btn" id="js-button-search">検索</button>
+<!-- 	</div> -->
 	<div class="table">
 		<table class="result-table" id="js-search-result"></table>
 	</div>

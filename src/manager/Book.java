@@ -1,9 +1,6 @@
-package employee;
-
+package manager;
 public class Book {
-
 	public Book(){
-
 	}
 	//Bookクラスの要素
 	private String id;
@@ -55,7 +52,6 @@ public class Book {
 	public String getStatus() {
 		return status;
 	}
-
 	public void setStatus(String status) {
 		this.status = status;
 	}
