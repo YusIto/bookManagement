@@ -36,6 +36,7 @@ public class EmployeeRentalServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 				//文字化け防止
 				response.setContentType("text/html;charset=UTF-8");
+				String bookId = request.getParameter("bookId");
 
 				employeeRental er1 = new employeeRental();
 				// JDBCドライバの準備
@@ -66,7 +67,7 @@ public class EmployeeRentalServlet extends HttpServlet {
 							"from \n" +
 							"BOOKS bs \n" +
 							"where 1 = 1 \n" +
-							"and bs.ID = '10001' \n";
+							"and bs.ID = '"+bookId+"' \n";
 
 
 				System.out.println(sql);

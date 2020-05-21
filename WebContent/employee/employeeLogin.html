@@ -3,32 +3,36 @@
 <head>
 <meta charset="UTF-8">
 <title>現場社員ログイン</title>
-<link rel="stylesheet" href="style.css" type="text/css">
+<link rel="stylesheet" href="./style.css" type="text/css">
 <!-- JavaScriptの読み込み -->
 <script type="text/javascript" src="jquery-1.10.2.js"></script>
 <script type="text/javascript" src="employeeLogin.js"></script>
 </head>
 <body>
-	<!--  header -->
-	<div class="header">
-		<h1 class="title">現場社員ログイン</h1>
-	</div>
+	<header>
+		<div class="title">
+			<h1>現場社員ログイン</h1>
+		</div>
+	</header>
 	<!--  メインコンテンツ -->
-	<div class="content">
-		<p>
-			<input type="text" placeholder="1234567" id="js-login-id"
-				class="login-id"></input>
-		</p>
-		<p>
-			<input type="password" placeholder="0101" id="js-login-pass"
-				class="login-pass"></input>
-		</p>
-		<button id="js-login-button" class="login-button">ログイン</button>
+	<div class="login">
+		<table class="input-table">
+			<tr>
+				<th>社員ID:</th>
+				<td><input type="text" placeholder="1234567" id="js-login-id"
+					class="login-id"></input></td>
+			</tr>
+			<tr>
+				<th>パスワード:</th>
+				<td><input type="password" placeholder="0101"
+					id="js-login-pass" class="login-pass"></input></td>
+			</tr>
+		</table>
+		<button id="js-login-button" class="login-btn">ログイン</button>
 	</div>
 
 	<div>
 		<button id="js-logout-button">ログアウト</button>
 	</div>
-
 
 </body>
