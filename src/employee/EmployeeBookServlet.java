@@ -7,9 +7,7 @@ import java.sql.DriverManager;
 import java.sql.ResultSet;
 import java.sql.Statement;
 import java.util.ArrayList;
-import java.util.HashMap;
 import java.util.List;
-import java.util.Map;
 
 import javax.servlet.ServletException;
 import javax.servlet.annotation.WebServlet;
@@ -36,7 +34,9 @@ public class EmployeeBookServlet extends HttpServlet {
 		//文字化け
 				response.setContentType("text/html;charset=UTF-8");
 
-
+				// リクエストクエリーを取得
+				String employeeId = request.getParameter("employeeId");
+				System.out.println("employeeIdは"+employeeId);
 
 		// JDBCドライバの準備
 				try {
@@ -57,7 +57,6 @@ public class EmployeeBookServlet extends HttpServlet {
 				// アクセスした人に応答するためのJSONを用意する
 				PrintWriter pw = response.getWriter();
 
-
 				String sql ="select \n" +
 						"BOOKS.TITLE, \n" +
 						"BOOKS.AUTHOR, \n" +
@@ -68,10 +67,11 @@ public class EmployeeBookServlet extends HttpServlet {
 						"BOOKS, \n" +
 						"RENTAL \n" +
 						"where 1=1 \n" +
-						"and EMPLOYEES.ID = '0000001' \n" +
+						"and EMPLOYEES.ID = '"+ employeeId +"' \n" +
 						"and BOOKS.STATUS = '貸出中' \n" +
 						"and EMPLOYEES.ID = RENTAL.EMPLOYEE_ID \n" +
 						"and BOOKS.ID = RENTAL.BOOK_ID \n";
+
 
 
 				// DBへ接続してSQLを実行
@@ -91,7 +91,7 @@ public class EmployeeBookServlet extends HttpServlet {
 					// 返却データを作成
 					List<Book>BookList = new ArrayList<>();
 
-					Map<String, String> responseData = new HashMap<>();
+//					Map<String, String> responseData = new HashMap<>();
 					while (rs1.next()) {
 						Book b1 = new Book();
 						b1.setTitle(rs1.getString("TITLE"));
