@@ -9,6 +9,7 @@ $(document).ready(
 			$("#js-return").click(returnSearch);
 			$("#js-confirmation").click(confirmation);
 
+
 			// 該当図書のIDをリクエストクエリに代入
 			var requestQuery = {
 				bookId : parameter
@@ -52,8 +53,13 @@ window.onload = function() {
 	var dd = ("0" + today.getDate()).slice(-2);
 	document.getElementById("js-today").value = yyyy + '/' + mm + '/' + dd;
 }
+// カレンダー返却日
+var retrunDateVal = $('#js-retrun-date').val();
+var retrunDate1 = retrunDateVal.replace('-', '/')
+var retrunDate = retrunDate1.replace('-', '/');
 
 // 確定ボタン
+
 var confirmation = function() {
 	console.log("確定を押しました。");
 
@@ -67,12 +73,13 @@ var confirmation = function() {
 	var todayVal = $('#js-today').val();
 	console.log(todayVal);
 
-	var retrunDateVal = $('#js-retrun-date').val();
-	var retrunDate1 = retrunDateVal.replace('-', '/')
-	var retrunDate = retrunDate1.replace('-', '/');
 	console.log(retrunDate);
+	// ローカルストレージから社員IDを取得
+	var employeeId = localStorage.getItem('id');
 
 	var requestQuery = {
+		employeeId : employeeId,
+		bookId : parameter,
 		title : titleVal,
 		author : authorVal,
 		genre : genreVal,
@@ -81,23 +88,27 @@ var confirmation = function() {
 	}
 
 	// 確定ボタン後にデータ送信
-	$.ajax({
-		Type : 'GET',
-		url : '/bookManagement/EmployeeRentalConfirmServlet',
-		dataType : 'json',
-		data : requestQuery,
+	$
+			.ajax({
+				Type : 'GET',
+				url : '/bookManagement/EmployeeRentalConfirmServlet',
+				dataType : 'json',
+				data : requestQuery,
 
-		success : function(pw) {
+				success : function(pw) {
 
-			console.log("通信成功");
+					console.log("通信成功");
+					setTimeout(
+							"location.href = 'http://localhost:8080/bookManagement/employee/employeeSearch.html';",
+							2000);
 
-		},
-		error : function(XMLHttpRequest, textStatus, errorThrown) {
-			// サーバーとの通信に失敗した時の処理
-			alert('データの通信に失敗しました');
-			console.log(errorThrown)
-		}
-	});
+				},
+				error : function(XMLHttpRequest, textStatus, errorThrown) {
+					// サーバーとの通信に失敗した時の処理
+					alert('データの通信に失敗しました');
+					console.log(errorThrown)
+				}
+			});
 
 }
 

@@ -112,7 +112,9 @@ var logout = function() {
 
 // 借りている本一覧ページへの遷移
 var book = function() {
-	var url = 'http://localhost:8080/bookManagement/employee/employeeBook.html';
+	var employeeId = localStorage.getItem('id');
+	console.log(employeeId);
+	var url = 'http://localhost:8080/bookManagement/employee/employeeBook.html?employeeId='+employeeId;
 	location.href = url;
 }
 
@@ -196,8 +198,6 @@ $(document).ready(function() {
 	// 初期表示用
 
 	loadTable();
-	var employeeId = localStorage.getItem('id');
-	console.log(employeeId);
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);
 	$('#js-next-button').click(moveToNextPage);
