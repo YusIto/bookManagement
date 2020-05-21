@@ -8,9 +8,9 @@ $(document).ready(function() {
 
 function edit() {//edit関数
 
-	var jsid = $('#js-input-id').val()
-	var jstitle = $('#js-input-title').val()
-	var jsauthor = $('#js-input-author').val()
+	var jsId = $('#js-input-id').val()
+	var jsTitle = $('#js-input-title').val()
+	var jsAuthor = $('#js-input-author').val()
 
 	// formのselectを指定、ここではgenreのところ
 	var selectgenre = document.form1.genre1;
@@ -18,23 +18,25 @@ function edit() {//edit関数
 	const num = selectgenre.selectedIndex;
 	console.log(num)
 	//	// 値(数値)から値(value値)を取得
-	const jsgenre = selectgenre.options[num].value;
-	console.log(jsgenre)
+	const jsGenre = selectgenre.options[num].value;
+	console.log(jsGenre)
 
-	var jsbuyer = $('#js-input-buyer').val()
+	var jsBuyer = $('#js-input-buyer').val()
 
 //現在の時刻から入力するファンクションを利用したいが現在実装できないので手入力
 
-	var jspurchaseDate = $('#js-input-purchasedate').val()
+	var jsPurchaseDate = $('#js-input-purchasedate').val()
 
+	var jsStatus = $('#status').val();
 
 	var requestQuery = {
-		id : jsid,
-		purchaseDate : jspurchaseDate,
-		title : jstitle,
-		author : jsauthor,
-		genre : jsgenre,
-		buyer : jsbuyer
+		id : jsId,
+		purchaseDate : jsPurchaseDate,
+		title : jsTitle,
+		author : jsAuthor,
+		genre : jsGenre,
+		buyer : jsBuyer,
+		status:jsStatus
 	}
 
 	// コンソールでrequestQueryを確認
@@ -43,7 +45,7 @@ function edit() {//edit関数
 		type : "POST",
 		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
 		data : requestQuery,
-		datatype : 'json',
+		dataType : 'json',
 		success : function(json) {
 			console.log(json);
 			// サーバーとの通信に成功した時の処理
@@ -129,18 +131,18 @@ function editPage(){//editPage関数
 
 function deleteBook(){//deleteBook関数
 	console.log("削除ボタンを押しました。");
-	var jsId = $('#js-input-id').val()
+	var id = $('#js-input-id').val()
 
-
-	var rq = {id:jsId};
+	var rq = {id:id};
 
 	console.log(rq);
 
 	$.ajax({
-		type : "GET",
+		type : "POST",
 		url : "http://localhost:8080/bookManagement/ManagerDeleteServlet",
 		data : rq,
-		datatype : 'json',
+
+		dataType : 'json',
 		success : function(json) {
 
 			// サーバーとの通信に成功した時の処理

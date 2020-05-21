@@ -33,7 +33,7 @@ function add() {
 	console.log(requestQuery)
 	$.ajax({
 		type : "POST",
-		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
+		url : "http://localhost:8080/bookManagement/ManagerAddServlet",
 		data : requestQuery,
 		datatype : 'json',
 		success : function(json) {

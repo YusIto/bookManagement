@@ -28,7 +28,7 @@ public class ManagerDeleteServlet extends HttpServlet {
 
 	protected void doGet(HttpServletRequest request, HttpServletResponse response) throws ServletException, IOException {
 
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 	}
 
 	protected void doPost(HttpServletRequest request, HttpServletResponse response)
@@ -43,6 +43,7 @@ public class ManagerDeleteServlet extends HttpServlet {
 		}
 		// アクセス元のHTMLでｑに設定された値を取得して、String型の変数idに代入
 		String id = request.getParameter("id");
+		System.out.println();
 
 		// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
 		// ※SQLのログを出力するため変数urlの値は基本的な形式から少し変更を加えています。
@@ -59,8 +60,11 @@ public class ManagerDeleteServlet extends HttpServlet {
 
 				// SQLの命令文を実行するための準備をおこないます
 				Statement stmt = con.createStatement();) {
+
+			String sql = "delete from BOOKS where ID ='"+ id +"' \n";
 			// SQLの命令文を実行
-			stmt.executeUpdate("delete from BOOKS where ID ='"+ id +"'; \n");
+			stmt.executeUpdate(sql);
+			System.out.println(sql);
 
 			// アクセスした人に応答するためのJSONを用意する
 			PrintWriter pw = response.getWriter();
