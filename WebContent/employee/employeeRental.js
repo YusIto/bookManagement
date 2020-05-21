@@ -28,12 +28,10 @@ $(document).ready(
 					console.log(pw.genre);
 
 					$('#rentalTable').append(
-							'<tr>' + '<td id = "js-title" >' + pw.title
-									+ '</td>' + '<td id = "js-author">'
-									+ pw.author + '</td>'
-									+ '<td id = "js-genre">' + pw.genre
-									+ '</td></tr>');
-
+							'<tr>' + '<td id = "js-title" >' + pw.title + '</td>' + '<td id = "js-author">'
+									+ pw.author + '</td><td id = "js-genre">' + pw.genre
+									+ '</td><td><input id="js-today"></input></td>'
+									+'<td><input id="js-retrun-date" type="date"></input></tr>');
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
 					// サーバーとの通信に失敗した時の処理

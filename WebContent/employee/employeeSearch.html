@@ -24,7 +24,7 @@
 	</div>
 	<div class="search">
 		<!-- 検索表示 -->
-		<table class="search-table">
+		<table class="input-table">
 			<tr>
 				<th>タイトル:</th>
 				<td><input type="text" id="js-add-inputtitle"></input></td>
@@ -52,17 +52,13 @@
 			</tr>
 		</table>
 	</div>
-<!-- 	<div class="search-btn"> -->
 		<button class="search-btn" id="js-button-search">検索</button>
-<!-- 	</div> -->
 	<div class="table">
 		<table class="result-table" id="js-search-result"></table>
 	</div>
-	<div>
-		<button id="js-previous-button" style="visibility: hidden">前へ</button>
-	</div>
-	<div>
-		<button id="js-next-button" style="visibility: hidden">次へ</button>
+	<div class="page">
+		<button class="next-btn" id="js-previous-button" style="visibility: hidden">前へ</button>
+		<button class="back-btn" id="js-next-button" style="visibility: hidden">次へ</button>
 	</div>
 
 </body>
