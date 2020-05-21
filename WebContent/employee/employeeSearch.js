@@ -33,7 +33,7 @@ var loadByAjax = function(requestQuery, page) {
 										+ '</td>' + '<td>' + json[i].status
 										+ '</td>' + '<td>'
 										+ '<button class="book_rental" value="'
-										+ json[i].bookId + '">貸出</button></td>';
+										+ json[i].id + '">貸出</button></td>';
 							} else {
 								searchResult += '<tr><td>' + json[i].title
 										+ '</td>' + '<td>' + json[i].author
@@ -201,6 +201,5 @@ $(document).ready(function() {
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);
 	$('#js-next-button').click(moveToNextPage);
-	$('#js-button-book').click(book);
 	$('#js-previous-button').click(moveToPreviousPage);
 });
