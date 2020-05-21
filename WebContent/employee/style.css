@@ -46,107 +46,113 @@ header {
 }
 
 /* 検索条件入力欄 */
+/* 検索条件入力欄 div */
 .search {
-	position: relative;
-	width: 95%;
-	height: 250px;
+/* 	position: relative; */
+	width: 100%;
+	height: 20%;
 }
 
+/* 検索条件入力欄 テーブル */
 .search-table {
-	position: absolute;
-	top: 50%;
-	left: 50%;
-	transform: translateY(-55%) translateX(-55%);
-	-webkit- transform: translateY(-50%) translateX(-50%);
+	float: center;
+	margin: 5% 0% 1% 18%;
+	width: 60%;
+	height: 30%;
 	font-size: 16px;
 }
 
+/* 検索条件入力欄 <th> */
 .search-table th {
 	text-align: right;
-	width: 30%;
+	word-break: keep-all;
+	width: 10%;
 	height: 100%;
 }
 
+/* 検索条件入力欄 <td> */
 .search-table td {
 	text-align: left;
-	width: 70%;
+	width: 50%;
 	height: 100%;
 }
 
+/* 入力 */
 .search-table input {
 	text-align: left;
+	mergin-left:1px;
 	width: 100%;
 	height: 100%;
 }
 
-.search-btn {
-	position: absolute;
-	top: 0;
-	right: 0;
-	bottom: 0;
-	left: 0;
-	margin: auto;
-	width: 100px;
-	height: 1.5rem;
+/* 検索ボタン */
+.search-div{
+	width: 100%;
+	margin: 0% 45% 5% 45%;
 }
 
-/* 検索結果 */
+.search-btn{
+	width: 100px;
+
+}
+
+/* 検索結果 div */
 .result {
 	width: 90%;
 	height: 100%;
 }
 
+/* 検索結果テーブル全体 */
 .result-table {
+	background-color: #f9eed3;
+	border-spacing: 0px;
+	word-break: keep-all;
 	margin: 0 10% 0 10%;
-	padding: 5px 3px 5px 3px;
+	width: 85%;
+	height: 100%;
 }
 
-.result-table thead {
+/* <th> */
+.result-table th {
 	background-color: #a47c64;
-	word-break: keep-all;
+	border-bottom: 1px solid #f9eed3;
 	width: 40%;
+	height: 20px;
 	padding: 10px 5px 10px 5px;
 }
 
-.result-table td:nth-child(1) {
-	word-break: keep-all;
-	width: 40%;
+/* 奇数行 */
+.result-table tr:nth-child(odd) td {
+	background-color: #f9eed3;
+	border-bottom: 1px solid #f9eed3;
+	padding: 10px 5px 10px 5px;
 }
 
-
-/*
-#table {
-	外部余白
-	margin-top: 5px;
-	margin-left: 10px;
+/* 偶数行 */
+.result-table tr:nth-child(even) td {
+	border-bottom: 1px solid #f9eed3;
+	background-color: #9fb083;
+	padding: 10px 5px 10px 5px;
 }
 
-***** テーブル
-table {
-	枠線
-	border-collapse: collapse;
-	border-right: 1px solid #999;
-}
-
-table th {
-	内部余白
-	padding: 10px;
-	枠線
-	border-top: 1px solid #fff;
-	文字色
-	color: #fff;
-	文字表示
+/* 各列の幅を設定 */
+/* タイトル */
+.result-table tr td:nth-child(1) {
 	text-align: left;
-	vertical-align: top;
-	背景色
-	background-color: #555;
+	width: 75%;
 }
 
-table td {
-	内部余白
-	padding: 6px;
-	枠線
-	border: 1px solid #999;
-	背景色
-	background-color: #fff;
-} */
+/* 著者 */
+.result-table tr td:nth-child(2) {
+	text-align: center;
+}
+
+/* ジャンル */
+.result-table tr td:nth-child(3) {
+	text-align: center;
+}
+
+/* ステータス */
+.result-table tr td:nth-child(4) {
+	text-align: center;
+}
