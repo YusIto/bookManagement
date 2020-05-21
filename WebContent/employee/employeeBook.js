@@ -91,5 +91,7 @@ var returnBook = function(i){
 
 var retrunButton = function(){
 	console.log("戻るを押しました。");
+	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html';
+	location.href = url;
 
 }
