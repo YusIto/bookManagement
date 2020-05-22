@@ -23,9 +23,18 @@ var loadByAjax = function(requestQuery, page) {
 
 					// 1ページに表示する検索結果の数
 					var start = (page - 1) * 10;
+					console.log(start);
 					// ログイン情報確認
 					// if (json.result == "ok") {
 					if (json !== "検索結果はありません") {
+						var dataNumber = json.length;
+						console.log(dataNumber);
+						var decimalPointMaxPage = dataNumber/10;
+						var maxPage = Math.ceil(decimalPointMaxPage);
+						console.log(maxPage);
+						if(page == maxPage){
+							$('#js-next-button').css('visibility', 'hidden');
+						}
 						var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th><th></th></tr></thead>';
 						for (var i = start; i < start + 10 && i < json.length; i++) {
 							if (json[i].status == "貸出可能") {
