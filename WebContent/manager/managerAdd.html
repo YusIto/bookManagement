@@ -10,7 +10,52 @@
 <title>蔵書登録</title>
 </head>
 <body>
+	<header>
+		<div class="title">
+			<h1>蔵書編集</h1>
+		</div>
+	</header>
 
+	<div class="search">
+		<!-- 蔵書登録フォーム -->
+		<form name="form1">
+			<table class="input-table">
+				<tr>
+					<th>ID:</th>
+					<td><input type="text" id="js-input-id"></input></td>
+				</tr>
+				<tr>
+					<th>タイトル:</th>
+					<td><input type="text" id="js-input-title"></input></td>
+				</tr>
+				<tr>
+					<th>著者名:</th>
+					<td><input type="text" id="js-input-author"></input></td>
+				</tr>
+				<tr>
+					<th>ジャンル:</th>
+					<td><select name=genre1 id="genre">
+							<option value="ビジネス">ビジネス</option>
+							<option value="技術">技術</option>
+							<option value="その他">その他</option>
+					</select></td>
+				</tr>
+				<tr>
+					<th>購入者:</th>
+					<td><input type="text" id="js-input-buyer"></input></td>
+				</tr>
+				<tr>
+					<th>購入日:</th>
+					<td><input type="text" placeholder="yyyy-mm-dd"
+						id="js-input-purchasedate"></input></td>
+				</tr>
+			</table>
+			<input class="add-btn" type="button" id="js-add-button" value="登録"></input>
+		</form>
+	</div>
+
+
+	<!--
 	<h1 class="title">蔵書登録</h1>
 	<form name= "form1">
 		<p>
@@ -41,14 +86,12 @@
 			<input type="button" id="js-add-button" value="登録">
 		</p>
 	</form>
+ -->
 
-
-
-<footer>
-<p>
- <!-- managerSearch.htmlへ遷移 -->
-  <button onclick="location.href='./managerSearch.html'">戻る</button>
-</p>
-</footer>
+	<footer>
+		<!-- managerSearch.htmlへ遷移 -->
+		<button class="return-btn"
+			onclick="location.href='./managerSearch.html'">戻る</button>
+	</footer>
 </body>
 </html>

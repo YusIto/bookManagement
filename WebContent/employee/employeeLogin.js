@@ -32,14 +32,14 @@ function login() {
 
 			if(json.result === "ok"){
 				// ユーザー名をローカルストレージに保存
-				localStorage.setItem('id',json.id);
-				localStorage.setItem('name',json.name);
+				localStorage.setItem('employeeId',json.id);
+				localStorage.setItem('employeeName',json.name);
 //				localStorage.setItem('password',json.password);
 //				localStorage.setItem('role',json.role);
 
 				console.log(localStorage)
 				// 画面遷移
-//				location.href='.employee/employeeSearch.html';
+			location.href='http://localhost:8080/bookManagement/employee/employeeSearch.html';
 			}else{
 				alert('ログインに失敗しました');
 			}

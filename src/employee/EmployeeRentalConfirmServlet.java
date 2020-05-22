@@ -36,12 +36,15 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 		//文字化け
 		response.setContentType("text/html;charset=UTF-8");
 
+		String employeeId = request.getParameter("employeeId");
+		String bookId = request.getParameter("bookId");
 		String title = request.getParameter("title");
 		String author = request.getParameter("author");
 		String genre = request.getParameter("genre");
 		String today = request.getParameter("today");
 		String retrunDate = request.getParameter("retrunDate");
 
+		System.out.println(bookId);
 		System.out.println(title);
 		System.out.println(author);
 		System.out.println(today);
@@ -66,14 +69,14 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 
 		String sqlInsert ="insert into RENTAL \n" +
 						"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
-				"values('0000001','10001','"+today+"','"+retrunDate+"')";
+				"values('"+employeeId+"','"+bookId+"','"+today+"','"+retrunDate+"')";
 
 		System.out.println(sqlInsert);
 
 		String sqlUpdate = "update BOOKS \n" +
 							"set BOOKS.STATUS = '貸出中' \n" +
 							"where 1 = 1 \n" +
-							"and BOOKS.ID = '10001' \n";
+							"and BOOKS.ID = '"+bookId+"' \n";
 
 		try (
 				// データベースへ接続します

@@ -3,31 +3,29 @@
 <head>
 <meta http-equiv="content-type" content="text/html; charset=utf-8" />
 <!-- CSSの読み込み -->
-<link rel="stylesheet" type="text/css" href="style.css" />
+<link rel="stylesheet" href="./style.css" type="text/css">
 <!-- JavaScriptの読み込み -->
 <script type="text/javascript" src="jquery-1.10.2.js"></script>
 <script type="text/javascript" src="employeeBook.js"></script>
-<title> 借りている本一覧</title>
+<title>借りている本一覧</title>
 </head>
 <body>
-<h1>
-借りている本一覧
-</h1>
-
-<div id="table">
-		<table id="table_data">
+	<header>
+		<div class="title">
+			<h1>借りている本一覧</h1>
+		</div>
+	</header>
+	<div class="rental" id="table">
+		<table class="result-table" id="table_data">
 			<tr>
 				<th>タイトル</th>
 				<th>著者名</th>
 				<th>ジャンル</th>
 				<th>返却予定日</th>
-				<th>     </th>
+				<th></th>
 			</tr>
 		</table>
 	</div>
-
-	<button id = "js-return">戻る</button>
-
-
+	<button class="return-btn" id="js-return">戻る</button>
 </body>
 </html>

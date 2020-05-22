@@ -24,7 +24,7 @@ var loadByAjax = function(requestQuery, page) {
 					// ログイン情報確認
 					// if (json.result == "ok") {
 					if (json !== "検索結果はありません") {
-						var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th></tr></thead>';
+						var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th><th></th></tr></thead>';
 						for (var i = start; i < start + 10 && i < json.length; i++) {
 							if (json[i].status == "貸出可能") {
 								searchResult += '<tr><td>' + json[i].title
@@ -33,7 +33,7 @@ var loadByAjax = function(requestQuery, page) {
 										+ '</td>' + '<td>' + json[i].status
 										+ '</td>' + '<td>'
 										+ '<button class="book_rental" value="'
-										+ json[i].bookId + '">貸出</button></td>';
+										+ json[i].id + '">貸出</button></td>';
 							} else {
 								searchResult += '<tr><td>' + json[i].title
 										+ '</td>' + '<td>' + json[i].author
@@ -94,7 +94,7 @@ var searchBookInformation = function() {
 var logout = function() {
 	$.ajax({
 				type : 'GET',
-				url : 'http://localhost:8080/bookManagement/EmployeeLogoutServlet',
+				url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
 				success : function(json) {
 					// サーバーとの通信に成功した時の処理
 					// 確認のために返却値を出力
@@ -112,7 +112,9 @@ var logout = function() {
 
 // 借りている本一覧ページへの遷移
 var book = function() {
-	var url = '';
+	var employeeId = localStorage.getItem('employeeId');
+	console.log(employeeId);
+	var url = 'http://localhost:8080/bookManagement/employee/employeeBook.html?employeeId='+employeeId;
 	location.href = url;
 }
 
@@ -198,7 +200,6 @@ $(document).ready(function() {
 	loadTable();
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);
-	$('#js-button-book').click(book);
 	$('#js-next-button').click(moveToNextPage);
 	$('#js-previous-button').click(moveToPreviousPage);
 });
