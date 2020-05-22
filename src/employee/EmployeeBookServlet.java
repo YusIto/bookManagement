@@ -71,8 +71,11 @@ public class EmployeeBookServlet extends HttpServlet {
 						"and BOOKS.STATUS = '貸出中' \n" +
 						"and EMPLOYEES.ID = RENTAL.EMPLOYEE_ID \n" +
 						"and BOOKS.ID = RENTAL.BOOK_ID \n";
+				System.out.println("---------------------------");
 
+				System.out.println(sql);
 
+				System.out.println("---------------------------");
 
 				// DBへ接続してSQLを実行
 				try (
