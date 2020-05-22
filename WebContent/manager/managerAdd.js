@@ -83,5 +83,6 @@ function add() {
 
 
 $(document).ready(function() {
+	loginCertification();
 	$('#js-add-button').click(add)
 });

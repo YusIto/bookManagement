@@ -188,6 +188,9 @@ var moveToPreviousPage = function() {
 $(document).ready(function() {
 	'use strict';
 
+	//ログイン認証
+	loginCertification();
+
 	// 初期表示用
 
 	loadTable();

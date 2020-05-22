@@ -33,8 +33,6 @@ function login() {
 			if(json.result === "ok"){
 				// ユーザー名をローカルストレージに保存
 				localStorage.setItem('id',json.id);
-//				localStorage.setItem('password',json.password);
-//				localStorage.setItem('role',json.role);
 
 				console.log(localStorage)
 				// 画面遷移

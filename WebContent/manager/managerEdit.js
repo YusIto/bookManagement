@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	loginCertification(); //ログイン認証
 	editPage();//初期表示
 	$('#js-add-button').click(edit);//編集ボタン
 	$('#js-delete-button').click(deleteBook);//削除ボタン
