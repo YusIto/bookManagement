@@ -1,8 +1,16 @@
-function edit() {
+$(document).ready(function() {
+	editPage();//初期表示
+	$('#js-add-button').click(edit);//編集ボタン
+	$('#js-delete-button').click(deleteBook);//削除ボタン
+});
 
-	var jsid = $('#js-input-id').val()
-	var jstitle = $('#js-input-title').val()
-	var jsauthor = $('#js-input-author').val()
+
+
+function edit() {//edit関数
+
+	var jsId = $('#js-input-id').val()
+	var jsTitle = $('#js-input-title').val()
+	var jsAuthor = $('#js-input-author').val()
 
 	// formのselectを指定、ここではgenreのところ
 	var selectgenre = document.form1.genre1;
@@ -10,32 +18,63 @@ function edit() {
 	const num = selectgenre.selectedIndex;
 	console.log(num)
 	//	// 値(数値)から値(value値)を取得
-	const jsgenre = selectgenre.options[num].value;
-	console.log(jsgenre)
+	const jsGenre = selectgenre.options[num].value;
+	console.log(jsGenre)
 
-
-	var jsbuyer = $('#js-input-buyer').val()
+	var jsBuyer = $('#js-input-buyer').val()
 
 //現在の時刻から入力するファンクションを利用したいが現在実装できないので手入力
 
-	var jspurchaseDate = $('#js-input-purchasedate').val()
+	var jsPurchaseDate = $('#js-input-purchasedate').val()
+
+	var jsStatus = $('#status').val();
+
+	//旧IDをURLから取得
+
+	var parameter = location.search.substring(1, location.search.length);
+	parameter = decodeURIComponent(parameter);
+	parameter = parameter.split('=')[1];
+	console.log("旧ID"+parameter);
+
+
+
+	if(jsId == ""){
+		alert("IDを入力してください");
+		console.log("IDを入力してください");
+	}else if(jsTitle == ""){
+		alert("タイトルを入力してください");
+		console.log("タイトルを入力してください");
+	}else if(jsAuthor ==""){
+		alert("著者を入力してください");
+		console.log("著者を入力してください");
+	}else if(jsBuyer == ""){
+		alert("購入者を入力してください");
+		console.log("購入者を入力してください");
+	}else if(jsPurchaseDate == ""){
+		alert("購入日を入力してください");
+		console.log("購入日を入力してください");
+	}else{
+
 
 
 	var requestQuery = {
-		id : jsid,
-		purchaseDate : jspurchaseDate,
-		title : jstitle,
-		author : jsauthor,
-		genre : jsgenre,
-		buyer : jsbuyer
+		id : jsId,
+		purchaseDate : jsPurchaseDate,
+		title : jsTitle,
+		author : jsAuthor,
+		genre : jsGenre,
+		buyer : jsBuyer,
+		status:jsStatus,
+		oldId:parameter
 	}
+
 	// コンソールでrequestQueryを確認
 	console.log(requestQuery)
 	$.ajax({
 		type : "POST",
 		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
 		data : requestQuery,
-		datatype : 'json',
+		dataType : 'json',
 		success : function(json) {
 			console.log(json);
 			// サーバーとの通信に成功した時の処理
@@ -44,7 +83,7 @@ function edit() {
 			// 登録完了のアラート
 			alert('編集が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+			setTimeout("location.href='managerSearch.html';", 2000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
@@ -53,99 +92,64 @@ function edit() {
 		}
 
 	});
+	}
 
-}
-
-//function getTodaysDate() {
-//
-//	var today = new Date();
-//
-//	var todaydate;
-//
-//	var Year = today.getFullYear();
-//	var Month = today.getMonth() + 1;
-//	var Date = today.getDate();
-//
-//	todaydate = Year + "-" + Month + "-" + Date;
-//
-//	console.log(purcgaseDate);
-//
-//	return todaydate;
-//}
-//日付表示
+}//edit関数の最後
 
 
-$(document).ready(function() {
-	editPage();
-	$('#js-add-button').click(edit);
-	$('#js-delete-button').click(deleteBook);
-	$('#js-input-id').val();
-	console.log();
 
-});
-
-
-function GetQueryString() {
-    if (1 < document.location.search.length) {
-        // 最初の1文字 (?記号) を除いた文字列を取得する
-        console.log(document.location.search);
-    	var query = document.location.search.substring(1);
-        console.log(query);
-        // クエリの区切り記号 (&) で文字列を配列に分割する
-        var parameters = query.split('&');
-        console.log(parameters);
-        var result = new Object();
-        //for (var i = 0; i < parameters.length; i++) {
-            // パラメータ名とパラメータ値に分割する
-            var element = parameters[0].split('=');
-            console.log('elementは'+element);
-            var paramName = decodeURIComponent(element[0]);
-            console.log('element[0]は'+paramName);
-            var paramValue = decodeURIComponent(element[1]);
-            console.log('element[1]は'+paramValue);
-            // パラメータ名をキーとして連想配列に追加する
-            result[paramName] = paramValue;
-        //}
-        //result = {id: "EMP0001", name: "tanaka",age:"10"}
-        return result;
-    }
-    return null;
-}
-
-function editPage(){
+function editPage(){//editPage関数
 	console.log("常に表示");
 
-	var urlId = GetQueryString() ;
+	var id = location.search.substring(1, location.search.length);
+	id = decodeURIComponent(id);
+	id = id.split('=')[1];
+
 	console.log(id);
-	//var id = 10001;
-	var rq = {id:urlId};
+	var rq = {id:id};
 	console.log(rq);
 
 	$.ajax({
 		type : "GET",
 		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
 		data : rq,
-		datatype : 'json',
 
+		dataType : 'json',
 		success : function(json) {
+			console.log('返却値', json);
 
-			console.log(json);
+			var element  = json;
 
-			console.log("aa");
+			console.log("elementは"+element);
 
-			for (var i = 0;i<json.length;i++){
-				var element = json[0];
-				//$('#js-input-id').val(element.id);
-				console.log(element);
+			console.log(element.id);
+			console.log(element.title);
+			console.log(element.author);
+			console.log(element.genre);
+			console.log(element.buyer);
+			console.log(element.purchasedDate);
+			console.log(element.status);
+
+			//サーブレットからとってきた値
+			var  purchasedDate = element.purchasedDate;
+
+			$('#js-input-id').val(element.id);
+			$('#js-input-title').val(element.title);
+			$('#js-input-author').val(element.author);
+			$('#genre').val(element.genre);
+			$('#js-input-buyer').val(element.buyer);
+
+
+			//purchasedDateがnull出ないとき、yyyy-mm-ddで表示
+			if(purchasedDate!=null){
+				var purchasedDate1=purchasedDate.substring(0,10)
+//				var purchasedDate2 = purchasedDate3.replace('-','/');
+//				var purchasedDate = purchasedDate2.replace('-','/');
+//				console.log("日付"+ purchasedDate);
+				$('#js-input-purchasedate').val(purchasedDate1);
 			}
 
-			console.log('返却値', json);
-			// 登録完了のアラート
-			alert('蔵書登録が完了しました');
-			// 2秒後に画面遷移
-			//setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
-
-
+			$('#status').val(element.status);
 
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -155,23 +159,23 @@ function editPage(){
 		}
 
 	});
+}//editPage関数
 
-}
 
-
-function deleteBook(){
+function deleteBook(){//deleteBook関数
 	console.log("削除ボタンを押しました。");
-	var jsId = $('#js-input-id').val()
+	var id = $('#js-input-id').val()
 
-	var rq = {id:jsId};
+	var rq = {id:id};
 
 	console.log(rq);
 
 	$.ajax({
-		type : "GET",
+		type : "POST",
 		url : "http://localhost:8080/bookManagement/ManagerDeleteServlet",
 		data : rq,
-		datatype : 'json',
+
+		dataType : 'json',
 		success : function(json) {
 
 			// サーバーとの通信に成功した時の処理
@@ -180,16 +184,12 @@ function deleteBook(){
 			// 登録完了のアラート
 			alert('蔵書削除が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='.maneger/manegerSearch.html';", 2000);
+			setTimeout("location.href='managerSearch.html';", 2000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
 			alert('入力した内容が登録出来ませんでした。');
 			console.log(errorThrown)
 		}
-
 	});
-
-
-
-}
+}//deleteBook関数の最後

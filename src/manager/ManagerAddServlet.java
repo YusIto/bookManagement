@@ -25,7 +25,7 @@ public class ManagerAddServlet extends HttpServlet {
 	protected void doGet(HttpServletRequest request, HttpServletResponse response)
 			throws ServletException, IOException {
 		// TODO Auto-generated method stub
-		response.getWriter().append("Served at: ").append(request.getContextPath());
+		//response.getWriter().append("Served at: ").append(request.getContextPath());
 
 	}
 
@@ -55,6 +55,8 @@ public class ManagerAddServlet extends HttpServlet {
 
 		String buyer = request.getParameter("buyer");
 
+		System.out.println(id);
+
 
 		// データベースにアクセスするために、データベースのURLとユーザ名とパスワードを指定します
 		// ※SQLのログを出力するため変数urlの値は基本的な形式から少し変更を加えています。
@@ -80,7 +82,7 @@ public class ManagerAddServlet extends HttpServlet {
 				// SQLの命令文を実行するための準備をおこないます
 				Statement stmt = con.createStatement();) {
 			// SQLの命令文を実行
-				stmt.executeQuery(sql);
+				stmt.executeUpdate(sql);
 
 			// アクセスした人に応答するためのJSONを用意する
 			PrintWriter pw = response.getWriter();
