@@ -31,12 +31,12 @@ $(document).ready(
 					console.log(pw.title);
 					console.log(pw.author);
 					console.log(pw.genre);
-
 					$('#rentalTable').append(
 							'<tr>' + '<td id = "js-title" >' + pw.title + '</td>' + '<td id = "js-author">'
 									+ pw.author + '</td><td id = "js-genre">' + pw.genre
 									+ '</td><td><input id="js-today"></input></td>'
-									+'<td><input id="js-retrun-date" type="date"></input></tr>');
+									+'<td><input id="js-return-date" type="date" step="14"></input></tr>');
+					displayDate();
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
 					// サーバーとの通信に失敗した時の処理
@@ -48,7 +48,7 @@ $(document).ready(
 		});
 
 // 日付表示
-window.onload = function() {
+var displayDate= function() {
 	var today = new Date();
 	today.setDate(today.getDate());
 	var yyyy = today.getFullYear();
@@ -62,7 +62,10 @@ window.onload = function() {
 	var mm = ("0" + (today.getMonth() + 1)).slice(-2);
 	var dd = ("0" + today.getDate()).slice(-2);
 	var returnDate =  yyyy + '-' + mm + '-' + dd;
-	document.getElementById("js-retrun-date").value = returnDate;
+	document.getElementById("js-return-date").value = returnDate;
+//	$('#js-min-date').datepicker({
+//		minDate : returnDate
+//	});
 }
 
 // 確定ボタン
@@ -78,9 +81,9 @@ var confirmation = function() {
 
 	var todayVal = $('#js-today').val();
 	console.log(todayVal);
-	var retrunDateVal = $('#js-retrun-date').val();
-	var retrunDate1 = retrunDateVal.replace('-', '/')
-	var retrunDate = retrunDate1.replace('-', '/');
+	var returnDateVal = $('#js-retrun-date').val();
+	var returnDate1 = retrunDateVal.replace('-', '/')
+	var returnDate = retrunDate1.replace('-', '/');
 	console.log(retrunDate);
 	// ローカルストレージから社員IDを取得
 	var employeeId = localStorage.getItem('employeeId');
@@ -92,9 +95,9 @@ var confirmation = function() {
 		author : authorVal,
 		genre : genreVal,
 		today : todayVal,
-		retrunDate : retrunDateVal
+		returnDate : returnDateVal
 	}
-	if (retrunDate != null) {
+	if (retrunDate != "") {
 		// 確定ボタン後にデータ送信
 		$
 				.ajax({
