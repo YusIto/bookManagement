@@ -110,7 +110,7 @@ function editPage(){//editPage関数
 			console.log(element.purchasedDate);
 			console.log(element.status);
 
-
+			//サーブレットからとってきた値
 			var  purchasedDate = element.purchasedDate;
 
 			$('#js-input-id').val(element.id);
@@ -120,13 +120,13 @@ function editPage(){//editPage関数
 			$('#js-input-buyer').val(element.buyer);
 
 
-			//purchasedDateがnull出ないとき、yyyy/mm/ddで表示
+			//purchasedDateがnull出ないとき、yyyy-mm-ddで表示
 			if(purchasedDate!=null){
-				var purchasedDate3=purchasedDate.substring(0,11)
-				var purchasedDate2 = purchasedDate3.replace('-','/');
-				var purchasedDate = purchasedDate2.replace('-','/');
-				console.log("日付"+ purchasedDate);
-				$('#js-input-purchasedate').val(purchasedDate);
+				var purchasedDate1=purchasedDate.substring(0,10)
+//				var purchasedDate2 = purchasedDate3.replace('-','/');
+//				var purchasedDate = purchasedDate2.replace('-','/');
+//				console.log("日付"+ purchasedDate);
+				$('#js-input-purchasedate').val(purchasedDate1);
 			}
 
 			$('#status').val(element.status);
