@@ -1,5 +1,7 @@
 function add() {
 
+
+
 	var jsid = $('#js-input-id').val()
 	var jstitle = $('#js-input-title').val()
 	var jsauthor = $('#js-input-author').val()
@@ -16,9 +18,28 @@ function add() {
 
 	var jsbuyer = $('#js-input-buyer').val()
 
-//現在の時刻から入力するファンクションを利用したいが現在実装できないので手入力
-
 	var jspurchaseDate = $('#js-input-purchasedate').val()
+
+
+
+
+
+	if(jsid == ""){
+		alert("IDを入力してください");
+		console.log("IDを入力してください");
+	}else if(jstitle == ""){
+		alert("タイトルを入力してください");
+		console.log("タイトルを入力してください");
+	}else if(jsauthor==""){
+		alert("著者を入力してください");
+		console.log("著者を入力してください");
+	}else if(jsbuyer == ""){
+		alert("購入者を入力してください");
+		console.log("購入者を入力してください");
+	}else if(jspurchaseDate == ""){
+		alert("購入日を入力してください");
+		console.log("購入日を入力してください");
+	}else{
 
 
 	var requestQuery = {
@@ -29,6 +50,7 @@ function add() {
 		genre : jsgenre,
 		buyer : jsbuyer
 	}
+
 	// コンソールでrequestQueryを確認
 	console.log(requestQuery)
 	$.ajax({
@@ -55,25 +77,9 @@ function add() {
 
 	});
 
-}
+	}
 
-//function getTodaysDate() {
-//
-//	var today = new Date();
-//
-//	var todaydate;
-//
-//	var Year = today.getFullYear();
-//	var Month = today.getMonth() + 1;
-//	var Date = today.getDate();
-//
-//	todaydate = Year + "-" + Month + "-" + Date;
-//
-//	console.log(purcgaseDate);
-//
-//	return todaydate;
-//}
-//日付表示
+}
 
 
 $(document).ready(function() {

@@ -38,6 +38,25 @@ function edit() {//edit関数
 
 
 
+	if(jsId == ""){
+		alert("IDを入力してください");
+		console.log("IDを入力してください");
+	}else if(jsTitle == ""){
+		alert("タイトルを入力してください");
+		console.log("タイトルを入力してください");
+	}else if(jsAuthor ==""){
+		alert("著者を入力してください");
+		console.log("著者を入力してください");
+	}else if(jsBuyer == ""){
+		alert("購入者を入力してください");
+		console.log("購入者を入力してください");
+	}else if(jsPurchaseDate == ""){
+		alert("購入日を入力してください");
+		console.log("購入日を入力してください");
+	}else{
+
+
+
 	var requestQuery = {
 		id : jsId,
 		purchaseDate : jsPurchaseDate,
@@ -73,6 +92,7 @@ function edit() {//edit関数
 		}
 
 	});
+	}
 
 }//edit関数の最後
 
