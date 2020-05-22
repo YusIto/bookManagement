@@ -1,4 +1,5 @@
 $(document).ready(function() {
+	loginCertification(); //ログイン認証
 	editPage();//初期表示
 	$('#js-add-button').click(edit);//編集ボタン
 	$('#js-delete-button').click(deleteBook);//削除ボタン
@@ -83,7 +84,7 @@ function edit() {//edit関数
 			// 登録完了のアラート
 			alert('編集が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='managerSearch.html';", 2000);
+			setTimeout("location.href='managerSearch.html';", 1000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
@@ -184,7 +185,7 @@ function deleteBook(){//deleteBook関数
 			// 登録完了のアラート
 			alert('蔵書削除が完了しました');
 			// 2秒後に画面遷移
-			setTimeout("location.href='managerSearch.html';", 2000);
+			setTimeout("location.href='managerSearch.html';", 1000);
 		},
 		error : function(XMLHttpRequest, textStatus, errorThrown) {
 			// サーバーとの通信に失敗したときの処理
