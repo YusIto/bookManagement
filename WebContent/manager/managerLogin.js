@@ -36,7 +36,7 @@ function login() {
 
 				console.log(localStorage)
 				// 画面遷移
-//				location.href='.employee/employeeSearch.html';
+				location.href='http://localhost:8080/bookManagement/manager/managerSearch.html';
 			}else{
 				alert('ログインに失敗しました');
 			}

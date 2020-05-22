@@ -2,7 +2,7 @@ var loginCertification =function(){
 
 	$.ajax({
 		type : 'GET',
-		url : 'http://localhost:8080/bookManagement/LoginCertificationServletM',
+		url : 'http://localhost:8080/bookManagement/ManagerLoginCertificationServlet',
 		dataType : 'json',
 
 		success : function(json) {
