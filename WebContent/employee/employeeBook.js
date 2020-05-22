@@ -35,6 +35,9 @@ function executeAjax () {
 
 			success : function(json) {
 				console.log(json);
+				if(json == null){
+					conosle.log('jsonにはない');
+				}
 
 				for (var i = 0; i < json.length; i++) {
 
