@@ -85,6 +85,8 @@ var confirmation = function() {
 	// ローカルストレージから社員IDを取得
 	var employeeId = localStorage.getItem('employeeId');
 
+
+
 	var requestQuery = {
 		employeeId : employeeId,
 		bookId : parameter,
@@ -120,6 +122,7 @@ var confirmation = function() {
 	}else{
 		alert("返却日を入力してください");
 	}
+
 
 }
 

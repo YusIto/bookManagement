@@ -11,36 +11,6 @@ $(document).ready(function() {
 });
 
 
-
-var returnBook = function(i) {
-	console.log("返却ボタンを押しました。");
-	var returnBookValue = $(i).val();
-	console.log("deleteEmpのなか" + i);
-	console.log(returnBookValue);
-	console.log("deleteEmpのなかf" + returnBookValue);
-
-	var rq = {
-		BookID : returnBookValue
-	};
-
-	$.ajax({
-		type : 'GET',
-		url : 'http://localhost:8080/bookManagement/EmployeeBookReturnServlet',
-		dataType : 'json',
-		data : rq,
-
-		success : function(json) {
-			console.log('返却完了');
-
-		}
-	});
-
-}
-
-
-
-
-
 // AjaxでJSONを取得する
 function executeAjax () {
 	'use strict';
@@ -77,6 +47,7 @@ function executeAjax () {
 
 					var returnDate1 = element.returnDate;
 
+					console.log(returnDate1);
 					console.log(returnDate1.substring(0,11));
 
 					var returnDate3=returnDate1.substring(0,11)
@@ -96,13 +67,39 @@ function executeAjax () {
 
 					$('#table_data').append(record);
 
-
+					console.log(element.id);
 					}
 			}
 		});
 }
 
+var returnBook = function(i) {
+	console.log("返却ボタンを押しました。");
 
+	var returnBookValue = $(i).val();
+	console.log("returnBookのなか" + i);
+	console.log(returnBookValue);
+	console.log("returnBookのなかのなか" + returnBookValue);
+
+	var rq = {
+			BookID : returnBookValue
+	};
+
+	$.ajax({
+		type : 'GET',
+		url : 'http://localhost:8080/bookManagement/EmployeeBookReturnServlet',
+		dataType : 'json',
+		data : rq,
+
+		success : function(json) {
+			console.log('返却完了');
+			location.reload();
+
+
+		}
+	});
+
+}
 
 
 var retrunButton = function(){
