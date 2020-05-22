@@ -6,6 +6,7 @@
 <!-- JavaScriptの読み込み -->
 <script type="text/javascript" src="jquery-1.10.2.js"></script>
 <script type="text/javascript" src="managerEdit.js"></script>
+<script type="text/javascript" src="loginCertification.js"></script>
 
 <title>蔵書編集</title>
 </head>
@@ -47,7 +48,7 @@
 				</tr>
 				<tr>
 					<th>購入日:</th>
-					<td><input type="text" placeholder="yyyy-mm-dd"
+					<td><input type="date" placeholder="yyyy/mm/dd"
 						id="js-input-purchasedate"></input></td>
 				</tr>
 				<tr>
@@ -62,58 +63,6 @@
 		</form>
 	</div>
 
-
-
-<body>
-
-	<h1 class="title">蔵書編集</h1>
-
-	<form name= "form1">
-    
-	<!-- 	<form name="form1">
-		<p>
-			ID:<input type="text" id="js-input-id"></input>
-		</p>
-		<p>
-			タイトル:<input type="text" id="js-input-title"></input>
-		</p>
-		<p>
-			著者名:<input type="text" id="js-input-author"></input>
-		</p>
-		<p>
-			ジャンル:<select name=genre1 id="genre">
-				<option value="ビジネス">ビジネス</option>
-				<option value="技術">技術</option>
-				<option value="その他">その他</option>
-			</select>
-		</p>
-		<p>
-			購入者:<input type="text" id="js-input-buyer"></input>
-		</p>
-
-		<p>
-			購入日:<input type="date" placeholder="yyyy/mm/dd"
-				id="js-input-purchasedate"></input>
-		</p>
-
-		<p>
-			ステータス:<select id="status">
-				<option value="貸出可能">貸出可能</option>
-				<option value="貸出中">貸出中</option>
-			</select>
-		</p>
- -->
-
-
-
-		<p>
-			<input type="button" id="js-add-button" value="登録">
-		</p>
-	</form>
-
-
-
-		
 	<p>
 		<input class="delete-btn" type="button" id="js-delete-button"
 			value="蔵書削除">
