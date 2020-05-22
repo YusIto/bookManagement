@@ -196,7 +196,7 @@ $(document).ready(function() {
 	'use strict';
 
 	// 初期表示用
-
+	loginCertification();
 	loadTable();
 	$('#js-button-search').click(searchBookInformation);
 	$('#js-button-logout').click(logout);

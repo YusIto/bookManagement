@@ -5,6 +5,12 @@ parameter = parameter.split('=')[1];
 console.log(parameter);
 $(document).ready(
 		function() {
+
+			'use strict';
+			//ログイン認証
+			loginCertification();
+
+
 			// ボタンクリック時、関数利用
 			$("#js-return").click(returnSearch);
 			$("#js-confirmation").click(confirmation);
