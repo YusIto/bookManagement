@@ -33,7 +33,7 @@ var loadByAjax = function(requestQuery, page) {
 									+ '</td>' + '<td>' + json[i].status
 									+ '</td>' + '<td>'
 									+ '<button class="book_edit" value="'
-									+ json[i].bookId + '">蔵書編集</button></td>';
+									+ json[i].id + '">蔵書編集</button></td>';
 						}
 						// 上記処理をHTMLに挿入
 						$('#js-search-result').append(searchResult);
