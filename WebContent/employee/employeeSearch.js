@@ -5,8 +5,10 @@ var loadByAjax = function(requestQuery, page) {
 	$('#js-next-button').css('visibility', 'visible');
 	if (page == 1) {
 		$('#js-previous-button').css('visibility', 'hidden');
+		$('#js-page-number').append(page);
 	} else {
 		$('#js-previous-button').css('visibility', 'visible');
+		$('#js-page-number').append(page);
 	}
 	// サーバーにデータ送信
 	$.ajax({
