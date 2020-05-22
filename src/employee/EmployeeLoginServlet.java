@@ -45,8 +45,8 @@ public class EmployeeLoginServlet extends HttpServlet {
 		//セッションを使います
 		HttpSession session = request.getSession(true);
 
-		session.removeAttribute("id");
-		session.removeAttribute("name");
+		session.removeAttribute("employeeId");
+		session.removeAttribute("employeeName");
 	}
 
 	/**
@@ -121,8 +121,8 @@ public class EmployeeLoginServlet extends HttpServlet {
 
 				// ユーザー情報をセッションに保存
 				HttpSession session = request.getSession();
-				session.setAttribute("id", rs1.getString("ID"));
-				session.setAttribute("name", rs1.getString("NAME"));
+				session.setAttribute("employeeId", rs1.getString("ID"));
+				session.setAttribute("employeeName", rs1.getString("NAME"));
 
 			} else {
 				responseData.put("result", "ng");
