@@ -45,7 +45,7 @@ public class ManegerLoginServlet extends HttpServlet {
 		//セッションを使います
 		HttpSession session = request.getSession(true);
 
-		session.removeAttribute("id");
+		session.invalidate();
 	}
 
 	/**
