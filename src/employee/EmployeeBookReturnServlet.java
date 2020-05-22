@@ -92,14 +92,6 @@ public class EmployeeBookReturnServlet extends HttpServlet {
 			throw new RuntimeException(String.format("検索処理の実施中にエラーが発生しました。詳細：[%s]", e.getMessage()), e);
 		}
 
-
-
-
-
-
-
-
-
 	}
 
 	/**

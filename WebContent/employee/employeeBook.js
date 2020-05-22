@@ -35,8 +35,13 @@ function executeAjax () {
 
 			success : function(json) {
 				console.log(json);
-				if(json == null){
-					conosle.log('jsonにはない');
+				console.log(json.length);
+
+
+				if(json.length === 0){
+					console.log('jsonは空');
+							var record = '<p>借りている本はありません。</p>';
+						$('#table_data').html(record);
 				}
 
 				for (var i = 0; i < json.length; i++) {
