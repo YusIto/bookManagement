@@ -10,14 +10,12 @@ var loginCertification =function(){
 			console.log(json);
 
 			var request =json;
-			//確認
-			console.log(request);
 
 			if(request.login =="no"){
 
 				location.href ='http://localhost:8080/bookManagement/employee/employeeLogin.html'
 			} else{
-				;  //何もしない
+				console.log("ログイン認証OK");
 			}
 		}
 	});

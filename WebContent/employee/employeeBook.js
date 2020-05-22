@@ -153,6 +153,8 @@ function executeAjax () {
 $(document).ready(function () {
 	'use strict';
 
+	//ログイン認証呼び出しby伊藤
+	loginCertification();
 	// 初期表示用
 	executeAjax();
 

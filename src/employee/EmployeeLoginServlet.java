@@ -46,7 +46,7 @@ public class EmployeeLoginServlet extends HttpServlet {
 		HttpSession session = request.getSession(true);
 
 		session.removeAttribute("employeeId");
-		session.removeAttribute("employeeName");
+		session.invalidate();
 	}
 
 	/**
