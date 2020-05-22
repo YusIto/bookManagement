@@ -186,10 +186,18 @@ header {
 }
 
 /* 一覧ページに戻るボタン */
+.return-div{
+	width: 100%;
+}
+
 .return-btn{
-	display: inline-block;
+/* 	display: inline-block;
 	float: left;
+	margin-top: 5%;
 	margin-left: 10%;
+	width: 80px; */
+	float: right;
+	margin-right: 10%;
 	width: 80px;
 }
 
