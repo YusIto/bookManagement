@@ -186,18 +186,11 @@ header {
 }
 
 /* 一覧ページに戻るボタン */
-.return-div{
-	width: 100%;
-}
-
 .return-btn{
-/* 	display: inline-block;
-	float: left;
-	margin-top: 5%;
-	margin-left: 10%;
-	width: 80px; */
+	display: inline-block;
 	float: right;
-	margin-right: 10%;
+	margin-top: 3%;
+	margin-right: 22%;
 	width: 80px;
 }
 
@@ -205,15 +198,20 @@ header {
 .edit-btn{
 	display: inline-block;
 	float: right;
-	margin-right:10%;
+	margin: 0 42% 0 50%;
 	width: 80px;
 }
 
 /* 蔵書削除ボタン */
 .delete-btn{
+	display: inline-block;
+	float: left;
+	margin: 3% 0 0 30%;
+	width: 80px;
+/*
 	margin-bottom: 3%;
 	margin-left: 10%;
-	width: 80px;
+	width: 80px; */
 }
 
 /* 蔵書登録フォームへ遷移するボタン */
@@ -228,7 +226,7 @@ header {
 .add-btn{
 	display: inline-block;
 	float: right;
-	margin-right:10%;
+	margin: 0 42% 0 50%;
 	width: 80px;
 }
 
