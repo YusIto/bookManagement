@@ -112,7 +112,7 @@ var logout = function() {
 
 // 借りている本一覧ページへの遷移
 var book = function() {
-	var employeeId = localStorage.getItem('id');
+	var employeeId = localStorage.getItem('employeeId');
 	console.log(employeeId);
 	var url = 'http://localhost:8080/bookManagement/employee/employeeBook.html?employeeId='+employeeId;
 	location.href = url;
