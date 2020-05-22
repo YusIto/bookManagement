@@ -15,14 +15,14 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Servlet implementation class LoginCertificationServlet
+ * Servlet implementation class LoginCertificationServletM
  */
-@WebServlet("/LoginCertificationServlet")
-public class LoginCertificationServlet extends HttpServlet {
+@WebServlet("/LoginCertificationServletM")
+public class LoginCertificationServletM extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
 
-    public LoginCertificationServlet() {
+    public LoginCertificationServletM() {
         super();
     }
 

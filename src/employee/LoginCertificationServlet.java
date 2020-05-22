@@ -15,9 +15,9 @@ import javax.servlet.http.HttpSession;
 import com.fasterxml.jackson.databind.ObjectMapper;
 
 /**
- * Servlet implementation class LoginCertificationServlet
+ * Servlet implementation class LoginCertificationServletM
  */
-@WebServlet("/LoginCertificationServlet")
+@WebServlet("/LoginCertificationServletM")
 public class LoginCertificationServlet extends HttpServlet {
 	private static final long serialVersionUID = 1L;
 
