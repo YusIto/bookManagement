@@ -5,8 +5,10 @@ var loadByAjax = function(requestQuery, page) {
 	$('#js-next-button').css('visibility', 'visible');
 	if (page == 1) {
 		$('#js-previous-button').css('visibility', 'hidden');
+		$('#js-page-number').append(page);
 	} else {
 		$('#js-previous-button').css('visibility', 'visible');
+		$('#js-page-number').append(page);
 	}
 	// サーバーにデータ送信
 	$
@@ -25,6 +27,14 @@ var loadByAjax = function(requestQuery, page) {
 					// ログイン情報確認
 					// if (json.result == "ok") {
 					if (json !== "検索結果はありません") {
+						var dataNumber = json.length;
+						console.log(dataNumber);
+						var decimalPointMaxPage = dataNumber/10;
+						var maxPage = Math.ceil(decimalPointMaxPage);
+						console.log(maxPage);
+						if(page == maxPage){
+							$('#js-next-button').css('visibility', 'hidden');
+						}
 						var searchResult = '<thead ><tr><th>タイトル</th><th>著者名</th><th>ジャンル</th><th>ステータス</th><th></th></tr></thead>';
 						for (var i = start; i < start + 10 && i < json.length; i++) {
 							searchResult += '<tr><td>' + json[i].title
@@ -93,7 +103,7 @@ var logout = function() {
 					// サーバーとの通信に成功した時の処理
 					// 確認のために返却値を出力
 					console.log('返却値', json);
-					localStorage.removeItem(id);
+					localStorage.removeItem('id');
 					window.location.href = "http://localhost:8080/bookManagement/manager/managerLogin.html";
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {

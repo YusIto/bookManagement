@@ -42,13 +42,13 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 		String author = request.getParameter("author");
 		String genre = request.getParameter("genre");
 		String today = request.getParameter("today");
-		String retrunDate = request.getParameter("retrunDate");
+		String returnDate = request.getParameter("returnDate");
 
 		System.out.println(bookId);
 		System.out.println(title);
 		System.out.println(author);
 		System.out.println(today);
-		System.out.println(retrunDate);
+		System.out.println(returnDate);
 
 
 		try {
@@ -69,7 +69,7 @@ public class EmployeeRentalConfirmServlet extends HttpServlet {
 
 		String sqlInsert ="insert into RENTAL \n" +
 						"(EMPLOYEE_ID,BOOK_ID,RENTAL_DATE,RETURN_DATE) \n" +
-				"values('"+employeeId+"','"+bookId+"','"+today+"','"+retrunDate+"')";
+				"values('"+employeeId+"','"+bookId+"','"+today+"','"+returnDate+"')";
 
 		System.out.println(sqlInsert);
 
