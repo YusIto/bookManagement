@@ -41,7 +41,11 @@ public class EmployeeBookReturnServlet extends HttpServlet {
 		response.setContentType("text/html;charset=UTF-8");
 
 		String BookID = request.getParameter("BookID");
-    	System.out.println("リクエストパラメータ::"+BookID);
+    	System.out.println("本のIDは:"+BookID);
+
+    	String employeeId = request.getParameter("employeeId");
+    	System.out.println("社員のIDは:"+employeeId);
+
 
 
 		// JDBCドライバの準備
@@ -72,8 +76,8 @@ public class EmployeeBookReturnServlet extends HttpServlet {
 		System.out.println(sqlUpdate);
 
 		String sqlDelete = "delete from RENTAL \n" +
-				"where EMPLOYEE_ID = '0000001'\n" +
-				"and BOOK_ID = '1' \n" ;
+				"where EMPLOYEE_ID = '"+employeeId+"'\n" +
+				"and BOOK_ID = '"+BookID+"' \n" ;
 
 		System.out.println(sqlDelete);
 

@@ -84,13 +84,19 @@ function executeAjax () {
 var returnBook = function(i) {
 	console.log("返却ボタンを押しました。");
 
+	//本のIDを取得
 	var returnBookValue = $(i).val();
-	console.log("returnBookのなか" + i);
-	console.log(returnBookValue);
-	console.log("returnBookのなかのなか" + returnBookValue);
+	console.log("本のIDは"+returnBookValue);
+
+	//社員のIDを取得
+	var parameter = location.search.substring(1, location.search.length);
+	parameter = decodeURIComponent(parameter);
+	parameter = parameter.split('=')[1];
+	console.log(parameter);
 
 	var rq = {
-			BookID : returnBookValue
+			BookID : returnBookValue,
+			employeeId:parameter
 	};
 
 	$.ajax({
