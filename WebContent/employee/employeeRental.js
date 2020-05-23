@@ -34,8 +34,8 @@ $(document).ready(
 					$('#rentalTable').append(
 							'<tr>' + '<td id = "js-title" >' + pw.title + '</td>' + '<td id = "js-author">'
 									+ pw.author + '</td><td id = "js-genre">' + pw.genre
-									+ '</td><td><input id="js-today"></input></td>'
-									+'<td><input id="js-return-date"></input></tr>');
+									+ '</td><td><input disabled id="js-today"></input></td>'
+									+'<td><input disabled id="js-return-date"></input></tr>');
 					displayDate();
 
 				},
@@ -48,6 +48,7 @@ $(document).ready(
 
 		});
 
+
 // 日付表示
 var displayDate= function() {
 	var today = new Date();
@@ -56,6 +57,7 @@ var displayDate= function() {
 	var mm = ("0" + (today.getMonth() + 1)).slice(-2);
 	var dd = ("0" + today.getDate()).slice(-2);
 	document.getElementById("js-today").value = yyyy + '/' + mm + '/' + dd;
+	console.log();
 
 // 2週間後の日付を返却日に初期設定
 	var twoWeeks= today.setDate(today.getDate()+14); // 14日後の日付を取得
@@ -78,10 +80,10 @@ var confirmation = function() {
 
 	var todayVal = $('#js-today').val();
 	console.log(todayVal);
-	var returnDateVal = $('#js-retrun-date').val();
-	var returnDate1 = retrunDateVal.replace('-', '/')
-	var returnDate = retrunDate1.replace('-', '/');
-	console.log(retrunDate);
+	var returnDateVal = $('#js-return-date').val();
+	var returnDate1 = returnDateVal.replace('-', '/')
+	var returnDate = returnDate1.replace('-', '/');
+	console.log(returnDate);
 	// ローカルストレージから社員IDを取得
 	var employeeId = localStorage.getItem('employeeId');
 
@@ -96,7 +98,7 @@ var confirmation = function() {
 		today : todayVal,
 		returnDate : returnDateVal
 	}
-	if (retrunDate != "") {
+	if (returnDate != "") {
 		// 確定ボタン後にデータ送信
 		$
 				.ajax({
