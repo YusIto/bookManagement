@@ -75,6 +75,7 @@ var status;
 // 検索結果
 var searchBookInformation = function() {
 	// 打ち込まれたデータの取得
+	$('#js-page-number').empty(page);
 	page = 1;
 	title = $('#js-add-inputtitle').val();
 	author = $('#js-add-inputauthor').val();
