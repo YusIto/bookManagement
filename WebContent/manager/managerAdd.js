@@ -2,53 +2,55 @@ function add() {
 
 
 
-	var jsid = $('#js-input-id').val()
-	var jstitle = $('#js-input-title').val()
-	var jsauthor = $('#js-input-author').val()
+	var jsId = $('#js-input-id').val()
+	jsId = jsId.replace(/\s+/g, "");
+
+	var jsTitle = $('#js-input-title').val()
+	var jsAuthor = $('#js-input-author').val()
 
 	// formのselectを指定、ここではgenreのところ
-	var selectgenre = document.form1.genre1;
+	var selectGenre = document.form1.genre1;
 	// // 値(数値)を取得
-	const num = selectgenre.selectedIndex;
+	const num = selectGenre.selectedIndex;
 	console.log(num)
 	//	// 値(数値)から値(value値)を取得
-	const jsgenre = selectgenre.options[num].value;
-	console.log(jsgenre)
+	const jsGenre = selectGenre.options[num].value;
+	console.log(jsGenre)
 
 
-	var jsbuyer = $('#js-input-buyer').val()
+	var jsBuyer = $('#js-input-buyer').val()
 
-	var jspurchaseDate = $('#js-input-purchasedate').val()
-
-
+	var jsPurchaseDate = $('#js-input-purchasedate').val()
 
 
 
-	if(jsid == ""){
+
+
+	if(jsId == ""){
 		alert("IDを入力してください");
 		console.log("IDを入力してください");
-	}else if(jstitle == ""){
+	}else if(jsTitle == ""){
 		alert("タイトルを入力してください");
 		console.log("タイトルを入力してください");
-	}else if(jsauthor==""){
+	}else if(jsAuthor==""){
 		alert("著者を入力してください");
 		console.log("著者を入力してください");
-	}else if(jsbuyer == ""){
+	}else if(jsBuyer == ""){
 		alert("購入者を入力してください");
 		console.log("購入者を入力してください");
-	}else if(jspurchaseDate == ""){
+	}else if(jsPurchaseDate == ""){
 		alert("購入日を入力してください");
 		console.log("購入日を入力してください");
 	}else{
 
 
 	var requestQuery = {
-		id : jsid,
-		purchaseDate : jspurchaseDate,
-		title : jstitle,
-		author : jsauthor,
-		genre : jsgenre,
-		buyer : jsbuyer
+		id : jsId,
+		purchaseDate : jsPurchaseDate,
+		title : jsTitle,
+		author : jsAuthor,
+		genre : jsGenre,
+		buyer : jsBuyer
 	}
 
 	// コンソールでrequestQueryを確認

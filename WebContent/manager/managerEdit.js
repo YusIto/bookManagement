@@ -10,6 +10,8 @@ $(document).ready(function() {
 function edit() {//edit関数
 
 	var jsId = $('#js-input-id').val()
+	jsId = jsId.replace(/\s+/g, "");
+
 	var jsTitle = $('#js-input-title').val()
 	var jsAuthor = $('#js-input-author').val()
 
