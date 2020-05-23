@@ -64,12 +64,18 @@ public class EmployeeBookReturnServlet extends HttpServlet {
 		PrintWriter pw = response.getWriter();
 
 
-		String sql = "update BOOKS \n" +
+		String sqlUpdate = "update BOOKS \n" +
 				    "set BOOKS.STATUS = '貸出可能' \n" +
 				   "where 1 = 1 \n" +
 				  "and BOOKS.ID = '"+BookID+"' \n";
 
-		System.out.println(sql);
+		System.out.println(sqlUpdate);
+
+		String sqlDelete = "delete from RENTAL \n" +
+				"where EMPLOYEE_ID = '0000001'\n" +
+				"and BOOK_ID = '1' \n" ;
+
+		System.out.println(sqlDelete);
 
 		try (
 				// データベースへ接続します
@@ -82,7 +88,8 @@ public class EmployeeBookReturnServlet extends HttpServlet {
 				) {
 				// SQLの命令文を実行し、その結果をResultSet型のrsに代入します
 				//int rs1 = stmt.executeUpdate(sql);
-				int resultCount = stmt.executeUpdate(sql);
+				int resultCountUpdate = stmt.executeUpdate(sqlUpdate);
+				int resultCountDelete = stmt.executeUpdate(sqlDelete);
 
 
 			//System.out.println(BookList);
