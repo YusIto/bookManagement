@@ -99,7 +99,7 @@ header {
 /* 検索ボタン */
 .search-btn{
 	display: inline-block;
-	margin: 0 42% 0 50%;
+	margin: 0 42% 5% 50%;
 	width: 100px;
 }
 
@@ -115,9 +115,9 @@ header {
 	background-color: #f9eed3;
 	border-spacing: 0px;
 	word-break: keep-all;
-	margin-left: 0 10% 0 10%;
-	width: 100%;
-	height: 100%;
+/* 	margin: 0 10% 0 10%; */
+/* 	width: 100%;
+	height: 100%; */
 }
 
 /* <th> */
@@ -131,7 +131,6 @@ header {
 
 /* 奇数行 */
 .result-table tr:nth-child(odd) td {
-/* 	background-color: #f9eed3; */
 	border-bottom: 1px solid #f9eed3;
 	padding: 10px 5px 10px 5px;
 }
@@ -176,7 +175,12 @@ header {
 
 /* ページング */
 .page{
+	text-align: center;
 	padding: 0 40% 5% 40%;
+}
+
+.page-number{
+	display: inline-block;
 }
 
 .next-btn{
@@ -191,10 +195,15 @@ header {
 	width: 50px;
 }
 
+.botton-div{
+	padding: 0 10% 0 10%;
+}
+
 /* 一覧ページに戻るボタン */
 .return-btn{
 	display: inline-block;
-	margin-left: 75%;
+	float: right;
+	margin-right: 5%;
 	width: 80px;
 }
 
@@ -214,7 +223,6 @@ header {
 .rental-btn{
 	display: inline-block;
 	float: right;
-	margin-right:10%;
 	width: 80px;
 }
 
