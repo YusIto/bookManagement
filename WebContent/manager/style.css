@@ -170,7 +170,12 @@ header {
 
 /* ページング */
 .page{
+	text-align: center;
 	padding: 0 40% 5% 40%;
+}
+
+.page-number{
+	display: inline-block;
 }
 
 .next-btn{
@@ -185,26 +190,33 @@ header {
 	width: 50px;
 }
 
+.button-div{
+	padding: 5% 15% 0 15%;
+/* 	width: 100%;
+	height:5%; */
+}
+
 /* 一覧ページに戻るボタン */
-.return-btn{
+.return-button{
 	display: inline-block;
-	float: left;
-	margin-left: 10%;
+	float: right;
+	margin-right: 10%;
 	width: 80px;
 }
 
-/* 蔵書編集ボタン */
-.edit-btn{
+/* 蔵書編集確定ボタン */
+.edit-button{
 	display: inline-block;
 	float: right;
-	margin-right:10%;
+	margin: 0 44% 0 48%;
 	width: 80px;
 }
 
 /* 蔵書削除ボタン */
-.delete-btn{
-	margin-bottom: 3%;
-	margin-left: 10%;
+.delete-button{
+	display: inline-block;
+	float: left;
+	margin-left: 23%;
 	width: 80px;
 }
 
@@ -217,9 +229,12 @@ header {
 }
 
 /* 蔵書登録確定 */
-.add-btn{
+.add-button{
 	display: inline-block;
 	float: right;
-	margin-right:10%;
+	margin: 0 45% 0 48%;
 	width: 80px;
 }
+
+
+
