@@ -58,6 +58,7 @@ public class EmployeeBookServlet extends HttpServlet {
 				PrintWriter pw = response.getWriter();
 
 				String sql ="select \n" +
+						"BOOKS.ID, \n"+
 						"BOOKS.TITLE, \n" +
 						"BOOKS.AUTHOR, \n" +
 						"BOOKS.GENRE, \n" +
@@ -71,8 +72,11 @@ public class EmployeeBookServlet extends HttpServlet {
 						"and BOOKS.STATUS = '貸出中' \n" +
 						"and EMPLOYEES.ID = RENTAL.EMPLOYEE_ID \n" +
 						"and BOOKS.ID = RENTAL.BOOK_ID \n";
+				System.out.println("---------------------------");
 
+				System.out.println(sql);
 
+				System.out.println("---------------------------");
 
 				// DBへ接続してSQLを実行
 				try (
@@ -94,13 +98,13 @@ public class EmployeeBookServlet extends HttpServlet {
 //					Map<String, String> responseData = new HashMap<>();
 					while (rs1.next()) {
 						Book b1 = new Book();
+						b1.setId(rs1.getString("ID"));
 						b1.setTitle(rs1.getString("TITLE"));
 						b1.setAuthor(rs1.getString("AUTHOR"));
 						b1.setGenre(rs1.getString("GENRE"));
 						b1.setReturnDate(rs1.getString("RETURN_DATE"));
 
 						BookList.add(b1);
-
 
 					}
 
