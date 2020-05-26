@@ -2,7 +2,7 @@ var loginCertification =function(){
 
 	$.ajax({
 		type : 'GET',
-		url : 'http://localhost:8080/bookManagement/LoginCertificationServlet',
+		url : '/bookManagement/LoginCertificationServlet',
 		dataType : 'json',
 
 		success : function(json) {
@@ -13,7 +13,7 @@ var loginCertification =function(){
 
 			if(request.login =="no"){
 
-				location.href ='http://localhost:8080/bookManagement/employee/employeeLogin.html'
+				location.href ='/bookManagement/employee/employeeLogin.html'
 			} else{
 				console.log("ログイン認証OK");
 			}

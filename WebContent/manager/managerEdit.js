@@ -75,7 +75,7 @@ function edit() {//edit関数
 	console.log(requestQuery)
 	$.ajax({
 		type : "POST",
-		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
+		url : "/bookManagement/ManagerEditServlet",
 		data : requestQuery,
 		dataType : 'json',
 		success : function(json) {
@@ -114,7 +114,7 @@ function editPage(){//editPage関数
 
 	$.ajax({
 		type : "GET",
-		url : "http://localhost:8080/bookManagement/ManagerEditServlet",
+		url : "/bookManagement/ManagerEditServlet",
 		data : rq,
 
 		dataType : 'json',
@@ -175,7 +175,7 @@ function deleteBook(){//deleteBook関数
 
 	$.ajax({
 		type : "POST",
-		url : "http://localhost:8080/bookManagement/ManagerDeleteServlet",
+		url : "/bookManagement/ManagerDeleteServlet",
 		data : rq,
 
 		dataType : 'json',

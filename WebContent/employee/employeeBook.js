@@ -29,7 +29,7 @@ function executeAjax () {
 
 	$.ajax({
 			type : 'GET',
-			url : 'http://localhost:8080/bookManagement/EmployeeBookServlet',
+			url : '/bookManagement/EmployeeBookServlet',
 			dataType : 'json',
 			data:rq,
 
@@ -40,7 +40,7 @@ function executeAjax () {
 
 				if(json.length === 0){
 					console.log('jsonは空');
-							var record = '<p>借りている本はありません。</p>';
+							var record = '<p>借りている本はありません</p>';
 						$('#table_data').html(record);
 				}
 
@@ -101,7 +101,7 @@ var returnBook = function(i) {
 
 	$.ajax({
 		type : 'GET',
-		url : 'http://localhost:8080/bookManagement/EmployeeBookReturnServlet',
+		url : '/bookManagement/EmployeeBookReturnServlet',
 		dataType : 'json',
 		data : rq,
 
@@ -118,7 +118,7 @@ var returnBook = function(i) {
 
 var retrunButton = function(){
 	console.log("戻るを押しました。");
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html';
+	var url = '/bookManagement/employee/employeeSearch.html';
 	location.href = url;
 }
 

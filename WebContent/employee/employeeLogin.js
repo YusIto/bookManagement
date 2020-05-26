@@ -11,7 +11,7 @@ function login() {
 	$.ajax({
 		type : 'POST',
 		dataType:'json',
-		url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
+		url : '/bookManagement/EmployeeLoginServlet',
 		data : requestQuery,
 		success : function(json) {
 			// サーバーとの通信に成功した時の処理
@@ -39,7 +39,7 @@ function login() {
 
 				console.log(localStorage)
 				// 画面遷移
-			location.href='http://localhost:8080/bookManagement/employee/employeeSearch.html';
+			location.href='/bookManagement/employee/employeeSearch.html';
 			}else{
 				alert('ログインに失敗しました');
 			}

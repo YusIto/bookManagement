@@ -15,7 +15,7 @@ var loadByAjax = function(requestQuery, page) {
 			.ajax({
 				type : 'GET',
 				dataType : 'json',
-				url : 'http://localhost:8080/bookManagement/ManagerSearchServlet',
+				url : '/bookManagement/ManagerSearchServlet',
 				data : requestQuery,
 				success : function(json) {
 					console.log('返却値', json);
@@ -99,13 +99,13 @@ var logout = function() {
 	$
 			.ajax({
 				type : 'GET',
-				url : 'http://localhost:8080/bookManagement/ManegerLoginServlet',
+				url : '/bookManagement/ManegerLoginServlet',
 				success : function(json) {
 					// サーバーとの通信に成功した時の処理
 					// 確認のために返却値を出力
 					console.log('返却値', json);
 					localStorage.removeItem('id');
-					window.location.href = "http://localhost:8080/bookManagement/manager/managerLogin.html";
+					window.location.href = "/bookManagement/manager/managerLogin.html";
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
 					// サーバーとの通信に失敗した時の処理
@@ -118,14 +118,14 @@ var logout = function() {
 
 // 蔵書登録への遷移
 var bookAdd = function() {
-	var url = 'http://localhost:8080/bookManagement/manager/managerAdd.html';
+	var url = '/bookManagement/manager/managerAdd.html';
 	location.href = url;
 }
 
 // 蔵書編集ボタンが押された時
 var bookEdit = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/manager/managerEdit.html?bookId='
+	var url = '/bookManagement/manager/managerEdit.html?bookId='
 			+ bookId;
 
 	location.href = url;
@@ -177,7 +177,7 @@ var loadTable = function() {
 // 次へボタン
 var moveToNextPage = function() {
 
-	var url = 'http://localhost:8080/bookManagement/manager/managerSearch.html?page='
+	var url = '/bookManagement/manager/managerSearch.html?page='
 			+ (page + 1);
 	url += '&title=' + title;
 	url += '&author=' + author;
@@ -188,7 +188,7 @@ var moveToNextPage = function() {
 
 // 前へボタン
 var moveToPreviousPage = function() {
-	var url = 'http://localhost:8080/bookManagement/manager/managerSearch.html?page='
+	var url = '/bookManagement/manager/managerSearch.html?page='
 			+ (page - 1);
 	url += '&title=' + title;
 	url += '&author=' + author;

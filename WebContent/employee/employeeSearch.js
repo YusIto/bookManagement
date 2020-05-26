@@ -14,7 +14,7 @@ var loadByAjax = function(requestQuery, page) {
 	$.ajax({
 				type : 'GET',
 				dataType : 'json',
-				url : 'http://localhost:8080/bookManagement/EmployeeSerchServlet',
+				url : '/bookManagement/EmployeeSerchServlet',
 				data : requestQuery,
 				success : function(json) {
 					console.log('返却値', json);
@@ -106,14 +106,14 @@ var searchBookInformation = function() {
 var logout = function() {
 	$.ajax({
 				type : 'GET',
-				url : 'http://localhost:8080/bookManagement/EmployeeLoginServlet',
+				url : '/bookManagement/EmployeeLoginServlet',
 				success : function(json) {
 					// サーバーとの通信に成功した時の処理
 					// 確認のために返却値を出力
 					console.log('返却値', json);
 					localStorage.removeItem('employeeId');
 					localStorage.removeItem('employeeName');
-					window.location.href = "http://localhost:8080/bookManagement/employee/employeeLogin.html";
+					window.location.href = "/bookManagement/employee/employeeLogin.html";
 				},
 				error : function(XMLHttpRequest, textStatus, errorThrown) {
 					// サーバーとの通信に失敗した時の処理
@@ -128,14 +128,14 @@ var logout = function() {
 var book = function() {
 	var employeeId = localStorage.getItem('employeeId');
 	console.log(employeeId);
-	var url = 'http://localhost:8080/bookManagement/employee/employeeBook.html?employeeId='+employeeId;
+	var url = '/bookManagement/employee/employeeBook.html?employeeId='+employeeId;
 	location.href = url;
 }
 
 // 貸出ボタンが押された時
 var rental = function() {
 	var bookId = document.activeElement.value;
-	var url = 'http://localhost:8080/bookManagement/employee/employeeRental.html?bookId='
+	var url = '/bookManagement/employee/employeeRental.html?bookId='
 			+ bookId;
 	location.href = url;
 }
@@ -186,7 +186,7 @@ var loadTable = function() {
 //次へボタン
 var moveToNextPage = function() {
 
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page='
+	var url = '/bookManagement/employee/employeeSearch.html?page='
 			+ (page + 1);
 	url += '&title=' + title;
 	url += '&author=' + author;
@@ -197,7 +197,7 @@ var moveToNextPage = function() {
 
 //前へボタン
 var moveToPreviousPage = function() {
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html?page='
+	var url = '/bookManagement/employee/employeeSearch.html?page='
 			+ (page - 1);
 	url += '&title=' + title;
 	url += '&author=' + author;

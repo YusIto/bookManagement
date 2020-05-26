@@ -110,9 +110,10 @@ var confirmation = function() {
 					success : function(pw) {
 
 						console.log("通信成功");
+						alert('貸出完了');
 						setTimeout(
-								"location.href = 'http://localhost:8080/bookManagement/employee/employeeSearch.html';",
-								2000);
+								"location.href = '/bookManagement/employee/employeeSearch.html';",
+								500);
 
 					},
 					error : function(XMLHttpRequest, textStatus, errorThrown) {
@@ -131,6 +132,6 @@ var confirmation = function() {
 // 戻るボタン
 var returnSearch = function() {
 	console.log("戻るを押しました。");
-	var url = 'http://localhost:8080/bookManagement/employee/employeeSearch.html';
+	var url = '/bookManagement/employee/employeeSearch.html';
 	location.href = url;
 }
